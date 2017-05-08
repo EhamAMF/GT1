@@ -39,6 +39,11 @@ Partial Class MDIParent1
         Me.ManageProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.StockToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgentsDistributorsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.AgentsBalanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgentsLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TreasuryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AgentsPaymentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AgentMoneyINToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -50,27 +55,23 @@ Partial Class MDIParent1
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.TreasuryLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PaymentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AgentsDistributorsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AgentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.AgentsBalanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AgentsLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChangePasswordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataMangementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BackupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RestoreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewYearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnUpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ChangePasswordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.عنالمنظومةToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.lblDate = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblUserFullName = New System.Windows.Forms.ToolStripStatusLabel()
         Me.pb1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.bkHardwareCheck = New System.ComponentModel.BackgroundWorker()
-        Me.عنالمنظومةToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.XxxToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -79,7 +80,7 @@ Partial Class MDIParent1
         '
         Me.MenuStrip.BackColor = System.Drawing.Color.White
         Me.MenuStrip.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InvoicesToolStripMenuItem, Me.ProductsToolStripMenuItem, Me.AgentsDistributorsToolStripMenuItem, Me.TreasuryToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.DataMangementToolStripMenuItem, Me.عنالمنظومةToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InvoicesToolStripMenuItem, Me.ProductsToolStripMenuItem, Me.AgentsDistributorsToolStripMenuItem, Me.TreasuryToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.DataMangementToolStripMenuItem, Me.عنالمنظومةToolStripMenuItem, Me.XxxToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Padding = New System.Windows.Forms.Padding(6, 3, 0, 3)
@@ -171,6 +172,36 @@ Partial Class MDIParent1
         Me.StockToolStripMenuItem.Size = New System.Drawing.Size(163, 24)
         Me.StockToolStripMenuItem.Text = "المخزون"
         '
+        'AgentsDistributorsToolStripMenuItem
+        '
+        Me.AgentsDistributorsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgentsToolStripMenuItem, Me.ToolStripSeparator3, Me.AgentsBalanceToolStripMenuItem, Me.AgentsLogToolStripMenuItem})
+        Me.AgentsDistributorsToolStripMenuItem.Name = "AgentsDistributorsToolStripMenuItem"
+        Me.AgentsDistributorsToolStripMenuItem.Size = New System.Drawing.Size(65, 23)
+        Me.AgentsDistributorsToolStripMenuItem.Text = "العملاء"
+        '
+        'AgentsToolStripMenuItem
+        '
+        Me.AgentsToolStripMenuItem.Name = "AgentsToolStripMenuItem"
+        Me.AgentsToolStripMenuItem.Size = New System.Drawing.Size(211, 24)
+        Me.AgentsToolStripMenuItem.Text = "ادارة العملاء"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(208, 6)
+        '
+        'AgentsBalanceToolStripMenuItem
+        '
+        Me.AgentsBalanceToolStripMenuItem.Name = "AgentsBalanceToolStripMenuItem"
+        Me.AgentsBalanceToolStripMenuItem.Size = New System.Drawing.Size(211, 24)
+        Me.AgentsBalanceToolStripMenuItem.Text = "أرصدة العملاء"
+        '
+        'AgentsLogToolStripMenuItem
+        '
+        Me.AgentsLogToolStripMenuItem.Name = "AgentsLogToolStripMenuItem"
+        Me.AgentsLogToolStripMenuItem.Size = New System.Drawing.Size(211, 24)
+        Me.AgentsLogToolStripMenuItem.Text = "كشف حساب عميل"
+        '
         'TreasuryToolStripMenuItem
         '
         Me.TreasuryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgentsPaymentsToolStripMenuItem, Me.ExpensesToolStripMenuItem, Me.OtherPaymentsToolStripMenuItem, Me.ToolStripSeparator4, Me.TreasuryLogToolStripMenuItem, Me.PaymentsToolStripMenuItem})
@@ -239,35 +270,24 @@ Partial Class MDIParent1
         Me.PaymentsToolStripMenuItem.Size = New System.Drawing.Size(197, 24)
         Me.PaymentsToolStripMenuItem.Text = "بحث عن الايصالات"
         '
-        'AgentsDistributorsToolStripMenuItem
+        'SettingsToolStripMenuItem
         '
-        Me.AgentsDistributorsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgentsToolStripMenuItem, Me.ToolStripSeparator3, Me.AgentsBalanceToolStripMenuItem, Me.AgentsLogToolStripMenuItem})
-        Me.AgentsDistributorsToolStripMenuItem.Name = "AgentsDistributorsToolStripMenuItem"
-        Me.AgentsDistributorsToolStripMenuItem.Size = New System.Drawing.Size(65, 23)
-        Me.AgentsDistributorsToolStripMenuItem.Text = "العملاء"
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangePasswordToolStripMenuItem, Me.UsersToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(71, 23)
+        Me.SettingsToolStripMenuItem.Text = "اعدادات"
         '
-        'AgentsToolStripMenuItem
+        'ChangePasswordToolStripMenuItem
         '
-        Me.AgentsToolStripMenuItem.Name = "AgentsToolStripMenuItem"
-        Me.AgentsToolStripMenuItem.Size = New System.Drawing.Size(211, 24)
-        Me.AgentsToolStripMenuItem.Text = "ادارة العملاء"
+        Me.ChangePasswordToolStripMenuItem.Name = "ChangePasswordToolStripMenuItem"
+        Me.ChangePasswordToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
+        Me.ChangePasswordToolStripMenuItem.Text = "تغير كلمة المرور"
         '
-        'ToolStripSeparator3
+        'UsersToolStripMenuItem
         '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(208, 6)
-        '
-        'AgentsBalanceToolStripMenuItem
-        '
-        Me.AgentsBalanceToolStripMenuItem.Name = "AgentsBalanceToolStripMenuItem"
-        Me.AgentsBalanceToolStripMenuItem.Size = New System.Drawing.Size(211, 24)
-        Me.AgentsBalanceToolStripMenuItem.Text = "أرصدة العملاء"
-        '
-        'AgentsLogToolStripMenuItem
-        '
-        Me.AgentsLogToolStripMenuItem.Name = "AgentsLogToolStripMenuItem"
-        Me.AgentsLogToolStripMenuItem.Size = New System.Drawing.Size(211, 24)
-        Me.AgentsLogToolStripMenuItem.Text = "كشف حساب عميل"
+        Me.UsersToolStripMenuItem.Name = "UsersToolStripMenuItem"
+        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
+        Me.UsersToolStripMenuItem.Text = "إدارة المستخدمين"
         '
         'DataMangementToolStripMenuItem
         '
@@ -306,24 +326,11 @@ Partial Class MDIParent1
         Me.BtnUpdateToolStripMenuItem.Size = New System.Drawing.Size(193, 24)
         Me.BtnUpdateToolStripMenuItem.Text = "تحديث"
         '
-        'SettingsToolStripMenuItem
+        'عنالمنظومةToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangePasswordToolStripMenuItem, Me.UsersToolStripMenuItem})
-        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(71, 23)
-        Me.SettingsToolStripMenuItem.Text = "اعدادات"
-        '
-        'ChangePasswordToolStripMenuItem
-        '
-        Me.ChangePasswordToolStripMenuItem.Name = "ChangePasswordToolStripMenuItem"
-        Me.ChangePasswordToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
-        Me.ChangePasswordToolStripMenuItem.Text = "تغير كلمة المرور"
-        '
-        'UsersToolStripMenuItem
-        '
-        Me.UsersToolStripMenuItem.Name = "UsersToolStripMenuItem"
-        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
-        Me.UsersToolStripMenuItem.Text = "إدارة المستخدمين"
+        Me.عنالمنظومةToolStripMenuItem.Name = "عنالمنظومةToolStripMenuItem"
+        Me.عنالمنظومةToolStripMenuItem.Size = New System.Drawing.Size(107, 23)
+        Me.عنالمنظومةToolStripMenuItem.Text = "عن المنظومة"
         '
         'StatusStrip
         '
@@ -358,11 +365,11 @@ Partial Class MDIParent1
         '
         Me.bkHardwareCheck.WorkerReportsProgress = True
         '
-        'عنالمنظومةToolStripMenuItem
+        'XxxToolStripMenuItem
         '
-        Me.عنالمنظومةToolStripMenuItem.Name = "عنالمنظومةToolStripMenuItem"
-        Me.عنالمنظومةToolStripMenuItem.Size = New System.Drawing.Size(107, 23)
-        Me.عنالمنظومةToolStripMenuItem.Text = "عن المنظومة"
+        Me.XxxToolStripMenuItem.Name = "XxxToolStripMenuItem"
+        Me.XxxToolStripMenuItem.Size = New System.Drawing.Size(45, 23)
+        Me.XxxToolStripMenuItem.Text = "xxx"
         '
         'MDIParent1
         '
@@ -437,5 +444,6 @@ Partial Class MDIParent1
     Friend WithEvents UsersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents bkHardwareCheck As System.ComponentModel.BackgroundWorker
     Friend WithEvents عنالمنظومةToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents XxxToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

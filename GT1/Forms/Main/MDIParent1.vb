@@ -535,4 +535,15 @@ Public Class MDIParent1
         f.ShowDialog()
 
     End Sub
+
+    Private Sub XxxToolStripMenuItem_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles XxxToolStripMenuItem.Click
+        Dim s As String
+
+        s = AllHardwareInfo()
+
+        MessageBox.Show(s)
+
+
+
+    End Sub
 End Class
