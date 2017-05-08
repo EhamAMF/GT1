@@ -1,0 +1,12 @@
+CREATE TABLE [dbo].[Settings](
+	[SettingID] [bigint] IDENTITY(1,1) NOT NULL,
+	[SettingName] [nvarchar](200) NOT NULL,
+	[SettingValue] [nvarchar](200) NOT NULL,
+ CONSTRAINT [PK_Settings] PRIMARY KEY CLUSTERED 
+(
+	[SettingID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+

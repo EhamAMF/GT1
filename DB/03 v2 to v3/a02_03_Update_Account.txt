@@ -1,0 +1,3 @@
+update Account 
+set AcountName = 'İæÇÊíÑ äŞÏíÉ'
+where AccountID = 1
