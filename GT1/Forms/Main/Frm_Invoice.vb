@@ -897,7 +897,7 @@ Public Class Frm_Invoice
                 CellDgvInfo_CustomerName.OwningRow.Visible = False
 
                 cboPayment.Enabled = True
-                cboPayment.SelectedIndex = 1
+                '  cboPayment.SelectedIndex = 1
 
             Else
                 CellDgvInfo_CustomerName.OwningRow.Visible = True
