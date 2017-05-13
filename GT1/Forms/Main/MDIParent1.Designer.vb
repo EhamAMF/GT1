@@ -65,13 +65,13 @@ Partial Class MDIParent1
         Me.NewYearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnUpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.عنالمنظومةToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HWToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.lblDate = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblUserFullName = New System.Windows.Forms.ToolStripStatusLabel()
         Me.pb1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.bkHardwareCheck = New System.ComponentModel.BackgroundWorker()
-        Me.HWToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -332,6 +332,12 @@ Partial Class MDIParent1
         Me.عنالمنظومةToolStripMenuItem.Size = New System.Drawing.Size(107, 23)
         Me.عنالمنظومةToolStripMenuItem.Text = "عن المنظومة"
         '
+        'HWToolStripMenuItem
+        '
+        Me.HWToolStripMenuItem.Name = "HWToolStripMenuItem"
+        Me.HWToolStripMenuItem.Size = New System.Drawing.Size(46, 23)
+        Me.HWToolStripMenuItem.Text = "HW"
+        '
         'StatusStrip
         '
         Me.StatusStrip.BackColor = System.Drawing.Color.White
@@ -364,12 +370,6 @@ Partial Class MDIParent1
         'bkHardwareCheck
         '
         Me.bkHardwareCheck.WorkerReportsProgress = True
-        '
-        'HWToolStripMenuItem
-        '
-        Me.HWToolStripMenuItem.Name = "HWToolStripMenuItem"
-        Me.HWToolStripMenuItem.Size = New System.Drawing.Size(46, 23)
-        Me.HWToolStripMenuItem.Text = "HW"
         '
         'MDIParent1
         '

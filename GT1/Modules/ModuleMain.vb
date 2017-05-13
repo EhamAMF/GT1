@@ -6,6 +6,7 @@ Imports System.Drawing.Text
 Imports System.Runtime.InteropServices
 Imports System.Drawing
 Imports System.IO
+Imports System.Data.SqlClient
 
 Module ModuleMain
 
@@ -89,6 +90,24 @@ Module ModuleMain
         objReader.Close()
 
         Return strContents
+    End Function
+
+
+    Public Function IsSqlLocal() As Boolean
+
+        Dim HostName As String
+        Dim sc As New SqlCommand("SELECT SERVERPROPERTY('MachineName') ", PubCn)
+        If PubCn.State <> ConnectionState.Open Then PubCn.Open()
+        HostName = sc.ExecuteScalar
+        If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
+
+        If HostName = Environment.MachineName Then
+            Return True
+        Else
+            Return False
+        End If
+
+
     End Function
 
 

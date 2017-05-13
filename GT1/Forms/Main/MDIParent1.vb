@@ -16,16 +16,17 @@ Public Class MDIParent1
         Try
             Dim ServerIP As String = GetFileContents(My.Application.Info.DirectoryPath & "\per\ServerIP.dll")
 
-            If ServerIP.Trim = "(local)" Or ServerIP.Trim = "." Then
 
-                If fBackup.Visible = False Then
-                    e.Cancel = True
-                    fBackup._IsVersionChangeBackup = IsVersionChangeBackup
-                    fBackup.StartPosition = FormStartPosition.CenterScreen
-                    fBackup.Show()
-                    Me.Hide()
-                End If
+
+            If fBackup.Visible = False Then
+                e.Cancel = True
+                fBackup._IsVersionChangeBackup = IsVersionChangeBackup
+                fBackup.StartPosition = FormStartPosition.CenterScreen
+                fBackup.Show()
+                Me.Hide()
             End If
+
+
 
         Catch ex As Exception
             HandleMyError(ex, , , My.Settings.IsDebug)
@@ -553,5 +554,11 @@ Public Class MDIParent1
         s = AllHardwareInfo()
 
         MessageBox.Show(s)
+
+
+
+
+
+
     End Sub
 End Class
