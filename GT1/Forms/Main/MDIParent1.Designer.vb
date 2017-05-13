@@ -71,7 +71,7 @@ Partial Class MDIParent1
         Me.pb1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.bkHardwareCheck = New System.ComponentModel.BackgroundWorker()
-        Me.XxxToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HWToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -80,7 +80,7 @@ Partial Class MDIParent1
         '
         Me.MenuStrip.BackColor = System.Drawing.Color.White
         Me.MenuStrip.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InvoicesToolStripMenuItem, Me.ProductsToolStripMenuItem, Me.AgentsDistributorsToolStripMenuItem, Me.TreasuryToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.DataMangementToolStripMenuItem, Me.عنالمنظومةToolStripMenuItem, Me.XxxToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InvoicesToolStripMenuItem, Me.ProductsToolStripMenuItem, Me.AgentsDistributorsToolStripMenuItem, Me.TreasuryToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.DataMangementToolStripMenuItem, Me.عنالمنظومةToolStripMenuItem, Me.HWToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Padding = New System.Windows.Forms.Padding(6, 3, 0, 3)
@@ -365,11 +365,11 @@ Partial Class MDIParent1
         '
         Me.bkHardwareCheck.WorkerReportsProgress = True
         '
-        'XxxToolStripMenuItem
+        'HWToolStripMenuItem
         '
-        Me.XxxToolStripMenuItem.Name = "XxxToolStripMenuItem"
-        Me.XxxToolStripMenuItem.Size = New System.Drawing.Size(45, 23)
-        Me.XxxToolStripMenuItem.Text = "xxx"
+        Me.HWToolStripMenuItem.Name = "HWToolStripMenuItem"
+        Me.HWToolStripMenuItem.Size = New System.Drawing.Size(46, 23)
+        Me.HWToolStripMenuItem.Text = "HW"
         '
         'MDIParent1
         '
@@ -444,6 +444,6 @@ Partial Class MDIParent1
     Friend WithEvents UsersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents bkHardwareCheck As System.ComponentModel.BackgroundWorker
     Friend WithEvents عنالمنظومةToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents XxxToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents HWToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
