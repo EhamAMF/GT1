@@ -18,7 +18,7 @@ Public Class frm_Backgroudjob
         Try
             Dim Size As Long = MyFunctions.GetFolderSize(My.Application.Info.DirectoryPath & "\per\backup", True)
             Dim AllowedSize As Long = 10000000000
-            If My.Settings.IsDebug = True Then
+            If Settings.IsDebug = True Then
                 AllowedSize = 1000000000
             End If
 
@@ -28,14 +28,14 @@ Public Class frm_Backgroudjob
                 Size = MyFunctions.GetFolderSize(My.Application.Info.DirectoryPath & "\per\backup", True)
             Loop
 
-
-            MyDataManagement.Backup(True, _IsVersionChangeBackup)
-
+            If IsSqlLocal() = True Then
+                MyDataManagement.Backup(True, _IsVersionChangeBackup)
+            End If
 
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 

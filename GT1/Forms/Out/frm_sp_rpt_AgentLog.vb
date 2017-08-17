@@ -37,7 +37,7 @@ Public Class frm_sp_rpt_AgentLog
             GetInitialData()
             lblTitle.Text = Me.Text
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -245,7 +245,7 @@ Public Class frm_sp_rpt_AgentLog
                     btnShowHideSearch.PerformClick()
             End Select
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -259,7 +259,7 @@ Public Class frm_sp_rpt_AgentLog
                 btnShowHideSearch.Image = My.Resources.Resources.SHL
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -280,7 +280,7 @@ Public Class frm_sp_rpt_AgentLog
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -301,7 +301,7 @@ Public Class frm_sp_rpt_AgentLog
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -317,7 +317,7 @@ Public Class frm_sp_rpt_AgentLog
             End If
             FormatSumRow()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -327,7 +327,7 @@ Public Class frm_sp_rpt_AgentLog
             dtpDateFrom.Enabled = Not chkAllPeriod.Checked
             dtpDateTo.Enabled = Not chkAllPeriod.Checked
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -345,7 +345,7 @@ Public Class frm_sp_rpt_AgentLog
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -453,7 +453,7 @@ Public Class frm_sp_rpt_AgentLog
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 #End Region

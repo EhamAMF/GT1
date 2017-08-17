@@ -1,6 +1,6 @@
 
 
-Declare @IsPacket bit = 1
+
 
 
 
@@ -25,7 +25,7 @@ into #TempAllStock
 from GT_Dis.dbo.Stock s
 left join GT_Dis.dbo.Product p on p.ProductID = s.ProductID
 where s.StockID in (Select StockID  from GT_Dis.dbo.Invoice_prd)
-
+and s.AmountLeft > 0
 
 
 
@@ -116,16 +116,16 @@ While (Select Count(*) From #TempAllStock) > 0
 	Begin
 
 		Select Top 1 @ID = s.StockID 			
-			,@AmountLeft = s.AmountLeft 
+			,@AmountLeft =  case when s.SubAmount > 1 then s.AmountLeft * s.SubAmount else null end   
 			,@ExDate=s.ExDate
 			,@AlertAmount=s.AlertAmount
 			,@Barcode=s.Barcode 
-			,@PacketCost = s.PacketCost 
-			,@SellPricePacket=s.PacketSellPrice 
+			,@PacketCost = case when s.SubAmount > 1 then s.UnitCost else null end 
+			,@SellPricePacket=case when s.SubAmount > 1 then s.SellPrice else null end   
 			,@ProductName = s.ProductName 
-			,@SellPrice=s.SellPrice 
+			,@SellPrice= case when s.SubAmount > 1 then s.SellPrice/s.SubAmount  else s.SellPrice end  
 			,@SubAmount=s.SubAmount 
-			,@UnitCost=s.UnitCost 
+			,@UnitCost = case when s.SubAmount > 1 then s.UnitCost /s.SubAmount  else s.UnitCost  end  
 			
 			,@ProductCode = ''
 			,@ProductDetails = ''
@@ -205,7 +205,7 @@ While (Select Count(*) From #TempAllStock) > 0
 				end
 				else
 				begin
-				set @AmountPacket = @Amount / @SubAmount 
+				set @AmountPacket = @Amount 
 				set @UnitPricePacket = @UnitPrice * @SubAmount 
 				set @AvgCostPacket = @UnitPricePacket
 				end

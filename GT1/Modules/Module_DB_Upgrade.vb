@@ -42,13 +42,16 @@ Module Module_DB_Upgrade
 
             Catch ex As Exception
                 MyTrans.Rollback()
-                HandleMyError(ex, , , My.Settings.IsDebug)
+                HandleMyError(ex, , , Settings.IsDebug)
             Finally
                 If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
             End Try
 
 
             PubdbVersion = ByteClassLibrary.MyFunctions.GetScalarValue(PubCn, "Version", "VersoinNumber", "1 = 1")
+
+
+
 
 
         End If

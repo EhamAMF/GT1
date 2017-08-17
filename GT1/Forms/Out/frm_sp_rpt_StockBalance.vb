@@ -55,7 +55,7 @@ Public Class frm_sp_rpt_StockBalance
             GetInitialData()
             lblTitle.Text = Me.Text
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -254,7 +254,7 @@ Public Class frm_sp_rpt_StockBalance
                     btnShowHideSearch.PerformClick()
             End Select
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -268,7 +268,7 @@ Public Class frm_sp_rpt_StockBalance
                 btnShowHideSearch.Image = My.Resources.Resources.SHL
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -289,7 +289,7 @@ Public Class frm_sp_rpt_StockBalance
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -310,7 +310,7 @@ Public Class frm_sp_rpt_StockBalance
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -327,7 +327,7 @@ Public Class frm_sp_rpt_StockBalance
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub dgv_Sorted(ByVal sender As Object, ByVal e As System.EventArgs) Handles dgv.Sorted
@@ -340,7 +340,7 @@ Public Class frm_sp_rpt_StockBalance
             End If
             FormatSumRow()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -358,7 +358,7 @@ Public Class frm_sp_rpt_StockBalance
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -528,7 +528,7 @@ Public Class frm_sp_rpt_StockBalance
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 #End Region

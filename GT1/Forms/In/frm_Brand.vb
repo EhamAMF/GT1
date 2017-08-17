@@ -16,7 +16,7 @@ Public Class frm_Brand
             bs.MoveLast()
             EnableDisableControls(False)
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub daInitialize()
@@ -159,7 +159,7 @@ Public Class frm_Brand
 
             'txtClientName.Focus()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -197,14 +197,14 @@ Public Class frm_Brand
                 EnableDisableControls(True)
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
         Try
             EnableDisableControls(True)
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
@@ -215,7 +215,7 @@ Public Class frm_Brand
             dgv.AutoResizeColumns()
             EnableDisableControls(False)
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
@@ -228,7 +228,7 @@ Public Class frm_Brand
                 EnableDisableControls(False)
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
@@ -237,7 +237,7 @@ Public Class frm_Brand
             EnableDisableControls(False)
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
@@ -255,7 +255,7 @@ Public Class frm_Brand
                     If btnEdit.Enabled = True Then btnEdit.PerformClick()
             End Select
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -272,7 +272,7 @@ Public Class frm_Brand
         Try
             lblCount.Text = bs.Count
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub

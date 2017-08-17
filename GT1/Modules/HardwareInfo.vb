@@ -118,28 +118,32 @@ Module HardwareInfo
         Dim str As String = "HardDrive Info" & vbNewLine
 
 
-        Dim hdd As New ManagementObjectSearcher("select * from Win32_DiskDrive")
-
-        For Each hd In hdd.Get
-            If IsNullNothing(hd("MediaType"), "") = "Fixed hard disk media" Then
-
-                str = str & "SerialNumber" & " : " & IsNullNothing(hd("SerialNumber"), "") & vbNewLine
-                str = str & "Model" & " : " & IsNullNothing(hd("Model"), "") & vbNewLine
-                str = str & "Signature" & " : " & IsNullNothing(hd("Signature"), "") & vbNewLine
-                str = str & "Manufacturer" & " : " & IsNullNothing(hd("Manufacturer"), "") & vbNewLine
-                str = str & "MediaType" & " : " & IsNullNothing(hd("MediaType"), "") & vbNewLine
-                str = str & "Description" & " : " & IsNullNothing(hd("Description"), "") & vbNewLine
-                str = str & "Size" & " : " & IsNullNothing(hd("Size"), "") & vbNewLine
-
-                str = str & "------------------------------------" & vbNewLine
+        Try
 
 
-            End If
+            Dim hdd As New ManagementObjectSearcher("select * from Win32_DiskDrive")
+            For Each hd In hdd.Get
+                If IsNullNothing(hd("MediaType"), "") = "Fixed hard disk media" Then
+                    str = str & "SerialNumber" & " : " & IsNullNothing(hd("SerialNumber"), "") & vbNewLine
+                    str = str & "Model" & " : " & IsNullNothing(hd("Model"), "") & vbNewLine
+                    str = str & "Signature" & " : " & IsNullNothing(hd("Signature"), "") & vbNewLine
+                    str = str & "Manufacturer" & " : " & IsNullNothing(hd("Manufacturer"), "") & vbNewLine
+                    str = str & "MediaType" & " : " & IsNullNothing(hd("MediaType"), "") & vbNewLine
+                    str = str & "Description" & " : " & IsNullNothing(hd("Description"), "") & vbNewLine
+                    str = str & "Size" & " : " & IsNullNothing(hd("Size"), "") & vbNewLine
+
+                    str = str & "------------------------------------" & vbNewLine
+                End If
+            Next
 
 
 
+        Catch ex As Exception
 
-        Next
+            str = str & "--------UNFINISHED------------------" & vbNewLine
+        End Try
+
+       
 
 
 
@@ -151,55 +155,67 @@ Module HardwareInfo
     Public Function MotherboardInfo()
         Dim str As String = "MotherBoard Info" & vbNewLine
 
-
-        Dim mboard As New ManagementObjectSearcher("select * from Win32_BaseBoard ")
-
-
-        For Each mb In mboard.Get
-
-            str = str & "Manufacturer" & " : " & IsNullNothing(mb("Manufacturer"), "") & vbNewLine
-            str = str & "Model" & " : " & IsNullNothing(mb("Model"), "") & vbNewLine
-            str = str & "Name" & " : " & IsNullNothing(mb("Name"), "") & vbNewLine
-            str = str & "OtherIdentifyingInfo" & " : " & IsNullNothing(mb("OtherIdentifyingInfo"), "") & vbNewLine
-            str = str & "PartNumber" & " : " & IsNullNothing(mb("PartNumber"), "") & vbNewLine
-            str = str & "SerialNumber" & " : " & IsNullNothing(mb("SerialNumber"), "") & vbNewLine
-            str = str & "Tag" & " : " & IsNullNothing(mb("Tag"), "") & vbNewLine
+        Try
+            Dim mboard As New ManagementObjectSearcher("select * from Win32_BaseBoard ")
 
 
-            str = str & "------------------------------------" & vbNewLine
-        Next
+            For Each mb In mboard.Get
+
+                str = str & "Manufacturer" & " : " & IsNullNothing(mb("Manufacturer"), "") & vbNewLine
+                str = str & "Model" & " : " & IsNullNothing(mb("Model"), "") & vbNewLine
+                str = str & "Name" & " : " & IsNullNothing(mb("Name"), "") & vbNewLine
+                str = str & "OtherIdentifyingInfo" & " : " & IsNullNothing(mb("OtherIdentifyingInfo"), "") & vbNewLine
+                str = str & "PartNumber" & " : " & IsNullNothing(mb("PartNumber"), "") & vbNewLine
+                str = str & "SerialNumber" & " : " & IsNullNothing(mb("SerialNumber"), "") & vbNewLine
+                str = str & "Tag" & " : " & IsNullNothing(mb("Tag"), "") & vbNewLine
+
+
+                str = str & "------------------------------------" & vbNewLine
+            Next
 
 
 
 
+        Catch ex As Exception
+            str = str & "--------UNFINISHED------------------" & vbNewLine
+        End Try
+        
 
 
         Return str
     End Function
     Public Function CpuInfo()
         Dim str As String = "CPU Info" & vbNewLine
-        Dim cpu As New ManagementObjectSearcher("select * from Win32_Processor")
 
-        For Each c In cpu.Get
 
-            str = str & "Caption" & " : " & IsNullNothing(c("Caption"), "") & vbNewLine
-            str = str & "Description" & " : " & IsNullNothing(c("Description"), "") & vbNewLine
-            str = str & "DeviceID" & " : " & IsNullNothing(c("DeviceID"), "") & vbNewLine
-            str = str & "Family" & " : " & IsNullNothing(c("Family"), "") & vbNewLine
-            str = str & "Manufacturer" & " : " & IsNullNothing(c("Manufacturer"), "") & vbNewLine
-            str = str & "Name" & " : " & IsNullNothing(c("Name"), "") & vbNewLine
-            str = str & "OtherFamilyDescription" & " : " & IsNullNothing(c("OtherFamilyDescription"), "") & vbNewLine
-            str = str & "PartNumber" & " : " & IsNullNothing(c("PartNumber"), "") & vbNewLine
-            str = str & "ProcessorId" & " : " & IsNullNothing(c("ProcessorId"), "") & vbNewLine
-            str = str & "ProcessorType" & " : " & IsNullNothing(c("ProcessorType"), "") & vbNewLine
-            str = str & "SerialNumber" & " : " & IsNullNothing(c("SerialNumber"), "") & vbNewLine
-            str = str & "UniqueId" & " : " & IsNullNothing(c("UniqueId"), "") & vbNewLine
+        Try
+            Dim cpu As New ManagementObjectSearcher("select * from Win32_Processor")
 
-       
+            For Each c In cpu.Get
 
-            str = str & "------------------------------------" & vbNewLine
+                str = str & "Caption" & " : " & IsNullNothing(c("Caption"), "") & vbNewLine
+                str = str & "Description" & " : " & IsNullNothing(c("Description"), "") & vbNewLine
+                str = str & "DeviceID" & " : " & IsNullNothing(c("DeviceID"), "") & vbNewLine
+                str = str & "Family" & " : " & IsNullNothing(c("Family"), "") & vbNewLine
+                str = str & "Manufacturer" & " : " & IsNullNothing(c("Manufacturer"), "") & vbNewLine
+                str = str & "Name" & " : " & IsNullNothing(c("Name"), "") & vbNewLine
+                str = str & "OtherFamilyDescription" & " : " & IsNullNothing(c("OtherFamilyDescription"), "") & vbNewLine
+                str = str & "PartNumber" & " : " & IsNullNothing(c("PartNumber"), "") & vbNewLine
+                str = str & "ProcessorId" & " : " & IsNullNothing(c("ProcessorId"), "") & vbNewLine
+                str = str & "ProcessorType" & " : " & IsNullNothing(c("ProcessorType"), "") & vbNewLine
+                str = str & "SerialNumber" & " : " & IsNullNothing(c("SerialNumber"), "") & vbNewLine
+                str = str & "UniqueId" & " : " & IsNullNothing(c("UniqueId"), "") & vbNewLine
 
-        Next
+
+
+                str = str & "------------------------------------" & vbNewLine
+
+            Next
+        Catch ex As Exception
+            str = str & "--------UNFINISHED------------------" & vbNewLine
+        End Try
+
+        
 
         'DeviceID :Unique identifier of a processor on the system. This property is inherited from CIM_LogicalDevice.
 
@@ -208,22 +224,29 @@ Module HardwareInfo
     End Function
     Public Function BiosInfo()
         Dim str As String = "BIOS Info" & vbNewLine
-        Dim cpu As New ManagementObjectSearcher("select * from Win32_BIOS")
 
-        For Each c In cpu.Get
-            str = str & "Caption" & " : " & IsNullNothing(c("Caption"), "") & vbNewLine
-            str = str & "Description" & " : " & IsNullNothing(c("Description"), "") & vbNewLine
-            str = str & "IdentificationCode" & " : " & IsNullNothing(c("IdentificationCode"), "") & vbNewLine
-            str = str & "Manufacturer" & " : " & IsNullNothing(c("Manufacturer"), "") & vbNewLine
-            str = str & "Name" & " : " & IsNullNothing(c("Name"), "") & vbNewLine
-            str = str & "SerialNumber" & " : " & IsNullNothing(c("SerialNumber"), "") & vbNewLine
+        Try
+            Dim cpu As New ManagementObjectSearcher("select * from Win32_BIOS")
+
+            For Each c In cpu.Get
 
 
+                str = str & "IdentificationCode" & " : " & IsNullNothing(c("IdentificationCode"), "") & vbNewLine
+                str = str & "Manufacturer" & " : " & IsNullNothing(c("Manufacturer"), "") & vbNewLine
+
+                str = str & "SerialNumber" & " : " & IsNullNothing(c("SerialNumber"), "") & vbNewLine
 
 
-            str = str & "------------------------------------" & vbNewLine
 
-        Next
+
+                str = str & "------------------------------------" & vbNewLine
+
+            Next
+        Catch ex As Exception
+            str = str & "--------UNFINISHED------------------" & vbNewLine
+        End Try
+
+      
 
         'DeviceID :Unique identifier of a processor on the system. This property is inherited from CIM_LogicalDevice.
 

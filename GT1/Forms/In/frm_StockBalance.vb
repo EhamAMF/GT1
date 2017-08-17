@@ -53,7 +53,7 @@ Public Class frm_StockBalance
             GetInvoice()
             GetProductsAmountsByWareHouse()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -63,7 +63,7 @@ Public Class frm_StockBalance
             dgvAll.AutoResizeColumns()
             dgv.AutoResizeColumns()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 #End Region
@@ -110,7 +110,7 @@ Public Class frm_StockBalance
                 _Dt_Invoice.Clear()
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -182,7 +182,7 @@ Public Class frm_StockBalance
 
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -264,7 +264,7 @@ Public Class frm_StockBalance
 
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -283,7 +283,7 @@ Public Class frm_StockBalance
                 End If
             Next
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -420,7 +420,7 @@ Public Class frm_StockBalance
         Try
             ColorInvoiceAmounts()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -436,7 +436,7 @@ Public Class frm_StockBalance
             m.btnView.PerformClick()
             m.Close()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnViewInvoice_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnViewInvoice.Click
@@ -449,7 +449,7 @@ Public Class frm_StockBalance
             m.btnView.PerformClick()
             m.Close()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -506,7 +506,7 @@ Public Class frm_StockBalance
 
         Catch ex As Exception
             MyTrans.Rollback()
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         Finally
             If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
         End Try
@@ -560,7 +560,7 @@ Public Class frm_StockBalance
 
         Catch ex As Exception
             MyTrans.Rollback()
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         Finally
             If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
         End Try
@@ -584,7 +584,7 @@ Public Class frm_StockBalance
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnProcess_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcess.Click
@@ -623,7 +623,7 @@ Public Class frm_StockBalance
 
             ColorInvoiceAmounts()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 

@@ -16,7 +16,7 @@ Public Class frm_OtherPaymentAcount
             bs.MoveLast()
             EnableDisableControls(False)
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub daInitialize()
@@ -70,9 +70,9 @@ Public Class frm_OtherPaymentAcount
             .CommandType = CommandType.StoredProcedure
 
             .Parameters.Clear()
-            .Parameters.Add("@OtherPaymentAcountID", SqlDbType.BigInt, 0, "@OtherPaymentAcountID")
+            .Parameters.Add("@OtherPaymentAcountID", SqlDbType.BigInt, 0, "OtherPaymentAcountID")
             .Parameters("@OtherPaymentAcountID").SourceVersion = DataRowVersion.Original
-            .Parameters.Add("@UserID", SqlDbType.BigInt, 0, "@UserID")
+            .Parameters.Add("@UserID", SqlDbType.BigInt, 0, "UserID")
             .Parameters("@UserID").SourceVersion = DataRowVersion.Original
 
         End With
@@ -157,7 +157,7 @@ Public Class frm_OtherPaymentAcount
 
             'txtClientName.Focus()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -195,14 +195,14 @@ Public Class frm_OtherPaymentAcount
                 EnableDisableControls(True)
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
         Try
             EnableDisableControls(True)
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
@@ -213,7 +213,7 @@ Public Class frm_OtherPaymentAcount
             dgv.AutoResizeColumns()
             EnableDisableControls(False)
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
@@ -226,7 +226,7 @@ Public Class frm_OtherPaymentAcount
                 EnableDisableControls(False)
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
@@ -235,7 +235,7 @@ Public Class frm_OtherPaymentAcount
             EnableDisableControls(False)
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
@@ -253,7 +253,7 @@ Public Class frm_OtherPaymentAcount
                     If btnEdit.Enabled = True Then btnEdit.PerformClick()
             End Select
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -270,7 +270,7 @@ Public Class frm_OtherPaymentAcount
         Try
             lblCount.Text = bs.Count
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub

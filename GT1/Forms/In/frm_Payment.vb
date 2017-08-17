@@ -63,7 +63,7 @@ Public Class frm_Payment
             bs.MoveLast()
             EnableDisableControls(False)
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub frm_Payment_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
@@ -102,7 +102,7 @@ Public Class frm_Payment
             cboDistributorID.MySelectedValue = 1
             PDistributorID.Visible = False
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -339,7 +339,7 @@ Public Class frm_Payment
 
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -385,7 +385,7 @@ Public Class frm_Payment
 
             'txtClientName.Focus()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -423,14 +423,14 @@ Public Class frm_Payment
                 EnableDisableControls(True)
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
         Try
             EnableDisableControls(True)
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
@@ -451,7 +451,7 @@ Public Class frm_Payment
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Public Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
@@ -464,7 +464,7 @@ Public Class frm_Payment
                 EnableDisableControls(False)
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
@@ -473,7 +473,7 @@ Public Class frm_Payment
             EnableDisableControls(False)
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
@@ -491,7 +491,7 @@ Public Class frm_Payment
                     If btnEdit.Enabled = True Then btnEdit.PerformClick()
             End Select
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -508,7 +508,7 @@ Public Class frm_Payment
         Try
             '    lblCount.Text = bs.Count
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -533,7 +533,7 @@ Public Class frm_Payment
             'Get_sp_hlp_Agent()
             'Me.cboAgentID.DataBindings.Add(New System.Windows.Forms.Binding("MySelectedvalue", bs, "AgentID", True, DataSourceUpdateMode.OnPropertyChanged))
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub lblDistributorID_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblDistributorID.Click
@@ -546,7 +546,7 @@ Public Class frm_Payment
             'Get_sp_hlp_Distributor()
             'Me.cboDistributorID.DataBindings.Add(New System.Windows.Forms.Binding("MySelectedvalue", bs, "DistributorID", True, DataSourceUpdateMode.OnPropertyChanged))
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -556,7 +556,7 @@ Public Class frm_Payment
     Private Sub txtSearch_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs)
         'If txtSearch.Text.Trim = "" Or txtSearch.Text.Trim = "بحث" Then
         '  txtSearch.Text = ""
-       '
+        '
     End Sub
     Private Sub txtSearch_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs)
         'If txtSearch.Text.Trim = "" Then
@@ -591,7 +591,7 @@ Public Class frm_Payment
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrint.Click
@@ -604,7 +604,7 @@ Public Class frm_Payment
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 End Class

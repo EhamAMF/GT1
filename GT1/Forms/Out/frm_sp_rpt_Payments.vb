@@ -37,7 +37,7 @@ Public Class frm_sp_rpt_Payments
             GetInitialData()
             lblTitle.Text = Me.Text
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -260,7 +260,7 @@ Public Class frm_sp_rpt_Payments
                     btnShowHideSearch.PerformClick()
             End Select
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -274,7 +274,7 @@ Public Class frm_sp_rpt_Payments
                 btnShowHideSearch.Image = My.Resources.Resources.SHL
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -295,7 +295,7 @@ Public Class frm_sp_rpt_Payments
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -316,7 +316,7 @@ Public Class frm_sp_rpt_Payments
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -333,7 +333,7 @@ Public Class frm_sp_rpt_Payments
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub dgv_Sorted(ByVal sender As Object, ByVal e As System.EventArgs) Handles dgv.Sorted
@@ -346,7 +346,7 @@ Public Class frm_sp_rpt_Payments
             End If
             FormatSumRow()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -356,7 +356,7 @@ Public Class frm_sp_rpt_Payments
             dtpDateFrom.Enabled = Not chkAllPeriod.Checked
             dtpDateTo.Enabled = Not chkAllPeriod.Checked
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -415,7 +415,7 @@ Public Class frm_sp_rpt_Payments
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -432,7 +432,7 @@ Public Class frm_sp_rpt_Payments
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -549,7 +549,7 @@ Public Class frm_sp_rpt_Payments
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 #End Region
@@ -623,7 +623,7 @@ Public Class frm_sp_rpt_Payments
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -635,7 +635,7 @@ Public Class frm_sp_rpt_Payments
                 f.btnView.PerformClick()
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -649,7 +649,7 @@ Public Class frm_sp_rpt_Payments
                 f.btnPrint.PerformClick()
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 End Class

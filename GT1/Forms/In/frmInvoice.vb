@@ -105,7 +105,7 @@ Public Class frmInvoice
             dgv.Select()
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -1200,7 +1200,7 @@ Public Class frmInvoice
 
         Catch ex As Exception
             MyTrans.Rollback()
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         Finally
             If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
         End Try
@@ -1288,7 +1288,7 @@ Public Class frmInvoice
 
         Catch ex As Exception
             MyTrans.Rollback()
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         Finally
             If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
         End Try
@@ -1314,7 +1314,7 @@ Public Class frmInvoice
 
         Catch ex As Exception
             MyTrans.Rollback()
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         Finally
             If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
         End Try
@@ -1700,7 +1700,7 @@ Public Class frmInvoice
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 

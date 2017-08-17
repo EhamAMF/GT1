@@ -24,12 +24,13 @@ Public Class MDIParent1
                 fBackup.StartPosition = FormStartPosition.CenterScreen
                 fBackup.Show()
                 Me.Hide()
+
             End If
 
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -45,7 +46,7 @@ Public Class MDIParent1
             bkHardwareCheck.RunWorkerAsync()
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -71,7 +72,7 @@ Public Class MDIParent1
             My.Settings.Save()
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub bkHardwareCheck_RunWorkerCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bkHardwareCheck.RunWorkerCompleted
@@ -84,7 +85,7 @@ Public Class MDIParent1
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -110,12 +111,24 @@ Public Class MDIParent1
 
 
                 Settings.InvoiceLayout = InputBox("InvoiceLayout", "InvoiceLayout", Settings.InvoiceLayout)
-                Settings.IsPacketDefault = InputBox("IsPacketDefault", "IsPacketDefault", Settings.IsPacketDefault)
+
                 Settings.IsDebug = InputBox("IsDebug", "IsDebug", Settings.IsDebug)
 
                 Settings.HeaderSTR = InputBox("اسم الشركة أو المحل", "اسم الشركة أو المحل", Settings.HeaderSTR)
                 Settings.FooterSTR = InputBox("عنوان - هاتف", "عنوان - هاتف", Settings.FooterSTR)
                 Settings.TreasuryLayout = InputBox("TreasuryLayout", "TreasuryLayout", Settings.TreasuryLayout)
+                Settings.ModifyAllowedTime = InputBox("ModifyAllowedTime", "ModifyAllowedTime", Settings.ModifyAllowedTime)
+
+                Settings.IsProductDetailsShown = InputBox("IsProductDetailsShown", "IsProductDetailsShown", Settings.IsProductDetailsShown)
+                Settings.IsProductCodeShown = InputBox("IsProductCodeShown", "IsProductCodeShown", Settings.IsProductCodeShown)
+                Settings.IsBarcodeShown = InputBox("IsBarcodeShown", "IsBarcodeShown", Settings.IsBarcodeShown)
+                Settings.IsRackShown = InputBox("IsRackShown", "IsRackShown", Settings.IsRackShown)
+
+                Settings.IsPacketSystem = InputBox("IsPacketSystem", "IsPacketSystem", Settings.IsPacketSystem)
+                Settings.IsPacketDefault = InputBox("IsPacketDefault", "IsPacketDefault", Settings.IsPacketDefault)
+
+                Settings.IsExDateShown = InputBox("IsExDateShown", "IsExDateShown", Settings.IsExDateShown)
+
 
 
 
@@ -146,7 +159,7 @@ Public Class MDIParent1
             F.WindowState = FormWindowState.Maximized
             F.Show()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub SellRToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SellRToolStripMenuItem.Click
@@ -156,7 +169,7 @@ Public Class MDIParent1
             F.WindowState = FormWindowState.Maximized
             F.Show()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub PurchaseToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PurchaseToolStripMenuItem.Click
@@ -166,7 +179,7 @@ Public Class MDIParent1
             F.WindowState = FormWindowState.Maximized
             F.Show()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub PurchaseRToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PurchaseRToolStripMenuItem.Click
@@ -176,7 +189,7 @@ Public Class MDIParent1
             F.WindowState = FormWindowState.Maximized
             F.Show()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub PreSellToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PreSellToolStripMenuItem.Click
@@ -186,7 +199,7 @@ Public Class MDIParent1
             F.WindowState = FormWindowState.Maximized
             F.Show()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub LossToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LossToolStripMenuItem.Click
@@ -196,7 +209,7 @@ Public Class MDIParent1
             F.WindowState = FormWindowState.Maximized
             F.Show()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub IniToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IniToolStripMenuItem.Click
@@ -206,7 +219,7 @@ Public Class MDIParent1
             F.WindowState = FormWindowState.Maximized
             F.Show()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub ShowInvoicesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ShowInvoicesToolStripMenuItem.Click
@@ -216,7 +229,7 @@ Public Class MDIParent1
             F.WindowState = FormWindowState.Maximized
             F.Show()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -227,7 +240,7 @@ Public Class MDIParent1
             F.WindowState = FormWindowState.Maximized
             F.Show()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub StockToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StockToolStripMenuItem.Click
@@ -237,7 +250,7 @@ Public Class MDIParent1
             F.WindowState = FormWindowState.Maximized
             F.Show()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -248,7 +261,7 @@ Public Class MDIParent1
             F.StartPosition = FormStartPosition.CenterScreen
             F.ShowDialog()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -258,7 +271,7 @@ Public Class MDIParent1
             F.StartPosition = FormStartPosition.CenterScreen
             F.ShowDialog()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub OtherPaymentINToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OtherPaymentINToolStripMenuItem.Click
@@ -267,16 +280,16 @@ Public Class MDIParent1
             F.StartPosition = FormStartPosition.CenterScreen
             F.ShowDialog()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub OtherPaymentOUTToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OtherPaymentOUTToolStripMenuItem.Click
         Try
-            Dim F As New frm_OtherPayment(frm_OtherPayment.MoneyDirection.MoneyIn)
+            Dim F As New frm_OtherPayment(frm_OtherPayment.MoneyDirection.MoneyOut)
             F.StartPosition = FormStartPosition.CenterScreen
             F.ShowDialog()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub ExpensesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExpensesToolStripMenuItem.Click
@@ -287,7 +300,7 @@ Public Class MDIParent1
             F.WindowState = FormWindowState.Maximized
             F.Show()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -300,7 +313,7 @@ Public Class MDIParent1
             f.Show()
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -335,7 +348,7 @@ Public Class MDIParent1
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub client_ProgressChanged(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs)
@@ -383,7 +396,7 @@ Public Class MDIParent1
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -405,7 +418,7 @@ Public Class MDIParent1
             f.Show()
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -417,7 +430,7 @@ Public Class MDIParent1
             f.Show()
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -429,7 +442,7 @@ Public Class MDIParent1
             f.Show()
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -441,7 +454,7 @@ Public Class MDIParent1
             f.Show()
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -456,7 +469,7 @@ Public Class MDIParent1
             f.btnView.PerformClick()
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -464,7 +477,7 @@ Public Class MDIParent1
         Try
             MyDataManagement.Backup()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -473,7 +486,7 @@ Public Class MDIParent1
 
 
 
-     
+
 
 
     End Sub
@@ -484,7 +497,7 @@ Public Class MDIParent1
             F.StartPosition = FormStartPosition.CenterScreen
             F.ShowDialog()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -560,5 +573,65 @@ Public Class MDIParent1
 
 
 
+    End Sub
+
+    Private Sub AgentBalanceToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AgentBalanceToolStripMenuItem.Click
+        Try
+            Dim f As New frm_sp_rpt_Agents_Balance
+
+            f.MdiParent = Me
+            f.Show()
+
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+    Private Sub AgentLogToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AgentLogToolStripMenuItem.Click
+        Try
+
+            Dim f As New frm_sp_rpt_AgentLog
+            f.MdiParent = Me
+            f.Show()
+
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+    Private Sub TreasuryLogToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TreasuryLogToolStripMenuItem1.Click
+        Try
+
+            Dim f As New frm_sp_rpt_TreasuryLog
+            f.MdiParent = Me
+            f.Show()
+
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+    Private Sub SalesCashFlowConcToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalesCashFlowConcToolStripMenuItem.Click
+        Try
+
+            Dim f As New frm_sp_rpt_SalesCashFlowConc
+            f.MdiParent = Me
+            f.Show()
+
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+    Private Sub UsersToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UsersToolStripMenuItem.Click
+        Try
+
+            Dim f As New frm_Users
+            f.MdiParent = Me
+            f.Show()
+            f.WindowState = FormWindowState.Maximized
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
     End Sub
 End Class

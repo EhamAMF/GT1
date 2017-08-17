@@ -1,9 +1,9 @@
-﻿'frm_sp_rpt_TreasuryLog
+﻿'frm_sp_rpt_SalesCashFlowConc
 Imports System.Data.SqlClient
 Imports Microsoft.Reporting.WinForms
 Imports ByteClassLibrary.MyFunctions
 'Form_temp
-Public Class frm_sp_rpt_TreasuryLog
+Public Class frm_sp_rpt_SalesCashFlowConc
 
     Dim IsSumExist As Boolean = False
 
@@ -12,20 +12,21 @@ Public Class frm_sp_rpt_TreasuryLog
     Dim IsRDLCRequest As Boolean = False
 
     Dim Myda1 As New SqlDataAdapter("sp_rpt_Product_Money", PubCn)
-    Dim MyTable1 As New DataTable
+    Dim MyDataset As New DataSet
     Dim MyBs As New BindingSource
 
+    Dim userID As Object
     Dim DateFrom As Object
     Dim DateTo As Object
+    Dim UserName As Object
 
 
-
-    Private Sub frm_sp_rpt_TreasuryLog_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub frm_sp_rpt_SalesCashFlowConc_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         If bw1.IsBusy = True AndAlso bw1.CancellationPending = False Then
             bw1.CancelAsync()
         End If
     End Sub
-    Private Sub frm_sp_rpt_TreasuryLog_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub frm_sp_rpt_SalesCashFlowConc_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             FontMyControl(Me)
             dtpDateFrom.Value = New DateTime(Now.Year, Now.Month, Now.Day, 0, 0, 0, 0)
@@ -34,7 +35,7 @@ Public Class frm_sp_rpt_TreasuryLog
             GetInitialData()
             lblTitle.Text = Me.Text
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
 
 
@@ -47,18 +48,10 @@ Public Class frm_sp_rpt_TreasuryLog
     End Enum
     Enum Column
         sort
-        TreasuryID
-        PaymentDate
-        TreasuryNumber
-        MoneyDirectionID
         Info
+        Amount
         Debit
         Credit
-        CurrentBalance
-        InvoiceID
-        PaymentID
-        ExpenseID
-        OtherPaymentID
 
     End Enum
 
@@ -100,14 +93,14 @@ Public Class frm_sp_rpt_TreasuryLog
         Dim TargetDecCols As New List(Of Column)
 
         With TargetDecCols
+            '.Add(Column.Amount)
             .Add(Column.Debit)
             .Add(Column.Credit)
-            .Add(Column.CurrentBalance)
 
         End With
 
         For Each i In TargetDecCols
-            dgv.Columns(i.ToString).DefaultCellStyle.Format = "#,##0.00#"
+            dgv.Columns(i.ToString).DefaultCellStyle.Format = "#,##0.###"
         Next
     End Sub
     Private Sub GetTotal()
@@ -120,9 +113,9 @@ Public Class frm_sp_rpt_TreasuryLog
             Dim TargetSumCols As New List(Of Column)
 
             With TargetSumCols
+                .Add(Column.Amount)
                 .Add(Column.Debit)
                 .Add(Column.Credit)
-                .Add(Column.CurrentBalance)
 
             End With
 
@@ -151,37 +144,65 @@ Public Class frm_sp_rpt_TreasuryLog
         End If
     End Sub
     Private Sub GetInitialData()
+        Get_sp_hlp_Users()
+
+    End Sub
+    Private Sub Get_sp_hlp_Users()
+
+        Dim da As New SqlDataAdapter("sp_hlp_Users", PubCn)
+        Dim dt As New DataTable
+        Dim bs As New BindingSource
+
+        da.SelectCommand.CommandType = CommandType.StoredProcedure
+
+        dt.Clear()
+        da.Fill(dt)
+        bs.DataSource = dt
+
+        With cbouserID
+            .MySource = bs
+            .SetColumn(ByteClassLibrary.MyGridTextBox3.ColType.ValueMember, "UserID", False, "")
+            .SetColumn(ByteClassLibrary.MyGridTextBox3.ColType.DisplayMember, "Username", True, "")
+            .MyBeginProcess()
+        End With
 
     End Sub
 
-    Private Function fn_sp_rpt_TreasuryLog(ByRef DateFrom As Object, ByRef DateTo As Object) As DataTable
+    Private Function fn_sp_rpt_SalesCashFlowConc(ByRef userID As Object, ByRef DateFrom As Object, ByRef DateTo As Object, ByRef UserName As Object) As DataSet
 
-        Dim da As New SqlDataAdapter("sp_rpt_TreasuryLog", PubCn)
+        Dim da As New SqlDataAdapter("sp_rpt_SalesCashFlowConc", PubCn)
+        Dim ds As New DataSet
         Dim dt As New DataTable
 
         da.SelectCommand.CommandType = CommandType.StoredProcedure
 
         With da.SelectCommand.Parameters
             .Clear()
+            .AddWithValue("@userID", userID)
             .AddWithValue("@DateFrom", DateFrom)
             .AddWithValue("@DateTo", DateTo)
-
+            .Add("@UserName", SqlDbType.NVarChar, 200)
         End With
 
         With da.SelectCommand
+            .Parameters("@UserName").Direction = ParameterDirection.Output
 
-
-
+            .Parameters("@UserName").Scale = 0
 
         End With
 
-        da.Fill(dt)
+        da.Fill(ds)
+
+
+
+
+
 
         With da.SelectCommand
-
+            UserName = .Parameters("@UserName").Value
         End With
 
-        Return dt
+        Return ds
     End Function
 
     'xx__subs and Functions__xx
@@ -194,17 +215,18 @@ Public Class frm_sp_rpt_TreasuryLog
         'DateFrm = IIf(chkAllPeriod.Checked, DBNull.Value, dtpDateFrm.Value)
         'DateTo = IIf(chkAllPeriod.Checked, DBNull.Value, dtpDateTo.Value)
 
+        userID = MyConvert(cbouserID.MySelectedValue)
         DateFrom = IIf(chkAllPeriod.Checked, DBNull.Value, dtpDateFrom.Value)
         DateTo = IIf(chkAllPeriod.Checked, DBNull.Value, dtpDateTo.Value)
 
-        MyTable1.Clear()
+        MyDataset.Clear()
     End Sub
 
 
 #End Region
 #Region "       Events"
 
-    Private Sub frm_sp_rpt_TreasuryLog_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+    Private Sub frm_sp_rpt_SalesCashFlowConc_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
         Try
             Select Case e.KeyCode
                 Case Keys.F8
@@ -215,7 +237,7 @@ Public Class frm_sp_rpt_TreasuryLog
                     btnShowHideSearch.PerformClick()
             End Select
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
 
     End Sub
@@ -229,7 +251,7 @@ Public Class frm_sp_rpt_TreasuryLog
                 btnShowHideSearch.Image = My.Resources.Resources.SHL
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
 
     End Sub
@@ -250,7 +272,7 @@ Public Class frm_sp_rpt_TreasuryLog
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
 
     End Sub
@@ -271,25 +293,12 @@ Public Class frm_sp_rpt_TreasuryLog
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
     End Sub
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
-        Try
-            If bw1.IsBusy = False Then
-                req = RequestType.dgv
-                'btnSearch.Text = "الرجاء الانتظار قليلا"
-                ' PictureBox1.Visible = True
-                btnSearch.Text = "الرجاء الانتظار قليلا"
-                PictureBox1.Visible = True
+        btnView.PerformClick()
 
-                SetInputParameters()
-                bw1.RunWorkerAsync()
-            End If
-
-        Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
-        End Try
     End Sub
     Private Sub dgv_Sorted(ByVal sender As Object, ByVal e As System.EventArgs) Handles dgv.Sorted
 
@@ -301,7 +310,7 @@ Public Class frm_sp_rpt_TreasuryLog
             End If
             FormatSumRow()
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
 
 
@@ -311,7 +320,7 @@ Public Class frm_sp_rpt_TreasuryLog
             dtpDateFrom.Enabled = Not chkAllPeriod.Checked
             dtpDateTo.Enabled = Not chkAllPeriod.Checked
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
     End Sub
 
@@ -321,16 +330,15 @@ Public Class frm_sp_rpt_TreasuryLog
     Private Sub bw1_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles bw1.DoWork
 
         Try
-            MyTable1.Clear()
-            'MyTable1 = fn_sp_rpt_Product_Money(ItemTypeID, ItemTypeName, AgentID, AgentName, TypeID, TypeName, BrandID, BrandName, DateFrm, DateTo)
-            MyTable1 = fn_sp_rpt_TreasuryLog(DateFrom, DateTo)
+            MyDataset.Clear()
+            MyDataset = fn_sp_rpt_SalesCashFlowConc(userID, DateFrom, DateTo, UserName)
             If bw1.CancellationPending = True Then
                 e.Cancel = True
                 Return
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
 
 
@@ -346,78 +354,67 @@ Public Class frm_sp_rpt_TreasuryLog
 
             If IsBW1Canseled = False Then
                 If req = RequestType.dgv Then
-                    MyTable1.Columns.Add("IsSum", Type.GetType("System.Int32"))
-                    MyTable1.Columns("IsSum").SetOrdinal(0)
+                    'MyDataset.Columns.Add("IsSum", Type.GetType("System.Int32"))
+                    'MyDataset.Columns("IsSum").SetOrdinal(0)
 
-                    MyBs.DataSource = MyTable1
-                    dgv.DataSource = MyBs
+                    'MyBs.DataSource = MyDataset
+                    'dgv.DataSource = MyBs
 
-                    dgv.Columns("IsSum").Visible = False
-
-
-                    dgv.Columns("sort").HeaderText = "ترتيب"
-                    dgv.Columns("TreasuryID").HeaderText = ""
-                    dgv.Columns("PaymentDate").HeaderText = "التاريخ"
-                    dgv.Columns("TreasuryNumber").HeaderText = "رقم الايصال"
-                    dgv.Columns("MoneyDirectionID").HeaderText = ""
-                    dgv.Columns("Info").HeaderText = "البيان"
-                    dgv.Columns("Debit").HeaderText = "عليه"
-                    dgv.Columns("Credit").HeaderText = "له"
-                    dgv.Columns("CurrentBalance").HeaderText = "الرصيد"
-                    dgv.Columns("InvoiceID").HeaderText = "رقم الفاتورة"
-                    dgv.Columns("PaymentID").HeaderText = "رقم الايصال"
-                    dgv.Columns("ExpenseID").HeaderText = "ر.م"
-                    dgv.Columns("OtherPaymentID").HeaderText = "ر.م"
-
-                    dgv.Columns("sort").Visible = False
-                    dgv.Columns("TreasuryID").Visible = False
-                    dgv.Columns("MoneyDirectionID").Visible = False
-                    dgv.Columns("InvoiceID").Visible = False
-                    dgv.Columns("PaymentID").Visible = False
-                    dgv.Columns("ExpenseID").Visible = False
-                    dgv.Columns("OtherPaymentID").Visible = False
+                    'dgv.Columns("IsSum").Visible = False
 
 
-
-                    dgv.Rows(0).DefaultCellStyle.BackColor = Color.DarkBlue
-                    dgv.Rows(dgv.Rows.Count - 1).DefaultCellStyle.BackColor = Color.DarkBlue
-                    dgv.Rows(0).DefaultCellStyle.ForeColor = Color.White
-                    dgv.Rows(dgv.Rows.Count - 1).DefaultCellStyle.ForeColor = Color.White
+                    'dgv.Columns("sort").HeaderText = "ترتيب"
+                    'dgv.Columns("Info").HeaderText = "البيان"
+                    'dgv.Columns("Amount").HeaderText = "الكمية"
+                    'dgv.Columns("Debit").HeaderText = "صادر"
+                    'dgv.Columns("Credit").HeaderText = "وارد"
 
 
 
                     'GetTotal()
-                    DgvDecimalFormat()
-                    FormatSumRow()
-                    lblCount.Text = MyBs.Count - 1
+                    'DgvDecimalFormat()
+                    'FormatSumRow()
+                    'lblCount.Text = MyBs.Count - 1
 
-                    For Each c As DataGridViewColumn In dgv.Columns
-                        If c.ValueType.ToString = "System.DateTime" Then
-                            c.DefaultCellStyle.Format = "yyyy-MM-dd  HH:mm"
-                        End If
-                        c.SortMode = DataGridViewColumnSortMode.NotSortable
-                    Next
+                    'For Each c As DataGridViewColumn In dgv.Columns
+                    '    If c.ValueType.ToString = "System.DateTime" Then
+                    '        c.DefaultCellStyle.Format = "yyyy-MM-dd  HH:mm"
+                    '    End If
+                    'Next
 
-                    dgv.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells)
+                    'dgv.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells)
 
                 Else
 
+
+
                     Dim ReportDataSource As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-                    ReportDataSource.Name = "sp_rpt_TreasuryLog"
-                    ReportDataSource.Value = MyTable1
+                    ReportDataSource.Name = "sp_rpt_SalesCashFlowConc"
+                    ReportDataSource.Value = MyDataset.Tables(0)
+
+                    Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+                    ReportDataSource1.Name = "sp_rpt_SalesCashFlowConc1"
+                    ReportDataSource1.Value = MyDataset.Tables(1)
+
+
 
                     Dim frm As New frmReportViewer
 
                     With frm.rvReport
-                        .LocalReport.ReportEmbeddedResource = My.Application.Info.AssemblyName & ".rpt_sp_rpt_TreasuryLog.rdlc"
+                        .LocalReport.ReportEmbeddedResource = My.Application.Info.AssemblyName & ".rpt_sp_rpt_SalesCashFlowConc.rdlc"
 
                         .LocalReport.DataSources.Add(ReportDataSource)
+                        .LocalReport.DataSources.Add(ReportDataSource1)
                         .LocalReport.EnableExternalImages = True
 
                         .LocalReport.SetParameters(New ReportParameter("imgHeader", "file:///" & My.Application.Info.DirectoryPath & "\per\imgHeader.jpg", True))
                         .LocalReport.SetParameters(New ReportParameter("imgFooter", "file:///" & My.Application.Info.DirectoryPath & "\per\imgFooter.jpg", True))
 
 
+
+                        If IsDBNull(userID) = False Then
+                            .LocalReport.SetParameters(New ReportParameter("userID", userID.ToString, True))
+                        End If
 
                         If IsDBNull(DateFrom) = False Then
                             .LocalReport.SetParameters(New ReportParameter("DateFrom", DateFrom.ToString, True))
@@ -427,7 +424,9 @@ Public Class frm_sp_rpt_TreasuryLog
                             .LocalReport.SetParameters(New ReportParameter("DateTo", DateTo.ToString, True))
                         End If
 
-
+                        If IsDBNull(UserName) = False Then
+                            .LocalReport.SetParameters(New ReportParameter("UserName", UserName.ToString, True))
+                        End If
 
                     End With
 
@@ -447,7 +446,7 @@ Public Class frm_sp_rpt_TreasuryLog
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
     End Sub
 #End Region

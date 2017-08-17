@@ -37,7 +37,7 @@ Public Class frm_sp_rpt_Stock
             GetInitialData()
             lblTitle.Text = Me.Text
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -98,7 +98,7 @@ Public Class frm_sp_rpt_Stock
         Dim TargetDecCols As New List(Of Column)
 
         With TargetDecCols
-            '.Add(Column.AmountLeft)
+            .Add(Column.AmountLeft)
             .Add(Column.AmountLeftPacket)
 
         End With
@@ -286,7 +286,7 @@ Public Class frm_sp_rpt_Stock
                     btnShowHideSearch.PerformClick()
             End Select
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -300,7 +300,7 @@ Public Class frm_sp_rpt_Stock
                 btnShowHideSearch.Image = My.Resources.Resources.SHL
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -321,7 +321,7 @@ Public Class frm_sp_rpt_Stock
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -342,7 +342,7 @@ Public Class frm_sp_rpt_Stock
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -359,7 +359,7 @@ Public Class frm_sp_rpt_Stock
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub dgv_Sorted(ByVal sender As Object, ByVal e As System.EventArgs) Handles dgv.Sorted
@@ -372,7 +372,7 @@ Public Class frm_sp_rpt_Stock
             End If
             FormatSumRow()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -390,7 +390,7 @@ Public Class frm_sp_rpt_Stock
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -507,7 +507,7 @@ Public Class frm_sp_rpt_Stock
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 #End Region

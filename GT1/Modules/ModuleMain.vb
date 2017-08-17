@@ -95,6 +95,9 @@ Module ModuleMain
 
     Public Function IsSqlLocal() As Boolean
 
+
+
+
         Dim HostName As String
         Dim sc As New SqlCommand("SELECT SERVERPROPERTY('MachineName') ", PubCn)
         If PubCn.State <> ConnectionState.Open Then PubCn.Open()

@@ -96,7 +96,7 @@ Public Class frm_ProductStock
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub frm_ProductStock_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
@@ -139,7 +139,7 @@ Public Class frm_ProductStock
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub daInitialize()
@@ -506,7 +506,7 @@ Public Class frm_ProductStock
 
             'txtClientName.Focus()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -544,7 +544,7 @@ Public Class frm_ProductStock
                 EnableDisableControls(True)
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
@@ -552,7 +552,7 @@ Public Class frm_ProductStock
             EnableDisableControls(True)
             PSubAmount.Enabled = False
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
@@ -566,7 +566,7 @@ Public Class frm_ProductStock
             dgv.AutoResizeColumns()
             EnableDisableControls(False)
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
@@ -579,7 +579,7 @@ Public Class frm_ProductStock
                 EnableDisableControls(False)
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
@@ -588,7 +588,7 @@ Public Class frm_ProductStock
             EnableDisableControls(False)
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
@@ -606,7 +606,7 @@ Public Class frm_ProductStock
                     If btnEdit.Enabled = True Then btnEdit.PerformClick()
             End Select
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -623,7 +623,7 @@ Public Class frm_ProductStock
         Try
             lblCount.Text = bs.Count
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -648,7 +648,7 @@ Public Class frm_ProductStock
             Get_sp_hlp_ProductType()
             Me.cboTypeID.DataBindings.Add(New System.Windows.Forms.Binding("MySelectedvalue", bs, "TypeID", True, DataSourceUpdateMode.OnPropertyChanged))
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub lblBrandID_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblBrandID.Click
@@ -661,7 +661,7 @@ Public Class frm_ProductStock
             Get_sp_hlp_Brand()
             Me.cboBrandID.DataBindings.Add(New System.Windows.Forms.Binding("MySelectedvalue", bs, "BrandID", True, DataSourceUpdateMode.OnPropertyChanged))
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -683,7 +683,7 @@ Public Class frm_ProductStock
 
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -724,7 +724,7 @@ Public Class frm_ProductStock
 
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -773,7 +773,7 @@ Public Class frm_ProductStock
                 Label2.Visible = True
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -793,7 +793,7 @@ Public Class frm_ProductStock
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub numAlertAmount_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles numAlertAmount.KeyUp
@@ -811,7 +811,7 @@ Public Class frm_ProductStock
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -834,7 +834,7 @@ Public Class frm_ProductStock
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub numAmountLeft_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles numAmountLeft.KeyUp
@@ -855,7 +855,7 @@ Public Class frm_ProductStock
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -875,7 +875,7 @@ Public Class frm_ProductStock
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub numLastUnitCost_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles numLastUnitCost.KeyUp
@@ -890,7 +890,7 @@ Public Class frm_ProductStock
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -923,7 +923,7 @@ Public Class frm_ProductStock
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub numSellPricePacket_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles numSellPricePacket.KeyUp
@@ -948,7 +948,7 @@ Public Class frm_ProductStock
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -1018,7 +1018,7 @@ Public Class frm_ProductStock
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -1028,7 +1028,7 @@ Public Class frm_ProductStock
             Me.Close()
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 End Class

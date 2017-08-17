@@ -395,6 +395,24 @@ Public Class Frm_Invoice
     End Sub
 
 
+
+
+
+
+
+
+
+
+    Protected Overrides Function ProcessKeyEventArgs(ByRef msg As Message) As Boolean
+        If msg.WParam = Keys.PrintScreen Then
+            btnSave.PerformClick()
+            btnPrint.PerformClick()
+
+        End If
+
+        Return MyBase.ProcessKeyEventArgs(msg)
+    End Function
+
     Private Sub Frm_Invoice_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             FontMyControl(Me)
@@ -415,20 +433,32 @@ Public Class Frm_Invoice
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Frm_Invoice_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
         Try
+            lblTotal.Font = New Font("Arial", 36, FontStyle.Bold)
             FormConditionalApearance()
 
+            tt.Font = MF.aljazeera
+            cboItem.dgv.ShowCellToolTips = False
+
+
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
 
 #Region "       dgvInfo"
+
+    ''' <summary>
+    ''' the dgvInfo is a custom datagridview taken from class "ByteDGV" in GT1 Project
+    ''' </summary>
+    ''' <remarks></remarks>
+    ''' 
+
 
     Dim WithEvents cboDistributor As New ByteClassLibrary.MyGridTextBox3
     Dim WithEvents cboAgent As New ByteClassLibrary.MyGridTextBox3
@@ -487,16 +517,7 @@ Public Class Frm_Invoice
 
 
     End Sub
-    Private Sub _BsAgent_CurrentChanged() Handles _BsAgent.CurrentChanged
-        'If _BsAgent.Current("AgentID") = 1 Then
-        '    'PName.Visible = True
-        '    'cboIsPaid.SelectedValue = True
-        '    'cboIsPaid.Enabled = False
-        'Else
-        '    'PName.Visible = False
-        '    'cboIsPaid.Enabled = True
-        'End If
-    End Sub
+
 
 
 
@@ -533,7 +554,7 @@ Public Class Frm_Invoice
             .MySource = _BsDistributor
             .SetColumn(ByteClassLibrary.MyGridTextBox3.ColType.ValueMember, "DistributorID", False, "ر.م")
             .SetColumn(ByteClassLibrary.MyGridTextBox3.ColType.DisplayMember, "DistributorName", True, "الاسم")
-
+            .SetColumn("Sort", False, False)
 
 
             .MyBeginProcess()
@@ -586,7 +607,7 @@ Public Class Frm_Invoice
 
 
         dgvInfo.Columns(0).ReadOnly = True
-        dgvInfo.Columns(1).ReadOnly = True
+        'dgvInfo.Columns(1).ReadOnly = True
 
 
 
@@ -671,6 +692,8 @@ Public Class Frm_Invoice
                         cboAgent.Focus()
 
 
+
+
                     Case "الاسم"
 
                         Dim rect As Rectangle = dgvInfo.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, True)
@@ -723,7 +746,7 @@ Public Class Frm_Invoice
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
 
@@ -766,7 +789,7 @@ Public Class Frm_Invoice
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub dgvInfo_CellMouseEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvInfo.CellMouseEnter
@@ -777,68 +800,121 @@ Public Class Frm_Invoice
                 dgvInfo.Cursor = Cursors.Arrow
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
+    Private Sub dgvInfo_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles dgvInfo.KeyDown
+
+    End Sub
+
+
+
+
+
+
+
+
+    Public Sub MyKeyHandler(ByVal sender As Object, ByVal e As System.Windows.Forms.Keys)
+
+
+        Dim Cell As DataGridViewCell = dgvInfo.CurrentCell
+
+
+        If CellDgvInfo_InvDate Is Cell Then
+   
+        ElseIf CellDgvInfo_AgentName Is Cell Then
+
+
+            cboAgent.MyGridTextBox_KeyDown(Me, New System.Windows.Forms.KeyEventArgs(e))
+
+
+
+
+
+
+        ElseIf CellDgvInfo_CustomerName Is Cell Then
+
+        ElseIf CellDgvInfo_DistributorName Is Cell Then
+
+        ElseIf CellDgvInfo_InvoiceRealNumber Is Cell Then
+
+        ElseIf CellDgvInfo_Note Is Cell Then
+
+        ElseIf CellDgvInfo_WareHouse Is Cell Then
+
+
+        End If
+
+
+
+
+
+
+        'dgvInfo_KeyDown(Me, New System.Windows.Forms.KeyEventArgs(e))
+
+
+    End Sub
 
 
     'Private Sub cboDistributor_MySelectedValueChanged(sender, e) Handles cboDistributor.MySelectedValueChanged
     '    Try
     '        DistributorID = cboDistributor.MySelectedValue
     '    Catch ex As Exception
-    '        HandleMyError(ex, , , My.Settings.IsDebug)
+    '        HandleMyError(ex, , , Settings.IsDebug)
     '    End Try
     'End Sub
     'Private Sub cboAgent_MySelectedValueChanged(sender, e) Handles cboAgent.MySelectedValueChanged
     '    Try
     '        AgentID = cboAgent.MySelectedValue
     '    Catch ex As Exception
-    '        HandleMyError(ex, , , My.Settings.IsDebug)
+    '        HandleMyError(ex, , , Settings.IsDebug)
     '    End Try
     'End Sub
     Private Sub numInvoiceNumber_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles numInvoiceNumber.TextChanged
         Try
             InvoiceNumber = numInvoiceNumber.Text
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub numInvoiceRealNumber_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles numInvoiceRealNumber.TextChanged
         Try
             InvoiceRealNumber = numInvoiceRealNumber.Text
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub numOrgInvoiceNumer_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles numOrgInvoiceNumer.TextChanged
         Try
             OrgInvoiceNumber = numOrgInvoiceNumer.Text
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub dtpInvoiceDate_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles dtpInvoiceDate.ValueChanged
         Try
             InvDate = dtpInvoiceDate.Value
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub txtCustomerName_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtCustomerName.TextChanged
         Try
             CustomerName = txtCustomerName.Text
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub txtNote_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNote.TextChanged
         Try
             Note = txtNote.Text
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
+
+
 
     Private Sub cboAgent_MyItemSelectedByEnter(ByVal ID As Object) Handles cboAgent.MyItemSelectedByEnter
         Try
@@ -874,7 +950,7 @@ Public Class Frm_Invoice
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub cboDistributor_MyItemSelectedByEnter(ByVal ID As Object) Handles cboDistributor.MyItemSelectedByEnter
@@ -882,7 +958,7 @@ Public Class Frm_Invoice
             Me.DistributorID = ID
             Me.DistributorName = cboDistributor.Text
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -911,14 +987,14 @@ Public Class Frm_Invoice
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_DistributorNameChanged(ByVal v As Object) Handles Me.DistributorNameChanged
         Try
             CellDgvInfo_DistributorName.Value = v.ToString
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -927,28 +1003,28 @@ Public Class Frm_Invoice
         Try
             dgvInfo.Rows(5).Cells(1).Value = Me.CustomerName.ToString
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_NoteChanged() Handles Me.NoteChanged
         Try
             dgvInfo.Rows(8).Cells(1).Value = Note.ToString
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_InvoiceNumberChanged() Handles Me.InvoiceNumberChanged
         Try
             dgvInfo.Rows(0).Cells(1).Value = InvoiceNumber.ToString
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_InvoiceRealNumberChanged() Handles Me.InvoiceRealNumberChanged
         Try
             dgvInfo.Rows(1).Cells(1).Value = InvoiceRealNumber.ToString
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_OrgInvoiceNumberChanged() Handles Me.OrgInvoiceNumberChanged
@@ -956,7 +1032,7 @@ Public Class Frm_Invoice
             dgvInfo.Rows(2).Cells(1).Value = OrgInvoiceNumber.ToString
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_InvDateChanged(ByVal v As Object) Handles Me.InvDateChanged
@@ -964,7 +1040,7 @@ Public Class Frm_Invoice
             CellDgvInfo_InvDate.Value = Format(IsNullNothing(v, Now), "yyyy-MM-dd  HH:mm")
             dtpInvoiceDate.Value = IsNullNothing(v, Now)
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -1028,20 +1104,12 @@ Public Class Frm_Invoice
             .SetColumn(ByteClassLibrary.MyGridTextBox3.ColType.ValueMember, "GID", True, "رم")
             .SetColumn(ByteClassLibrary.MyGridTextBox3.ColType.DisplayMember, "ProductName", True, "الصنف")
             .SetColumn("Barcode", True, False, "باركود", , 120)
-            '.SetColumn("ExDate", True, False, "الصلاحية", "yyyy-MM-dd", 110)
-            .SetColumn("AmountLeft", True, False, "الكمية", "#,##0.###")
-            .SetColumn("LastUnitCost", True, False, "اخر تكلفة", "#,##0.###")
-            .SetColumn("AvgUnitCost", True, False, "متوسط التكلفة", "#,##0.###")
-            .SetColumn("SellPrice", True, False, "بيع", "#,##0.###")
             .SetColumn("Rack", True, True, "الموقع", , 50)
             .SetColumn("ProductDetails", True, False, "تفاصيل")
 
 
             .MyIsColumnHeaderVisible = True
             .MyCellBorderStyle = DataGridViewCellBorderStyle.Single
-
-
-
             .MyBeginProcess()
 
 
@@ -1060,7 +1128,7 @@ Public Class Frm_Invoice
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -1078,7 +1146,7 @@ Public Class Frm_Invoice
 
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -1086,8 +1154,114 @@ Public Class Frm_Invoice
 
 
 
+    Private Function GetProductInfo(ByVal StockID As Int64) As String
+        Dim str As String = ""
 
-    Private Function fn_sp_rpt_ProductInfo(ByRef StockID As Object, ByRef ProductName As Object, ByRef ProductCode As Object, ByRef Barcode As Object, ByRef TypeName As Object, ByRef BrandName As Object, ByRef ProductDetails As Object, ByRef Rack As Object, ByRef ExDate As Object, ByRef SubAmount As Object, ByRef AmountLeft As Object, ByRef AmountLeftPacket As Object, ByRef AvgUnitCost As Object, ByRef AvgUnitCostPacket As Object, ByRef LastUnitCost As Object, ByRef LastUnitCostPacket As Object, ByRef SellPrice As Object, ByRef SellPricePacket As Object) As String
+        Dim ProductName As Object
+        Dim ProductCode As Object
+        Dim Barcode As Object
+        Dim TypeName As Object
+        Dim BrandName As Object
+        Dim ProductDetails As Object
+        Dim Rack As Object
+        Dim ExDate As Object
+        Dim SubAmount As Object
+        Dim AmountLeft As Object
+        Dim AmountLeftPacket As Object
+        Dim AvgUnitCost As Object
+        Dim AvgUnitCostPacket As Object
+        Dim LastUnitCost As Object
+        Dim LastUnitCostPacket As Object
+        Dim SellPrice As Object
+        Dim SellPricePacket As Object
+
+        fn_sp_rpt_ProductInfo(StockID, ProductName, ProductCode, Barcode, TypeName, BrandName, ProductDetails, Rack, ExDate, SubAmount, AmountLeft, AmountLeftPacket, AvgUnitCost, AvgUnitCostPacket, LastUnitCost, LastUnitCostPacket, SellPrice, SellPricePacket)
+
+
+
+        If IsNullNothing(ProductName, "") <> "" Then
+            str = str & "الصنف : " & ProductName & vbNewLine
+        End If
+        If IsNullNothing(ProductCode, "") <> "" AndAlso Settings.IsProductCodeShown = True Then
+            str = str & "كود :" & ProductCode & vbNewLine
+        End If
+        If IsNullNothing(Barcode, "") <> "" AndAlso Settings.IsBarcodeShown = True Then
+            str = str & "باركود : " & Barcode & vbNewLine
+        End If
+        If IsNullNothing(TypeName, "") <> "" Then
+            str = str & "النوع : " & TypeName & vbNewLine
+        End If
+        If IsNullNothing(BrandName, "") <> "" Then
+            str = str & "الماركة : " & BrandName & vbNewLine
+        End If
+        If IsNullNothing(ProductDetails, "") <> "" AndAlso Settings.IsProductDetailsShown = True Then
+            str = str & "تفاصيل : " & ProductDetails & vbNewLine
+        End If
+        If IsNullNothing(Rack, "") <> "" AndAlso Settings.IsRackShown = True Then
+            str = str & "الموقع : " & Rack & vbNewLine
+        End If
+        If Settings.IsExDateShown = True Then
+            str = str & "الصلاحية : " & ExDate & vbNewLine
+        End If
+
+
+        str = str & vbNewLine
+
+        If Settings.IsPacketSystem = True Then
+            If IsNullNothing(SubAmount, 0) <> 0 Then
+                str = str & "العبوة : " & SubAmount & vbNewLine
+            End If
+            str = str & vbNewLine
+        End If
+
+
+
+
+        str = str & "---بيانات القطعة---" & vbNewLine
+        If IsNullNothing(AmountLeft, 0) <> 0 Then
+            str = str & "الكمية المتبقية : " & AmountLeft & vbNewLine
+        End If
+        If IsNullNothing(AvgUnitCost, 0) <> 0 Then
+            str = str & "متوسط التكلفة : " & AvgUnitCost & vbNewLine
+        End If
+        If IsNullNothing(LastUnitCost, 0) <> 0 Then
+            str = str & "اخر تكلفة : " & LastUnitCost & vbNewLine
+        End If
+        If IsNullNothing(SellPrice, 0) <> 0 Then
+            str = str & "سعر البيع :" & SellPrice & vbNewLine
+        End If
+
+
+
+
+        If Settings.IsPacketSystem = True Then
+
+            str = str & vbNewLine
+            str = str & "---بيانات الصندوق---" + vbNewLine
+
+            If IsNullNothing(AmountLeftPacket, 0) <> 0 Then
+                str = str & "الكمية المتبقية  : " & AmountLeftPacket & vbNewLine
+            End If
+            If IsNullNothing(AvgUnitCostPacket, 0) <> 0 Then
+                str = str & "متوسط التكلفة : " & AvgUnitCostPacket & vbNewLine
+            End If
+            If IsNullNothing(LastUnitCostPacket, 0) <> 0 Then
+                str = str & "اخر تكلفة : " & LastUnitCostPacket & vbNewLine
+            End If
+            If IsNullNothing(SellPricePacket, 0) <> 0 Then
+                str = str & "سعر البيع :" & SellPricePacket
+            End If
+
+
+        End If
+
+
+
+
+
+        Return str
+    End Function
+    Private Sub fn_sp_rpt_ProductInfo(ByRef StockID As Object, ByRef ProductName As Object, ByRef ProductCode As Object, ByRef Barcode As Object, ByRef TypeName As Object, ByRef BrandName As Object, ByRef ProductDetails As Object, ByRef Rack As Object, ByRef ExDate As Object, ByRef SubAmount As Object, ByRef AmountLeft As Object, ByRef AmountLeftPacket As Object, ByRef AvgUnitCost As Object, ByRef AvgUnitCostPacket As Object, ByRef LastUnitCost As Object, ByRef LastUnitCostPacket As Object, ByRef SellPrice As Object, ByRef SellPricePacket As Object)
 
         Dim cmd As New SqlCommand("sp_rpt_ProductInfo", PubCn)
 
@@ -1158,7 +1332,10 @@ Public Class Frm_Invoice
 
         End With
 
+        If PubCn.State <> ConnectionState.Open Then PubCn.Open()
         cmd.ExecuteNonQuery()
+        If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
+
 
         With cmd
             ProductName = .Parameters("@ProductName").Value
@@ -1182,41 +1359,12 @@ Public Class Frm_Invoice
         End With
 
 
-        Dim s As String = ""
-
-        s = "xxxxxxxxxxx" & StockID & vbNewLine
-        s = "xxxxxxxxxxx" & ProductName & vbNewLine
-        s = "xxxxxxxxxxx" & ProductCode & vbNewLine
-        s = "xxxxxxxxxxx" & Barcode & vbNewLine
-        s = "xxxxxxxxxxx" & TypeName & vbNewLine
-        s = "xxxxxxxxxxx" & BrandName & vbNewLine
-        s = "xxxxxxxxxxx" & ProductDetails & vbNewLine
-        s = "xxxxxxxxxxx" & Rack & vbNewLine
-        s = "xxxxxxxxxxx" & ExDate & vbNewLine
-        s = "xxxxxxxxxxx" & SubAmount & vbNewLine
-        s = "xxxxxxxxxxx" & AmountLeft & vbNewLine
-        s = "xxxxxxxxxxx" & AmountLeftPacket & vbNewLine
-        s = "xxxxxxxxxxx" & AvgUnitCost & vbNewLine
-        s = "xxxxxxxxxxx" & AvgUnitCostPacket & vbNewLine
-        s = "xxxxxxxxxxx" & LastUnitCost & vbNewLine
-        s = "xxxxxxxxxxx" & LastUnitCostPacket & vbNewLine
-        s = "xxxxxxxxxxx" & SellPrice & vbNewLine
-        s = "xxxxxxxxxxx" & SellPricePacket & vbNewLine
 
 
 
 
 
-
-
-
-        Return s
-
-
-
-
-
-    End Function
+    End Sub
 
 
 #End Region
@@ -1339,7 +1487,7 @@ Public Class Frm_Invoice
                 CellTotal.Value = 0
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_FinalPriceChanged(ByVal v As Object) Handles Me.FinalPriceChanged
@@ -1357,7 +1505,7 @@ Public Class Frm_Invoice
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_DiscountChanged(ByVal Val As Object) Handles Me.DiscountChanged
@@ -1368,7 +1516,7 @@ Public Class Frm_Invoice
                 CellDiscount.Value = 0
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_RevenueChanged(ByVal Val As Object) Handles Me.RevenueChanged
@@ -1384,7 +1532,7 @@ Public Class Frm_Invoice
                 CellRevPer.Value = 0
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_RevPerChanged(ByVal Val As Object) Handles Me.RevPerChanged
@@ -1395,7 +1543,7 @@ Public Class Frm_Invoice
                 CellRevPer.Value = 0
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub Me_IsPaidChanged(ByVal val As Object) Handles Me.IsPaidChanged
@@ -1437,7 +1585,7 @@ Public Class Frm_Invoice
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -1449,7 +1597,7 @@ Public Class Frm_Invoice
                 CellAmountPaid.Value = 0
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -1495,7 +1643,7 @@ Public Class Frm_Invoice
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -1524,7 +1672,7 @@ Public Class Frm_Invoice
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -1995,7 +2143,7 @@ Public Class Frm_Invoice
             InvoiceID = 0
             GetInvoice()
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -2004,7 +2152,7 @@ Public Class Frm_Invoice
             dgvInvoice.Sort(dgvInvoice.Columns("Sort"), System.ComponentModel.ListSortDirection.Ascending)
             GetInvoice(1)
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -2013,7 +2161,7 @@ Public Class Frm_Invoice
             dgvInvoice.Sort(dgvInvoice.Columns("Sort"), System.ComponentModel.ListSortDirection.Ascending)
             GetInvoice(-1)
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
 
     End Sub
@@ -2044,7 +2192,7 @@ Public Class Frm_Invoice
             GetInvoice()
         Catch ex As Exception
             MyTrans.Rollback()
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         Finally
             If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
         End Try
@@ -2069,7 +2217,7 @@ Public Class Frm_Invoice
 
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnReturn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReturn.Click
@@ -2090,7 +2238,7 @@ Public Class Frm_Invoice
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
@@ -2113,14 +2261,14 @@ Public Class Frm_Invoice
 
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnCreateSellInvoce_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCreateSellInvoce.Click
         Try
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -2226,7 +2374,7 @@ Public Class Frm_Invoice
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub BL_BarcodeReceived(ByVal str As String) Handles BL.BarcodeReceived
@@ -2305,7 +2453,7 @@ Public Class Frm_Invoice
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnAddItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAddItem.Click
@@ -2379,7 +2527,7 @@ Public Class Frm_Invoice
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -2633,9 +2781,14 @@ Public Class Frm_Invoice
                 dgvInvoice_CellEndEdit(Me, e)
             End If
 
+            If dgvInvoice.Columns(e.ColumnIndex).Name = "ItemName" Then
+
+            End If
+
+
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub dgvInvoice_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvInvoice.CellEndEdit
@@ -2752,7 +2905,7 @@ Public Class Frm_Invoice
 
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Function DecimalCeiling(ByVal MyNumber As Decimal) As Decimal
@@ -2806,7 +2959,7 @@ Public Class Frm_Invoice
 
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub dgvInvoice_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles dgvInvoice.KeyUp
@@ -2830,7 +2983,7 @@ Public Class Frm_Invoice
 
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -3122,6 +3275,15 @@ Public Class Frm_Invoice
         CellDgvInfo_WareHouse.OwningRow.Visible = False
 
 
+
+        If PubUserLevel > 1 Then
+            dgvInvoice.Columns("Revenue").Visible = False
+            CellRev.OwningRow.Visible = False
+            CellRevPer.OwningRow.Visible = False
+        End If
+
+
+
     End Sub
 
 #End Region
@@ -3186,7 +3348,7 @@ Public Class Frm_Invoice
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
     Private Sub btnPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrint.Click
@@ -3204,7 +3366,7 @@ Public Class Frm_Invoice
             End If
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -3232,7 +3394,7 @@ Public Class Frm_Invoice
         Try
 
         Catch ex As Exception
-            HandleMyError(ex, , , My.Settings.IsDebug)
+            HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
 
@@ -3241,10 +3403,28 @@ Public Class Frm_Invoice
 
 
     Private Sub lblTotal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblTotal.Click
-        Dim f As New Frm_msg
-        f.Show()
+
+
+        lblTotal.Text = CellDgvInfo_AgentName.ReadOnly
 
     End Sub
+
+
+
+    Dim tt As New ByteToolTip()
+    Private Sub sdf(ByVal CurrentID As Object, ByVal CurrentDisplayCellRect As Rectangle) Handles cboItem.DGVChangedCurrenCell
+
+
+        Dim ID As Int64 = Mid(CurrentID, 3)
+
+        tt.Hide(cboItem.dgv)
+        tt.Show(GetProductInfo(ID), cboItem.dgv, CurrentDisplayCellRect.X + CurrentDisplayCellRect.Height / 2, CurrentDisplayCellRect.Y + CurrentDisplayCellRect.Height / 2, 10000)
+
+
+
+    End Sub
+
+
 
 
 End Class

@@ -1,35 +1,17 @@
 ﻿Imports System.Data.SqlClient
 Imports Microsoft.Reporting.WinForms
 Imports ByteClassLibrary.MyFunctions
-Public Class frm_ProductBarcode
-
-
-    Dim WithEvents BL As New ByteClassLibrary.ByteBarcodeListener2(Me, "dgv", 10)
-
-
+Public Class frm_Users
     Dim WithEvents da As New SqlDataAdapter
     Dim WithEvents dt As New DataTable
     Dim WithEvents bs As New BindingSource
 
-    Dim _StockID As Object
-    Public Sub New(ByVal StockID As Int64)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        _StockID = StockID
-
-
-    End Sub
-
-
-
-    Private Sub frm_ProductBarcode_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frm_Users_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Try
-            FontMyControl(Me)
+
             lblTitle.Text = Me.Text
             daInitialize()
+            Get_sp_hlp_UserType()
 
             GetDataTable()
             bs.MoveLast()
@@ -45,57 +27,80 @@ Public Class frm_ProductBarcode
         da.SelectCommand = New SqlCommand
         With da.SelectCommand
             .Connection = PubCn
-            .CommandText = "sp_tbl_ProductBarcode_Select"
+            .CommandText = "sp_tbl_Users_Select"
             .CommandType = CommandType.StoredProcedure
-            .Parameters.Clear()
-            .Parameters.AddWithValue("@StockID", _StockID)
         End With
 
         da.InsertCommand = New SqlCommand
         With da.InsertCommand
 
             .Connection = PubCn
-            .CommandText = "sp_tbl_ProductBarcode_Insert"
+            .CommandText = "sp_tbl_Users_Insert"
             .CommandType = CommandType.StoredProcedure
 
 
             .Parameters.Clear()
-            .Parameters.Add("@ProductBarcodeID", SqlDbType.BigInt, 0, "ProductBarcodeID")
-            .Parameters.AddWithValue("@StockID", _StockID)
-            .Parameters("@ProductBarcodeID").Direction = ParameterDirection.Output
-            .Parameters.Add("@ProductName", SqlDbType.NVarChar, 200, "ProductName")
-            .Parameters("@ProductName").Direction = ParameterDirection.Output
-            .Parameters.Add("@Barcode", SqlDbType.NVarChar, 200, "Barcode")
+            .Parameters.Add("@UserID", SqlDbType.BigInt, 0, "UserID")
+            .Parameters("@UserID").Direction = ParameterDirection.Output
+            .Parameters.Add("@Username", SqlDbType.NVarChar, 50, "Username")
+            .Parameters.Add("@Password", SqlDbType.NVarChar, 200, "Password")
+            .Parameters.Add("@UserLevel", SqlDbType.TinyInt, 0, "UserLevel")
+            .Parameters.Add("@IUserID", SqlDbType.BigInt, 0, "IUserID")
+            .Parameters.Add("@IUsername", SqlDbType.NVarChar, 50, "IUsername")
+            .Parameters("@IUsername").Direction = ParameterDirection.Output
 
         End With
 
         da.UpdateCommand = New SqlCommand
         With da.UpdateCommand
             .Connection = PubCn
-            .CommandText = "sp_tbl_ProductBarcode_Update"
+            .CommandText = "sp_tbl_Users_Update"
             .CommandType = CommandType.StoredProcedure
 
             .Parameters.Clear()
-            .Parameters.Add("@ProductBarcodeID", SqlDbType.BigInt, 0, "ProductBarcodeID")
-            .Parameters.Add("@ProductID", SqlDbType.BigInt, 0, "ProductID")
-            .Parameters.Add("@ProductName", SqlDbType.NVarChar, 200, "ProductName")
-            .Parameters("@ProductName").Direction = ParameterDirection.Output
-            .Parameters.Add("@Barcode", SqlDbType.NVarChar, 200, "Barcode")
+            .Parameters.Add("@UserID", SqlDbType.BigInt, 0, "UserID")
+            .Parameters.Add("@Password", SqlDbType.NVarChar, 200, "Password")
+            .Parameters.Add("@UserLevel", SqlDbType.TinyInt, 0, "UserLevel")
+            .Parameters.Add("@IUserID", SqlDbType.BigInt, 0, "IUserID")
+            .Parameters.Add("@IUsername", SqlDbType.NVarChar, 50, "IUsername")
+            .Parameters("@IUsername").Direction = ParameterDirection.Output
 
         End With
 
         da.DeleteCommand = New SqlCommand
         With da.DeleteCommand
             .Connection = PubCn
-            .CommandText = "sp_tbl_ProductBarcode_Delete"
+            .CommandText = "sp_tbl_Users_Delete"
             .CommandType = CommandType.StoredProcedure
 
             .Parameters.Clear()
-            .Parameters.Add("@ProductBarcodeID", SqlDbType.BigInt, 0, "ProductBarcodeID")
-            .Parameters("@ProductBarcodeID").SourceVersion = DataRowVersion.Original
+            .Parameters.Add("@UserID", SqlDbType.BigInt, 0, "UserID")
+            ' .Parameters("@UserID").SourceVersion = DataRowVersion.Original
 
         End With
 
+
+
+    End Sub
+    Private Sub Get_sp_hlp_UserType()
+
+        Dim da As New SqlDataAdapter("sp_hlp_UserType", PubCn)
+        Dim dt As New DataTable
+
+        da.SelectCommand.CommandType = CommandType.StoredProcedure
+
+        dt.Clear()
+        da.Fill(dt)
+        'dt.Rows.RemoveAt(0)
+
+        With cboUserLevel
+            .DataSource = dt
+            .DisplayMember = "UserTypeName"
+            .ValueMember = "UserTypeID"
+
+            .AutoCompleteSource = AutoCompleteSource.ListItems
+            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        End With
 
 
     End Sub
@@ -110,24 +115,33 @@ Public Class frm_ProductBarcode
         dgv.DataSource = bs
 
         With dgv
+            .Columns("Password").Visible = False
+            .Columns("IUserID").Visible = False
 
-            .Columns("ProductBarcodeID").HeaderText = "ر.م"
-            .Columns("StockID").HeaderText = ""
-            .Columns("ProductName").HeaderText = "اسم الصنف"
-            .Columns("Barcode").HeaderText = "باركود"
-
-            .Columns("ProductBarcodeID").Visible = False
-            .Columns("StockID").Visible = False
-            .Columns("ProductName").Visible = True
+            .Columns("UserID").HeaderText = "رقم المستخدم"
+            .Columns("Username").HeaderText = "المستخدم"
+            .Columns("UserLevel").HeaderText = "المستوى"
+            .Columns("IUsername").HeaderText = "المستخدم"
 
         End With
 
 
 
 
+        Me.txtUsername.DataBindings.Clear()
+        Me.txtUsername.DataBindings.Add(New System.Windows.Forms.Binding("Text", bs, "Username", True, DataSourceUpdateMode.OnPropertyChanged))
 
 
-        dgv.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells)
+        Me.txtPassword.DataBindings.Clear()
+        Me.txtPassword.DataBindings.Add(New System.Windows.Forms.Binding("Text", bs, "Password", True, DataSourceUpdateMode.OnPropertyChanged))
+
+
+        Me.cboUserLevel.DataBindings.Clear()
+        Me.cboUserLevel.DataBindings.Add(New System.Windows.Forms.Binding("Selectedvalue", bs, "UserLevel", True, DataSourceUpdateMode.OnPropertyChanged))
+        '  Me.cboUserLevel.DataBindings.Add(New System.Windows.Forms.Binding("Text", bs, "UserTypeName", True, DataSourceUpdateMode.OnValidation))
+
+
+        dgv.AutoResizeColumns()
         lblCount.Text = bs.Count
 
     End Sub
@@ -158,7 +172,7 @@ Public Class frm_ProductBarcode
         End If
     End Sub
 
-    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
+    Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
         Try
             bs.AddNew()
             EnableDisableControls(True)
@@ -177,7 +191,7 @@ Public Class frm_ProductBarcode
         End Try
 
     End Sub
-    Private Sub btnCopy_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCopy.Click
+    Private Sub btnCopy_Click(sender As System.Object, e As System.EventArgs) Handles btnCopy.Click
         Try
             If Not IsNothing(bs.Current) Then
                 Dim newrow As DataRow = dt.NewRow
@@ -214,14 +228,14 @@ Public Class frm_ProductBarcode
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
-    Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
+    Private Sub btnEdit_Click(sender As System.Object, e As System.EventArgs) Handles btnEdit.Click
         Try
             EnableDisableControls(True)
         Catch ex As Exception
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
-    Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+    Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
         Try
             bs.EndEdit()
             Me.Validate()
@@ -232,7 +246,7 @@ Public Class frm_ProductBarcode
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
-    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
+    Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
         Try
             If Not IsNothing(bs.Current) Then
                 If MessageBox.Show("هل أنت متأكد من الحدف ؟", "تحدير", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign) = Windows.Forms.DialogResult.Yes Then
@@ -245,7 +259,7 @@ Public Class frm_ProductBarcode
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
-    Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
+    Private Sub btnRefresh_Click(sender As System.Object, e As System.EventArgs) Handles btnRefresh.Click
         Try
             GetDataTable()
             EnableDisableControls(False)
@@ -254,7 +268,7 @@ Public Class frm_ProductBarcode
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
-    Private Sub Me_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+    Private Sub Me_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
         Try
             Select Case e.KeyCode
                 Case Keys.F12
@@ -273,16 +287,16 @@ Public Class frm_ProductBarcode
         End Try
 
     End Sub
-    Private Sub dgv_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles dgv.KeyDown
+    Private Sub dgv_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles dgv.KeyDown
         Select Case e.KeyCode
             Case Keys.Delete
                 btnDelete.PerformClick()
         End Select
     End Sub
-    Private Sub dgv_DataError(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewDataErrorEventArgs) Handles dgv.DataError
+    Private Sub dgv_DataError(sender As Object, e As System.Windows.Forms.DataGridViewDataErrorEventArgs) Handles dgv.DataError
         HandleMyError(e.Exception)
     End Sub
-    Private Sub bs_CurrentChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles bs.CurrentChanged
+    Private Sub bs_CurrentChanged(sender As Object, e As System.EventArgs) Handles bs.CurrentChanged
         Try
             lblCount.Text = bs.Count
         Catch ex As Exception
@@ -290,49 +304,34 @@ Public Class frm_ProductBarcode
         End Try
 
     End Sub
-    Private Sub bs_ListChanged(ByVal sender As Object, ByVal e As System.ComponentModel.ListChangedEventArgs) Handles bs.ListChanged
+    Private Sub bs_ListChanged(sender As Object, e As System.ComponentModel.ListChangedEventArgs) Handles bs.ListChanged
         If e.ListChangedType = System.ComponentModel.ListChangedType.ItemChanged Then
-            'bs.Current("UserID") = PubUserID
-            'bs.Current("Username") = PubUserName
+            bs.Current("iUserID") = PubUserID
+            bs.Current("iUsername") = PubUserName
             bs.EndEdit()
         End If
         If e.ListChangedType = System.ComponentModel.ListChangedType.ItemAdded Then
-            'bs.Item(e.NewIndex)("UserID") = PubUserID
-            'bs.Item(e.NewIndex)("Username") = PubUserName
+            bs.Item(e.NewIndex)("iUserID") = PubUserID
+            bs.Item(e.NewIndex)("iUsername") = PubUserName
         End If
     End Sub
 
-    Private Sub BL_BarcodeReceived(ByVal strBarcode As String) Handles BL.BarcodeReceived
-
-        Try
-
-            bs.AddNew()
-
-            bs.Current("StockID") = _StockID
-            bs.Current("Barcode") = strBarcode
-            btnSave_Click(Me, Nothing)
-
-        Catch ex As Exception
-            btnRefresh_Click(Me, Nothing)
-            HandleMyError(ex, , , Settings.IsDebug)
-        End Try
 
 
-    End Sub
 
 
-    Private Sub txtSearch_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSearch.GotFocus
+    Private Sub txtSearch_GotFocus(sender As Object, e As System.EventArgs) Handles txtSearch.GotFocus
         If txtSearch.Text.Trim = "" Or txtSearch.Text.Trim = "بحث" Then
             txtSearch.Text = ""
         End If
 
     End Sub
-    Private Sub txtSearch_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSearch.LostFocus
+    Private Sub txtSearch_LostFocus(sender As Object, e As System.EventArgs) Handles txtSearch.LostFocus
         If txtSearch.Text.Trim = "" Then
             txtSearch.Text = "بحث"
         End If
     End Sub
-    Private Sub txtSearch_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSearch.TextChanged
+    Private Sub txtSearch_TextChanged(sender As Object, e As System.EventArgs) Handles txtSearch.TextChanged
         If txtSearch.Text.Trim = "" Or txtSearch.Text.Trim = "بحث" Then
             bs.Filter = ""
         Else
@@ -344,7 +343,4 @@ Public Class frm_ProductBarcode
 
 
 
-    Private Sub ToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        BL_BarcodeReceived("666666666")
-    End Sub
 End Class

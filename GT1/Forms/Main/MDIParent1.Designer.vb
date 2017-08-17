@@ -55,6 +55,15 @@ Partial Class MDIParent1
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.TreasuryLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PaymentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgentsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgentBalanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgentLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FinanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TreasuryLogToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SalesCashFlowConcToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProfitsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChangePasswordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -80,7 +89,7 @@ Partial Class MDIParent1
         '
         Me.MenuStrip.BackColor = System.Drawing.Color.White
         Me.MenuStrip.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InvoicesToolStripMenuItem, Me.ProductsToolStripMenuItem, Me.AgentsDistributorsToolStripMenuItem, Me.TreasuryToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.DataMangementToolStripMenuItem, Me.عنالمنظومةToolStripMenuItem, Me.HWToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InvoicesToolStripMenuItem, Me.ProductsToolStripMenuItem, Me.AgentsDistributorsToolStripMenuItem, Me.TreasuryToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.DataMangementToolStripMenuItem, Me.عنالمنظومةToolStripMenuItem, Me.HWToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Padding = New System.Windows.Forms.Padding(6, 3, 0, 3)
@@ -270,6 +279,65 @@ Partial Class MDIParent1
         Me.PaymentsToolStripMenuItem.Size = New System.Drawing.Size(197, 24)
         Me.PaymentsToolStripMenuItem.Text = "بحث عن الايصالات"
         '
+        'ReportsToolStripMenuItem
+        '
+        Me.ReportsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductsToolStripMenuItem1, Me.AgentsToolStripMenuItem1, Me.FinanceToolStripMenuItem})
+        Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
+        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(66, 23)
+        Me.ReportsToolStripMenuItem.Text = "التقارير"
+        '
+        'ProductsToolStripMenuItem1
+        '
+        Me.ProductsToolStripMenuItem1.Name = "ProductsToolStripMenuItem1"
+        Me.ProductsToolStripMenuItem1.Size = New System.Drawing.Size(129, 24)
+        Me.ProductsToolStripMenuItem1.Text = "الاصناف"
+        Me.ProductsToolStripMenuItem1.Visible = False
+        '
+        'AgentsToolStripMenuItem1
+        '
+        Me.AgentsToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgentBalanceToolStripMenuItem, Me.AgentLogToolStripMenuItem})
+        Me.AgentsToolStripMenuItem1.Name = "AgentsToolStripMenuItem1"
+        Me.AgentsToolStripMenuItem1.Size = New System.Drawing.Size(129, 24)
+        Me.AgentsToolStripMenuItem1.Text = "العملاء"
+        '
+        'AgentBalanceToolStripMenuItem
+        '
+        Me.AgentBalanceToolStripMenuItem.Name = "AgentBalanceToolStripMenuItem"
+        Me.AgentBalanceToolStripMenuItem.Size = New System.Drawing.Size(211, 24)
+        Me.AgentBalanceToolStripMenuItem.Text = "أرصدة العملاء"
+        '
+        'AgentLogToolStripMenuItem
+        '
+        Me.AgentLogToolStripMenuItem.Name = "AgentLogToolStripMenuItem"
+        Me.AgentLogToolStripMenuItem.Size = New System.Drawing.Size(211, 24)
+        Me.AgentLogToolStripMenuItem.Text = "كشف حساب عميل"
+        '
+        'FinanceToolStripMenuItem
+        '
+        Me.FinanceToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TreasuryLogToolStripMenuItem1, Me.SalesCashFlowConcToolStripMenuItem, Me.ProfitsToolStripMenuItem})
+        Me.FinanceToolStripMenuItem.Name = "FinanceToolStripMenuItem"
+        Me.FinanceToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.FinanceToolStripMenuItem.Text = "مالية"
+        '
+        'TreasuryLogToolStripMenuItem1
+        '
+        Me.TreasuryLogToolStripMenuItem1.Name = "TreasuryLogToolStripMenuItem1"
+        Me.TreasuryLogToolStripMenuItem1.Size = New System.Drawing.Size(241, 24)
+        Me.TreasuryLogToolStripMenuItem1.Text = "حركة الخزينة"
+        '
+        'SalesCashFlowConcToolStripMenuItem
+        '
+        Me.SalesCashFlowConcToolStripMenuItem.Name = "SalesCashFlowConcToolStripMenuItem"
+        Me.SalesCashFlowConcToolStripMenuItem.Size = New System.Drawing.Size(241, 24)
+        Me.SalesCashFlowConcToolStripMenuItem.Text = "ملخص المبيعات والنقدية"
+        '
+        'ProfitsToolStripMenuItem
+        '
+        Me.ProfitsToolStripMenuItem.Name = "ProfitsToolStripMenuItem"
+        Me.ProfitsToolStripMenuItem.Size = New System.Drawing.Size(241, 24)
+        Me.ProfitsToolStripMenuItem.Text = "الارباح"
+        Me.ProfitsToolStripMenuItem.Visible = False
+        '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangePasswordToolStripMenuItem, Me.UsersToolStripMenuItem})
@@ -445,5 +513,14 @@ Partial Class MDIParent1
     Friend WithEvents bkHardwareCheck As System.ComponentModel.BackgroundWorker
     Friend WithEvents عنالمنظومةToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HWToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProductsToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AgentsToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AgentBalanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AgentLogToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FinanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TreasuryLogToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SalesCashFlowConcToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProfitsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

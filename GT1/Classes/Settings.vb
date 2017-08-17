@@ -121,13 +121,48 @@ Public Class Settings
             SetSetting("IsProductCodeShown", value)
         End Set
     End Property
+    Public Shared Property ModifyAllowedTime As String
+        Get
+            Return GetSettingValue("ModifyAllowedTime")
+        End Get
+        Set(ByVal value As String)
+            SetSetting("ModifyAllowedTime", value)
+        End Set
+    End Property
 
+    Public Shared Property IsBarcodeShown As String
+        Get
+            Return GetSettingValue("IsBarcodeShown")
+        End Get
+        Set(ByVal value As String)
+            SetSetting("IsBarcodeShown", value)
+        End Set
+    End Property
+    Public Shared Property IsRackShown As String
+        Get
+            Return GetSettingValue("IsRackShown")
+        End Get
+        Set(ByVal value As String)
+            SetSetting("IsRackShown", value)
+        End Set
+    End Property
+    Public Shared Property IsPacketSystem As String
+        Get
+            Return GetSettingValue("IsPacketSystem")
+        End Get
+        Set(ByVal value As String)
+            SetSetting("IsPacketSystem", value)
+        End Set
+    End Property
 
-
-
-
-
-
+    Public Shared Property IsExDateShown As String
+        Get
+            Return GetSettingValue("IsExDateShown")
+        End Get
+        Set(ByVal value As String)
+            SetSetting("IsExDateShown", value)
+        End Set
+    End Property
 
 
 

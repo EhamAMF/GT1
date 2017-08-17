@@ -32,7 +32,7 @@ Public Class frmLogin2
             MessageBox.Show(value.Name & " - " & value.PropertyValue.ToString)
         Next
 
-        If My.Settings.IsDebug = True Then
+        If Settings.IsDebug = True Then
             TbUserName.Text = "admin"
             TbPassword.Text = "admin"
             Dim str As String = ""

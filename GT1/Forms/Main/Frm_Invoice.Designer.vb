@@ -1,4 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Frm_Invoice
     Inherits System.Windows.Forms.Form
 
@@ -43,7 +45,7 @@ Partial Class Frm_Invoice
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
-        Me.dgvInfo = New System.Windows.Forms.DataGridView()
+        Me.dgvInfo = New ByteDGV
         Me.Title = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Disc = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -76,9 +78,9 @@ Partial Class Frm_Invoice
         Me.ادارةالباركودToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnAddItem = New System.Windows.Forms.Button()
-        Me.cboItem = New ByteClassLibrary.MyGridTextBox3()
         Me.cboItemType = New System.Windows.Forms.ComboBox()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.cboItem = New ByteClassLibrary.MyGridTextBox3()
+
         Me.ToolStrip1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -662,6 +664,15 @@ Partial Class Frm_Invoice
         Me.btnAddItem.Text = "+"
         Me.btnAddItem.UseVisualStyleBackColor = True
         '
+        'cboItemType
+        '
+        Me.cboItemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboItemType.FormattingEnabled = True
+        Me.cboItemType.Location = New System.Drawing.Point(52, 0)
+        Me.cboItemType.Name = "cboItemType"
+        Me.cboItemType.Size = New System.Drawing.Size(121, 33)
+        Me.cboItemType.TabIndex = 2
+        '
         'cboItem
         '
         Me.cboItem.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -677,15 +688,6 @@ Partial Class Frm_Invoice
         Me.cboItem.Size = New System.Drawing.Size(740, 32)
         Me.cboItem.TabIndex = 3
         Me.cboItem.TabOnEnter = True
-        '
-        'cboItemType
-        '
-        Me.cboItemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboItemType.FormattingEnabled = True
-        Me.cboItemType.Location = New System.Drawing.Point(52, 0)
-        Me.cboItemType.Name = "cboItemType"
-        Me.cboItemType.Size = New System.Drawing.Size(121, 33)
-        Me.cboItemType.TabIndex = 2
         '
         'Frm_Invoice
         '
@@ -748,7 +750,7 @@ Partial Class Frm_Invoice
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
-    Friend WithEvents dgvInfo As System.Windows.Forms.DataGridView
+    Friend WithEvents dgvInfo As ByteDGV
     Friend WithEvents Title As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Disc As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel2 As System.Windows.Forms.TableLayoutPanel
@@ -791,5 +793,5 @@ Partial Class Frm_Invoice
     Friend WithEvents Pbdot1 As ByteMyPictureBox.pbdot
     Friend WithEvents Pbc1 As ByteMyPictureBox.pbc
     Friend WithEvents Pb01 As ByteMyPictureBox.pb0
-    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+
 End Class
