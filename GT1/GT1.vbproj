@@ -249,6 +249,12 @@
     <Compile Include="Forms\In\frm_ProductBarcode.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\In\frm_Service.Designer.vb">
+      <DependentUpon>frm_Service.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\In\frm_Service.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\In\frm_Users.Designer.vb">
       <DependentUpon>frm_Users.vb</DependentUpon>
     </Compile>
@@ -351,6 +357,18 @@
     <Compile Include="Forms\Out\frm_sp_rpt_Agents_Balance.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Out\frm_sp_rpt_ExpenseLog.Designer.vb">
+      <DependentUpon>frm_sp_rpt_ExpenseLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Out\frm_sp_rpt_ExpenseLog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Out\frm_sp_rpt_Expenses.Designer.vb">
+      <DependentUpon>frm_sp_rpt_Expenses.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Out\frm_sp_rpt_Expenses.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Out\frm_sp_rpt_Invoice.Designer.vb">
       <DependentUpon>frm_sp_rpt_Invoice.vb</DependentUpon>
     </Compile>
@@ -363,6 +381,12 @@
     <Compile Include="Forms\Out\frm_sp_rpt_invoices.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Out\frm_sp_rpt_InvoicesRev.Designer.vb">
+      <DependentUpon>frm_sp_rpt_InvoicesRev.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Out\frm_sp_rpt_InvoicesRev.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Out\frm_sp_rpt_Payment.Designer.vb">
       <DependentUpon>frm_sp_rpt_Payment.vb</DependentUpon>
     </Compile>
@@ -373,6 +397,12 @@
       <DependentUpon>frm_sp_rpt_Payments.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Out\frm_sp_rpt_Payments.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Out\frm_sp_rpt_ProductLog.Designer.vb">
+      <DependentUpon>frm_sp_rpt_ProductLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Out\frm_sp_rpt_ProductLog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Out\frm_sp_rpt_SalesCashFlowConc.Designer.vb">
@@ -391,6 +421,12 @@
       <DependentUpon>frm_sp_rpt_StockBalance.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Out\frm_sp_rpt_StockBalance.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Out\frm_sp_rpt_StockValue.Designer.vb">
+      <DependentUpon>frm_sp_rpt_StockValue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Out\frm_sp_rpt_StockValue.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Out\frm_sp_rpt_Treasury.Designer.vb">
@@ -463,6 +499,9 @@
     <EmbeddedResource Include="Forms\In\frm_ProductBarcode.resx">
       <DependentUpon>frm_ProductBarcode.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\In\frm_Service.resx">
+      <DependentUpon>frm_Service.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\In\frm_Users.resx">
       <DependentUpon>frm_Users.vb</DependentUpon>
     </EmbeddedResource>
@@ -514,17 +553,29 @@
     <EmbeddedResource Include="Forms\Out\frm_sp_rpt_Agents_Balance.resx">
       <DependentUpon>frm_sp_rpt_Agents_Balance.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Out\frm_sp_rpt_ExpenseLog.resx">
+      <DependentUpon>frm_sp_rpt_ExpenseLog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Out\frm_sp_rpt_Expenses.resx">
+      <DependentUpon>frm_sp_rpt_Expenses.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Out\frm_sp_rpt_Invoice.resx">
       <DependentUpon>frm_sp_rpt_Invoice.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Out\frm_sp_rpt_invoices.resx">
       <DependentUpon>frm_sp_rpt_invoices.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Out\frm_sp_rpt_InvoicesRev.resx">
+      <DependentUpon>frm_sp_rpt_InvoicesRev.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Out\frm_sp_rpt_Payment.resx">
       <DependentUpon>frm_sp_rpt_Payment.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Out\frm_sp_rpt_Payments.resx">
       <DependentUpon>frm_sp_rpt_Payments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Out\frm_sp_rpt_ProductLog.resx">
+      <DependentUpon>frm_sp_rpt_ProductLog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Out\frm_sp_rpt_SalesCashFlowConc.resx">
       <DependentUpon>frm_sp_rpt_SalesCashFlowConc.vb</DependentUpon>
@@ -534,6 +585,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Out\frm_sp_rpt_StockBalance.resx">
       <DependentUpon>frm_sp_rpt_StockBalance.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Out\frm_sp_rpt_StockValue.resx">
+      <DependentUpon>frm_sp_rpt_StockValue.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Out\frm_sp_rpt_Treasury.resx">
       <DependentUpon>frm_sp_rpt_Treasury.vb</DependentUpon>
@@ -547,7 +601,11 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources1.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RDLC\rpt_sp_rpt_ExpenseLog.rdlc" />
+    <EmbeddedResource Include="RDLC\rpt_sp_rpt_Expenses.rdlc" />
+    <EmbeddedResource Include="RDLC\rpt_sp_rpt_InvoicesRev.rdlc" />
     <EmbeddedResource Include="RDLC\rpt_sp_rpt_SalesCashFlowConc.rdlc" />
+    <EmbeddedResource Include="RDLC\rpt_sp_rpt_StockValue.rdlc" />
     <EmbeddedResource Include="RDLC\rpt_sp_rpt_Treasury_A5_3c.rdlc" />
     <EmbeddedResource Include="RDLC\rpt_sp_rpt_Invoice_Receipt.rdlc" />
     <EmbeddedResource Include="RDLC\Copy of rpt_sp_rpt_Invoice.rdlc" />
@@ -643,6 +701,13 @@
     <None Include="Resources\a02_05 Insert into Settings.txt" />
     <None Include="Resources\a02_06 All.txt" />
     <None Include="Resources\a02_07 Update Version Table.txt" />
+    <None Include="Resources\a_Insert_All_Settings.txt" />
+    <None Include="Resources\a_UpdateVersion4.txt" />
+    <None Include="Resources\a_UpdateVersion5.txt" />
+    <None Include="Resources\a_UpdateVersion6.txt" />
+    <None Include="Resources\a01_Add_UserID_To_Services.txt" />
+    <None Include="Resources\a02_Add_UserID_Relation_To_Services.txt" />
+    <None Include="Resources\a_All_Proc_Func.txt" />
     <Content Include="To Do\To Do.txt" />
     <None Include="Resources\byteStartUp.bmp" />
     <None Include="Service References\WebServiceUpdateUri\Reference.svcmap">

@@ -634,4 +634,73 @@ Public Class MDIParent1
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
+
+    Private Sub ProfitsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProfitsToolStripMenuItem.Click
+        Try
+
+            Dim f As New frm_sp_rpt_InvoicesRev
+            f.MdiParent = Me
+            f.Show()
+            f.WindowState = FormWindowState.Maximized
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+    Private Sub قيمةالمخزونToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles قيمةالمخزونToolStripMenuItem.Click
+        Try
+
+            Dim f As New frm_sp_rpt_StockValue
+            f.MdiParent = Me
+            f.Show()
+            f.WindowState = FormWindowState.Maximized
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+    Private Sub حركةصنفToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles حركةصنفToolStripMenuItem.Click
+        Try
+
+            Dim f As New frm_sp_rpt_ProductLog
+            f.MdiParent = Me
+            f.Show()
+            f.WindowState = FormWindowState.Maximized
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+    Private Sub ServicesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ServicesToolStripMenuItem.Click
+        Try
+            Dim f As New frm_Service
+            f.MdiParent = Me
+            f.Show()
+            f.WindowState = FormWindowState.Maximized
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+    Private Sub ExpensesCostToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExpensesCostToolStripMenuItem.Click
+        Try
+            Dim f As New frm_sp_rpt_Expenses
+            f.MdiParent = Me
+            f.Show()
+            f.WindowState = FormWindowState.Maximized
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+    Private Sub ExpenseLogToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExpenseLogToolStripMenuItem.Click
+        Try
+            Dim f As New frm_sp_rpt_ExpenseLog
+            f.MdiParent = Me
+            f.Show()
+            f.WindowState = FormWindowState.Maximized
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
 End Class

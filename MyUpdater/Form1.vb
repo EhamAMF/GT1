@@ -16,7 +16,7 @@ Public Class Form1
 
         ParseCommandLineArgs()
         BackgroundWorker1.RunWorkerAsync()
-        UnZip()
+        '        UnZip()
 
     End Sub
     Private Sub ParseCommandLineArgs()

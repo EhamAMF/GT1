@@ -214,4 +214,25 @@
   <data name="a02_07_Update_Version_Table" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\a02_07 Update Version Table.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1256</value>
   </data>
+  <data name="a_All_Proc_Func" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a_All_Proc_Func.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="a_Insert_All_Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a_Insert_All_Settings.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="a_UpdateVersion4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a_UpdateVersion4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="a_UpdateVersion5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a_UpdateVersion5.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="a_UpdateVersion6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a_UpdateVersion6.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="a01_Add_UserID_To_Services" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a01_Add_UserID_To_Services.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="a02_Add_UserID_Relation_To_Services" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a02_Add_UserID_Relation_To_Services.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
 </root>

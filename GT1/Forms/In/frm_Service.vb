@@ -1,70 +1,22 @@
 ﻿Imports System.Data.SqlClient
 Imports Microsoft.Reporting.WinForms
 Imports ByteClassLibrary.MyFunctions
-Public Class frm_Expense
+Public Class frm_Service
     Dim WithEvents da As New SqlDataAdapter
     Dim WithEvents dt As New DataTable
     Dim WithEvents bs As New BindingSource
 
-
-    Dim _ExpenseID As Object = DBNull.Value
-
-    Dim _InvoiceID As Object = DBNull.Value
-    Dim _InvoiceNumber As Object = DBNull.Value
-
-
-
-    Public Sub New()
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-
-        PInvoiceID.Visible = False
-
-    End Sub
-
-    Public Sub New(ByVal ExpenseID As Object)
-        InitializeComponent()
-
-        _ExpenseID = ExpenseID
-
-    End Sub
-
-    Public Sub New(ByVal InvoiceID As Object, ByVal InvoiceNumber As Object)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-
-        _InvoiceID = IIf(IsNothing(InvoiceID), DBNull.Value, InvoiceID)
-        _InvoiceNumber = IIf(IsNothing(InvoiceNumber), DBNull.Value, InvoiceNumber)
-
-
-        PInvoiceID.Visible = False
-
-    End Sub
-
-
-
-
-
-
-
-    Private Sub frm_Expense_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frm_Service_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             FontMyControl(Me)
             lblTitle.Text = Me.Text
             daInitialize()
-            Get_sp_hlp_ExpenseType()
 
             GetDataTable()
             bs.MoveLast()
             EnableDisableControls(False)
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
     End Sub
     Private Sub daInitialize()
@@ -74,38 +26,24 @@ Public Class frm_Expense
         da.SelectCommand = New SqlCommand
         With da.SelectCommand
             .Connection = PubCn
-            .CommandText = "sp_tbl_Expense_Select"
+            .CommandText = "sp_tbl_Service_Select"
             .CommandType = CommandType.StoredProcedure
-            .Parameters.Clear()
-            .Parameters.AddWithValue("@ExpenseID", _ExpenseID)
-            .Parameters.AddWithValue("@InvoiceID", _InvoiceID)
-
-
-
         End With
 
         da.InsertCommand = New SqlCommand
         With da.InsertCommand
 
             .Connection = PubCn
-            .CommandText = "sp_tbl_Expense_Insert"
+            .CommandText = "sp_tbl_Service_Insert"
             .CommandType = CommandType.StoredProcedure
 
 
             .Parameters.Clear()
-            .Parameters.Add("@ExpenseID", SqlDbType.BigInt, 0, "ExpenseID")
-            .Parameters("@ExpenseID").Direction = ParameterDirection.Output
-
-            .Parameters.AddWithValue("@InvoiceID", _InvoiceID)
-
-            .Parameters.Add("@InvoiceNumber", SqlDbType.BigInt, 0, "InvoiceNumber")
-            .Parameters("@InvoiceNumber").Direction = ParameterDirection.Output
-            .Parameters.Add("@ExpenseTypeID", SqlDbType.BigInt, 0, "ExpenseTypeID")
-            .Parameters.Add("@ExpenseType", SqlDbType.NVarChar, 50, "ExpenseType")
-            .Parameters("@ExpenseType").Direction = ParameterDirection.Output
-            .Parameters.Add("@ExpenseCost", SqlDbType.Decimal, 0, "ExpenseCost")
-            .Parameters.Add("@ExpenseDate", SqlDbType.DateTime, 0, "ExpenseDate")
-            .Parameters.Add("@Note", SqlDbType.NVarChar, 200, "Note")
+            .Parameters.Add("@ServiceID", SqlDbType.BigInt, 0, "ServiceID")
+            .Parameters("@ServiceID").Direction = ParameterDirection.Output
+            .Parameters.Add("@ServiceName", SqlDbType.NVarChar, 200, "ServiceName")
+            .Parameters.Add("@ServiceCost", SqlDbType.Decimal, 0, "ServiceCost")
+            .Parameters.Add("@ServicePrice", SqlDbType.Decimal, 0, "ServicePrice")
             .Parameters.Add("@UserID", SqlDbType.BigInt, 0, "UserID")
             .Parameters.Add("@Username", SqlDbType.NVarChar, 50, "Username")
             .Parameters("@Username").Direction = ParameterDirection.Output
@@ -115,17 +53,14 @@ Public Class frm_Expense
         da.UpdateCommand = New SqlCommand
         With da.UpdateCommand
             .Connection = PubCn
-            .CommandText = "sp_tbl_Expense_Update"
+            .CommandText = "sp_tbl_Service_Update"
             .CommandType = CommandType.StoredProcedure
 
             .Parameters.Clear()
-            .Parameters.Add("@ExpenseID", SqlDbType.BigInt, 0, "ExpenseID")
-            .Parameters.Add("@ExpenseTypeID", SqlDbType.BigInt, 0, "ExpenseTypeID")
-            .Parameters.Add("@ExpenseType", SqlDbType.NVarChar, 50, "ExpenseType")
-            .Parameters("@ExpenseType").Direction = ParameterDirection.Output
-            .Parameters.Add("@ExpenseCost", SqlDbType.Decimal, 0, "ExpenseCost")
-            .Parameters.Add("@ExpenseDate", SqlDbType.DateTime, 0, "ExpenseDate")
-            .Parameters.Add("@Note", SqlDbType.NVarChar, 200, "Note")
+            .Parameters.Add("@ServiceID", SqlDbType.BigInt, 0, "ServiceID")
+            .Parameters.Add("@ServiceName", SqlDbType.NVarChar, 200, "ServiceName")
+            .Parameters.Add("@ServiceCost", SqlDbType.Decimal, 0, "ServiceCost")
+            .Parameters.Add("@ServicePrice", SqlDbType.Decimal, 0, "ServicePrice")
             .Parameters.Add("@UserID", SqlDbType.BigInt, 0, "UserID")
             .Parameters.Add("@Username", SqlDbType.NVarChar, 50, "Username")
             .Parameters("@Username").Direction = ParameterDirection.Output
@@ -135,41 +70,17 @@ Public Class frm_Expense
         da.DeleteCommand = New SqlCommand
         With da.DeleteCommand
             .Connection = PubCn
-            .CommandText = "sp_tbl_Expense_Delete"
+            .CommandText = "sp_tbl_Service_Delete"
             .CommandType = CommandType.StoredProcedure
 
             .Parameters.Clear()
-            .Parameters.Add("@ExpenseID", SqlDbType.BigInt, 0, "ExpenseID")
-            .Parameters("@ExpenseID").SourceVersion = DataRowVersion.Original
+            .Parameters.Add("@ServiceID", SqlDbType.BigInt, 0, "ServiceID")
+            .Parameters("@ServiceID").SourceVersion = DataRowVersion.Original
             .Parameters.Add("@UserID", SqlDbType.BigInt, 0, "UserID")
             .Parameters("@UserID").SourceVersion = DataRowVersion.Original
 
         End With
 
-
-
-    End Sub
-    Private Sub Get_sp_hlp_ExpenseType()
-
-        Dim da As New SqlDataAdapter("sp_hlp_ExpenseType", PubCn)
-        Dim dt As New DataTable
-        Dim bs As New BindingSource
-
-        da.SelectCommand.CommandType = CommandType.StoredProcedure
-
-        dt.Clear()
-        da.Fill(dt)
-        dt.Rows.RemoveAt(0)
-        bs.DataSource = dt
-
-
-
-        With cboExpenseTypeID
-            .MySource = bs
-            .SetColumn(ByteClassLibrary.MyComboBoxGrid.ColType.ValueMember, "ExpenseTypeID", False, "")
-            .SetColumn(ByteClassLibrary.MyComboBoxGrid.ColType.DisplayMember, "ExpenseType", True, "")
-            .MyBeginProcess()
-        End With
 
 
     End Sub
@@ -184,22 +95,12 @@ Public Class frm_Expense
         dgv.DataSource = bs
 
         With dgv
-            .Columns("InvoiceID").Visible = False
-            .Columns("IsPaid").Visible = False
-            .Columns("ExpenseTypeID").Visible = False
             .Columns("UserID").Visible = False
 
-            If IsNullNothing(_InvoiceID) = 0 Then
-                .Columns("InvoiceNumber").Visible = False
-            End If
-
-
-            .Columns("ExpenseID").HeaderText = "ر.م"
-            .Columns("InvoiceNumber").HeaderText = "رقم الفاتورة"
-            .Columns("ExpenseType").HeaderText = "البند"
-            .Columns("ExpenseCost").HeaderText = "القيمة"
-            .Columns("ExpenseDate").HeaderText = "التاريخ"
-            .Columns("Note").HeaderText = "ملاحظة"
+            .Columns("ServiceID").HeaderText = "ر.م"
+            .Columns("ServiceName").HeaderText = "الخدمة"
+            .Columns("ServiceCost").HeaderText = "التكلفة"
+            .Columns("ServicePrice").HeaderText = "البيع"
             .Columns("Username").HeaderText = "المستخدم"
 
         End With
@@ -207,34 +108,20 @@ Public Class frm_Expense
 
 
 
-        Me.numInvoiceID.DataBindings.Clear()
-        Me.numInvoiceID.DataBindings.Add(New System.Windows.Forms.Binding("Text", bs, "InvoiceID", True, DataSourceUpdateMode.OnPropertyChanged))
+        Me.txtServiceName.DataBindings.Clear()
+        Me.txtServiceName.DataBindings.Add(New System.Windows.Forms.Binding("Text", bs, "ServiceName", True, DataSourceUpdateMode.OnPropertyChanged))
 
 
 
 
-        Me.cboExpenseTypeID.DataBindings.Clear()
-        Me.cboExpenseTypeID.DataBindings.Add(New System.Windows.Forms.Binding("MySelectedvalue", bs, "ExpenseTypeID", True, DataSourceUpdateMode.OnPropertyChanged))
-        Me.cboExpenseTypeID.DataBindings.Add(New System.Windows.Forms.Binding("Text", bs, "ExpenseType", True, DataSourceUpdateMode.OnValidation))
+        Me.numServiceCost.DataBindings.Clear()
+        Me.numServiceCost.DataBindings.Add(New System.Windows.Forms.Binding("Text", bs, "ServiceCost", True, DataSourceUpdateMode.OnPropertyChanged))
 
 
 
 
-
-        Me.numExpenseCost.DataBindings.Clear()
-        Me.numExpenseCost.DataBindings.Add(New System.Windows.Forms.Binding("Text", bs, "ExpenseCost", True, DataSourceUpdateMode.OnPropertyChanged))
-
-
-
-
-        Me.dtpExpenseDate.DataBindings.Clear()
-        Me.dtpExpenseDate.DataBindings.Add(New System.Windows.Forms.Binding("Value", bs, "ExpenseDate", True, DataSourceUpdateMode.OnPropertyChanged))
-
-
-
-
-        Me.txtNote.DataBindings.Clear()
-        Me.txtNote.DataBindings.Add(New System.Windows.Forms.Binding("Text", bs, "Note", True, DataSourceUpdateMode.OnPropertyChanged))
+        Me.numServicePrice.DataBindings.Clear()
+        Me.numServicePrice.DataBindings.Add(New System.Windows.Forms.Binding("Text", bs, "ServicePrice", True, DataSourceUpdateMode.OnPropertyChanged))
 
 
 
@@ -242,45 +129,6 @@ Public Class frm_Expense
         lblCount.Text = bs.Count
 
     End Sub
-
-
-    Public Sub DeleteEntry(ByVal ID As Int64, ByVal UserID As Int64)
-        Try
-
-
-            If msgShow("هل أنت متأكد من الحدف ؟", ByteClassLibrary.Frm_msg.FormType.YesNoWarning) = Windows.Forms.DialogResult.Yes Then
-
-
-
-
-                Dim cmd As New SqlCommand
-                With cmd
-                    .Connection = PubCn
-                    .CommandText = "sp_tbl_Expense_Delete"
-                    .CommandType = CommandType.StoredProcedure
-
-                    .Parameters.Clear()
-                    .Parameters.AddWithValue("@ExpenseID", ID)
-                    .Parameters.AddWithValue("@UserID", UserID)
-
-
-                    If PubCn.State <> ConnectionState.Open Then PubCn.Open()
-                    cmd.ExecuteNonQuery()
-                    If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
-
-                End With
-
-
-            End If
-        Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
-        End Try
-
-
-
-    End Sub
-
-
 
 
     Private Sub EnableDisableControls(ByVal IsEditting As Boolean)
@@ -313,9 +161,6 @@ Public Class frm_Expense
             bs.AddNew()
             EnableDisableControls(True)
 
-
-            dtpExpenseDate.Value = Now
-
             For Each c As Control In SplitContainer1.Panel1.Controls
                 If c.GetType.BaseType.Name <> "" Then
                     c.Focus()
@@ -326,7 +171,7 @@ Public Class frm_Expense
 
             'txtClientName.Focus()
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
 
     End Sub
@@ -364,14 +209,14 @@ Public Class frm_Expense
                 EnableDisableControls(True)
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
     End Sub
     Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
         Try
             EnableDisableControls(True)
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
     End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
@@ -382,7 +227,7 @@ Public Class frm_Expense
             dgv.AutoResizeColumns()
             EnableDisableControls(False)
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
     End Sub
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
@@ -395,7 +240,7 @@ Public Class frm_Expense
                 EnableDisableControls(False)
             End If
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
     End Sub
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
@@ -404,7 +249,7 @@ Public Class frm_Expense
             EnableDisableControls(False)
 
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
     End Sub
     Private Sub Me_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
@@ -422,7 +267,7 @@ Public Class frm_Expense
                     If btnEdit.Enabled = True Then btnEdit.PerformClick()
             End Select
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
 
     End Sub
@@ -439,7 +284,7 @@ Public Class frm_Expense
         Try
             lblCount.Text = bs.Count
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex)
         End Try
 
     End Sub
@@ -453,19 +298,6 @@ Public Class frm_Expense
             bs.Item(e.NewIndex)("UserID") = PubUserID
             bs.Item(e.NewIndex)("Username") = PubUserName
         End If
-    End Sub
-    Private Sub lblExpenseTypeID_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblExpenseTypeID.Click
-        Try
-            Dim F As New frm_ExpenseType
-            F.WindowState = FormWindowState.Normal
-            F.StartPosition = FormStartPosition.CenterScreen
-            F.ShowDialog()
-            cboExpenseTypeID.DataBindings.Clear()
-            Get_sp_hlp_ExpenseType()
-            Me.cboExpenseTypeID.DataBindings.Add(New System.Windows.Forms.Binding("MySelectedvalue", bs, "ExpenseTypeID", True, DataSourceUpdateMode.OnPropertyChanged))
-        Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
-        End Try
     End Sub
 
 
@@ -486,7 +318,7 @@ Public Class frm_Expense
         If txtSearch.Text.Trim = "" Or txtSearch.Text.Trim = "بحث" Then
             bs.Filter = ""
         Else
-            bs.Filter = "ProductFullName like '%" & txtSearch.Text & "%'"
+            bs.Filter = "ServiceName like '%" & txtSearch.Text & "%'"
         End If
     End Sub
 

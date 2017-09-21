@@ -18,7 +18,7 @@ Public Class Frm_Invoice
     Dim WithEvents _DtInvoice As New DataTable
     Dim WithEvents _BsInvoice As New BindingSource
 
-
+    Dim _IsInvoiceChanged As Boolean = False
 
 
     Dim WithEvents _BsItem As New BindingSource
@@ -110,6 +110,7 @@ Public Class Frm_Invoice
         Set(ByVal value As InvoiceTypes)
             _InvoiceType = value
             RaiseEvent InvoiceTypeChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property InvoiceID As Object
@@ -119,6 +120,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _InvoiceID = value
             RaiseEvent InvoiceIDChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property InvoiceTypeID As Object
@@ -128,6 +130,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _InvoiceTypeID = value
             RaiseEvent InvoiceTypeIDChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property IsPaid As Object
@@ -137,6 +140,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _IsPaid = value
             RaiseEvent IsPaidChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property InvoiceNumber As Object
@@ -146,6 +150,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _InvoiceNumber = value
             RaiseEvent InvoiceNumberChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property InvoiceRealNumber As Object
@@ -155,6 +160,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _InvoiceRealNumber = value
             RaiseEvent InvoiceRealNumberChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property OrgInvoiceNumber As Object
@@ -164,6 +170,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _OrgInvoiceNumber = value
             RaiseEvent OrgInvoiceNumberChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property OrgInvoiceID As Object
@@ -173,6 +180,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _OrgInvoiceID = value
             RaiseEvent OrgInvoiceIDChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property InvDate As Object
@@ -182,6 +190,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _InvDate = value
             RaiseEvent InvDateChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property AgentID As Object
@@ -194,6 +203,7 @@ Public Class Frm_Invoice
                 AgentName = _BsAgent.Current("AgentName")
             End If
             RaiseEvent AgentIDChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property DistributorID As Object
@@ -206,6 +216,7 @@ Public Class Frm_Invoice
                 DistributorName = _BsDistributor.Current("DistributorName")
             End If
             RaiseEvent DistributorIDChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property CustomerName As Object
@@ -215,6 +226,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _CustomerName = value
             RaiseEvent CustomerNameChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property TotalPrice As Object
@@ -224,6 +236,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _TotalPrice = value
             RaiseEvent TotalPriceChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property FinalPrice As Object
@@ -233,6 +246,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _FinalPrice = value
             RaiseEvent FinalPriceChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property Revenue As Object
@@ -242,6 +256,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _Revenue = value
             RaiseEvent RevenueChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property Note As Object
@@ -251,6 +266,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _Note = value
             RaiseEvent NoteChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
     Public Property UserID As Object
@@ -260,6 +276,7 @@ Public Class Frm_Invoice
         Set(ByVal value As Object)
             _UserID = value
             RaiseEvent UserIDChanged(value)
+            _IsInvoiceChanged = True
         End Set
     End Property
 
@@ -413,6 +430,8 @@ Public Class Frm_Invoice
         Return MyBase.ProcessKeyEventArgs(msg)
     End Function
 
+
+
     Private Sub Frm_Invoice_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             FontMyControl(Me)
@@ -441,15 +460,27 @@ Public Class Frm_Invoice
             lblTotal.Font = New Font("Arial", 36, FontStyle.Bold)
             FormConditionalApearance()
 
-            tt.Font = MF.aljazeera
+
             cboItem.dgv.ShowCellToolTips = False
+            cboAgent.dgv.ShowCellToolTips = False
+            tt.Font = MF.aljazeera
+            'tt.Font = New Font("Tahoma", 10)
+
 
 
         Catch ex As Exception
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
-
+    Private Sub Frm_Invoice_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Try
+            If _IsInvoiceChanged = True AndAlso msgShow("توجد بيانات غير محفوظة ,هل تريد الحفظ ؟", Frm_msg.FormType.YesNoWarning) = Windows.Forms.DialogResult.Yes Then
+                btnSave.PerformClick()
+            End If
+        Catch ex As Exception
+            HandleMyError(ex, , , My.Settings.IsDebug)
+        End Try
+    End Sub
 
 #Region "       dgvInfo"
 
@@ -518,6 +549,109 @@ Public Class Frm_Invoice
 
     End Sub
 
+    Private Function fn_sp_rpt_AgentInfo(ByRef AgentID As Object, ByRef AgentName As Object, ByRef Balance As Object, ByRef Phone As Object, ByRef address As Object, ByRef Note As Object) As DataTable
+
+        Dim da As New SqlDataAdapter("sp_rpt_AgentInfo", PubCn)
+        Dim dt As New DataTable
+
+        da.SelectCommand.CommandType = CommandType.StoredProcedure
+
+        With da.SelectCommand.Parameters
+            .Clear()
+            .AddWithValue("@AgentID", AgentID)
+            .Add("@AgentName", SqlDbType.NVarChar, 200)
+            .Add("@Balance", SqlDbType.Decimal, 0)
+            .Add("@Phone", SqlDbType.NVarChar, 200)
+            .Add("@address", SqlDbType.NVarChar, 200)
+            .Add("@Note", SqlDbType.NVarChar, 200)
+
+        End With
+
+        With da.SelectCommand
+            .Parameters("@AgentName").Direction = ParameterDirection.Output
+            .Parameters("@Balance").Direction = ParameterDirection.Output
+            .Parameters("@Phone").Direction = ParameterDirection.Output
+            .Parameters("@address").Direction = ParameterDirection.Output
+            .Parameters("@Note").Direction = ParameterDirection.Output
+
+
+            .Parameters("@AgentName").Scale = 0
+            .Parameters("@Balance").Scale = 3
+            .Parameters("@Phone").Scale = 0
+            .Parameters("@address").Scale = 0
+            .Parameters("@Note").Scale = 0
+
+
+        End With
+
+        da.Fill(dt)
+
+        With da.SelectCommand
+            AgentName = .Parameters("@AgentName").Value
+            Balance = .Parameters("@Balance").Value
+            Phone = .Parameters("@Phone").Value
+            address = .Parameters("@address").Value
+            Note = .Parameters("@Note").Value
+
+        End With
+
+        Return dt
+    End Function
+    Private Function GetAgentInfo(ByVal AgentID As Int64) As String
+        Dim str As String = ""
+
+        Dim AgentName As String = ""
+        Dim Balance As Decimal = 0
+        Dim Phone As Object
+        Dim address As Object
+        Dim Note As Object
+
+        fn_sp_rpt_AgentInfo(AgentID, AgentName, Balance, Phone, address, Note)
+
+
+        str = str & "الاسم : " & AgentName & vbNewLine
+        str = str & "الرصيد : " & Format(Balance, "#,##0.00#")
+
+
+        If IsDBNull(Phone) = False Then
+            str = str & vbNewLine
+            str = str & "هاتف : " & Phone
+        End If
+
+
+        If IsDBNull(address) = False Then
+            str = str & vbNewLine
+            str = str & "عنوان : " & address
+        End If
+
+
+        If IsDBNull(Note) = False Then
+            str = str & vbNewLine
+            str = str & "ملاحظة : " & Note
+        End If
+
+
+
+
+
+
+
+        Return str
+    End Function
+
+
+
+    Private Sub cboAgent_DGVChangedCurrenCell(ByVal CurrentID As Object, ByVal CurrentDisplayCellRect As Rectangle) Handles cboAgent.DGVChangedCurrenCell
+
+
+        Dim ID As Int64 = CurrentID
+
+        tt.Hide(cboAgent.dgv)
+        tt.Show(GetAgentInfo(ID), cboAgent.dgv, CurrentDisplayCellRect.X + CurrentDisplayCellRect.Height / 2, CurrentDisplayCellRect.Y + CurrentDisplayCellRect.Height / 2, 10000)
+
+
+
+    End Sub
 
 
 
@@ -822,7 +956,7 @@ Public Class Frm_Invoice
 
 
         If CellDgvInfo_InvDate Is Cell Then
-   
+
         ElseIf CellDgvInfo_AgentName Is Cell Then
 
 
@@ -895,6 +1029,19 @@ Public Class Frm_Invoice
     Private Sub dtpInvoiceDate_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles dtpInvoiceDate.ValueChanged
         Try
             InvDate = dtpInvoiceDate.Value
+
+            If Not IsNothing(_DtInvoice.Rows) AndAlso _DtInvoice.Rows.Count > 0 Then
+
+                For Each dr As DataRow In _DtInvoice.Rows
+                    If dr.RowState = DataRowState.Unchanged Then
+                        dr.SetModified()
+                    End If
+                Next
+
+
+            End If
+
+
         Catch ex As Exception
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
@@ -1209,7 +1356,7 @@ Public Class Frm_Invoice
 
         If Settings.IsPacketSystem = True Then
             If IsNullNothing(SubAmount, 0) <> 0 Then
-                str = str & "العبوة : " & SubAmount & vbNewLine
+                str = str & "العبوة : " & Format(SubAmount, "#,##0.###") & vbNewLine
             End If
             str = str & vbNewLine
         End If
@@ -1219,16 +1366,16 @@ Public Class Frm_Invoice
 
         str = str & "---بيانات القطعة---" & vbNewLine
         If IsNullNothing(AmountLeft, 0) <> 0 Then
-            str = str & "الكمية المتبقية : " & AmountLeft & vbNewLine
+            str = str & "الكمية المتبقية : " & Format(AmountLeft, "#,##0.###") & vbNewLine
         End If
         If IsNullNothing(AvgUnitCost, 0) <> 0 Then
-            str = str & "متوسط التكلفة : " & AvgUnitCost & vbNewLine
+            str = str & "متوسط التكلفة : " & Format(AvgUnitCost, "#,##0.###") & vbNewLine
         End If
         If IsNullNothing(LastUnitCost, 0) <> 0 Then
-            str = str & "اخر تكلفة : " & LastUnitCost & vbNewLine
+            str = str & "اخر تكلفة : " & Format(LastUnitCost, "#,##0.###") & vbNewLine
         End If
         If IsNullNothing(SellPrice, 0) <> 0 Then
-            str = str & "سعر البيع :" & SellPrice & vbNewLine
+            str = str & "سعر البيع :" & Format(SellPrice, "#,##0.###") & vbNewLine
         End If
 
 
@@ -1240,16 +1387,16 @@ Public Class Frm_Invoice
             str = str & "---بيانات الصندوق---" + vbNewLine
 
             If IsNullNothing(AmountLeftPacket, 0) <> 0 Then
-                str = str & "الكمية المتبقية  : " & AmountLeftPacket & vbNewLine
+                str = str & "الكمية المتبقية  : " & Format(AmountLeftPacket, "#,##0.###") & vbNewLine
             End If
             If IsNullNothing(AvgUnitCostPacket, 0) <> 0 Then
-                str = str & "متوسط التكلفة : " & AvgUnitCostPacket & vbNewLine
+                str = str & "متوسط التكلفة : " & Format(AvgUnitCostPacket, "#,##0.###") & vbNewLine
             End If
             If IsNullNothing(LastUnitCostPacket, 0) <> 0 Then
-                str = str & "اخر تكلفة : " & LastUnitCostPacket & vbNewLine
+                str = str & "اخر تكلفة : " & Format(LastUnitCostPacket, "#,##0.###") & vbNewLine
             End If
             If IsNullNothing(SellPricePacket, 0) <> 0 Then
-                str = str & "سعر البيع :" & SellPricePacket
+                str = str & "سعر البيع :" & Format(SellPricePacket, "#,##0.###")
             End If
 
 
@@ -1365,6 +1512,61 @@ Public Class Frm_Invoice
 
 
     End Sub
+
+
+    Dim tt As New ByteToolTip()
+    Private Sub cboItem_DGVChangedCurrenCell(ByVal CurrentID As Object, ByVal CurrentDisplayCellRect As Rectangle) Handles cboItem.DGVChangedCurrenCell
+
+
+        Dim ItemType As Integer = Mid(CurrentID, 1, 1)
+
+        If ItemType = 2 Then tt.Hide(cboItem.dgv) : Return
+
+
+
+
+
+
+        Dim ID As Int64 = Mid(CurrentID, 3)
+
+        '   tt.Hide(cboItem.dgv)
+
+
+
+
+
+        Dim S As String = GetProductInfo(ID)
+        Dim new_size As SizeF = TextRenderer.MeasureText(S, MF.aljazeera)
+        Dim TooltipSize As Size = Size.Round(new_size)
+        TooltipSize.Height += 10
+        TooltipSize.Width += 10
+
+        Dim screenHeight As Integer = Screen.PrimaryScreen.Bounds.Height
+
+        Dim x As Integer = CurrentDisplayCellRect.X
+        Dim y As Integer = CurrentDisplayCellRect.Y
+
+        Dim Cell_Y_RefToDGV As Integer = CurrentDisplayCellRect.Y
+
+        Dim cell_Y_RefToScreen As Integer = cboItem.dgv.PointToScreen(New Point(0, 0)).Y + Cell_Y_RefToDGV
+
+
+        If screenHeight < TooltipSize.Height + cell_Y_RefToScreen Then
+            y = screenHeight - TooltipSize.Height
+        End If
+
+
+        ' tt.Show(S, cboItem.dgv, CurrentDisplayCellRect.X + CurrentDisplayCellRect.Height / 2, CurrentDisplayCellRect.Y, 10000)
+
+        tt.Show(S, cboItem.dgv, x, y, 10000)
+
+
+
+    End Sub
+
+
+
+
 
 
 #End Region
@@ -1920,8 +2122,17 @@ Public Class Frm_Invoice
         dgvInvoice.DataSource = _BsInvoice
 
 
+        _DtInvoice.AcceptChanges()
+        _IsInvoiceChanged = False
 
+    End Sub
 
+    Private Sub _BsInvoice_ListChanged(ByVal sender As Object, ByVal e As System.ComponentModel.ListChangedEventArgs) Handles _BsInvoice.ListChanged
+        Try
+            _IsInvoiceChanged = True
+        Catch ex As Exception
+            HandleMyError(ex, , , My.Settings.IsDebug)
+        End Try
     End Sub
 
 
@@ -2139,6 +2350,11 @@ Public Class Frm_Invoice
 
     Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
         Try
+
+            If _IsInvoiceChanged = True AndAlso msgShow("توجد بيانات غير محفوظة ,هل تريد الحفظ ؟", Frm_msg.FormType.YesNoWarning) = Windows.Forms.DialogResult.Yes Then
+                btnSave.PerformClick()
+            End If
+
             dgvInvoice.Sort(dgvInvoice.Columns("Sort"), System.ComponentModel.ListSortDirection.Ascending)
             InvoiceID = 0
             GetInvoice()
@@ -2149,6 +2365,10 @@ Public Class Frm_Invoice
     End Sub
     Private Sub btnNextInvoice_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNextInvoice.Click
         Try
+            If _IsInvoiceChanged = True AndAlso msgShow("توجد بيانات غير محفوظة ,هل تريد الحفظ ؟", Frm_msg.FormType.YesNoWarning) = Windows.Forms.DialogResult.Yes Then
+                btnSave.PerformClick()
+            End If
+
             dgvInvoice.Sort(dgvInvoice.Columns("Sort"), System.ComponentModel.ListSortDirection.Ascending)
             GetInvoice(1)
         Catch ex As Exception
@@ -2158,6 +2378,10 @@ Public Class Frm_Invoice
     End Sub
     Private Sub btnPreviosInvoice_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPreviosInvoice.Click
         Try
+            If _IsInvoiceChanged = True AndAlso msgShow("توجد بيانات غير محفوظة ,هل تريد الحفظ ؟", Frm_msg.FormType.YesNoWarning) = Windows.Forms.DialogResult.Yes Then
+                btnSave.PerformClick()
+            End If
+
             dgvInvoice.Sort(dgvInvoice.Columns("Sort"), System.ComponentModel.ListSortDirection.Ascending)
             GetInvoice(-1)
         Catch ex As Exception
@@ -2185,6 +2409,8 @@ Public Class Frm_Invoice
             Else
                 SaveInvoice(MyTrans)
             End If
+
+
             sp_op_ProcessAll(MyTrans)
 
 
@@ -2679,6 +2905,50 @@ Public Class Frm_Invoice
 
 
     End Sub
+
+
+
+    Private Sub NumberofItems(ByRef Box As Decimal, ByRef Unit As Decimal, ByRef Total As Decimal)
+
+        Box = 0
+        Unit = 0
+        Total = 0
+
+        For Each R As DataGridViewRow In dgvInvoice.Rows
+
+            If Not IsDBNull(R.Cells("IsPacket").Value) Then
+
+                If R.Cells("IsPacket").Value = True Then
+                    Box += R.Cells("Amount_inv").Value
+                Else
+                    Unit += R.Cells("Amount_inv").Value
+                End If
+
+            End If
+           
+        Next
+
+        Total += Box + Unit
+    End Sub
+    Private Function NumberofItemsSTR() As String
+
+        Dim box As Decimal
+        Dim unit As Decimal
+        Dim total As Decimal
+
+        NumberofItems(box, unit, total)
+
+        Dim str As String = ""
+
+        str = "اجمالي عدد الاصناف = " & Format(total, "#,##0.###")
+
+        Return str
+
+    End Function
+
+
+
+
 
     Private Sub Dt_Invoice_Add_Item(ByVal GID As Object _
     , ByVal IsProduct As Object, ByVal StockID As Object _
@@ -3404,25 +3674,21 @@ Public Class Frm_Invoice
 
     Private Sub lblTotal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblTotal.Click
 
+        Try
 
-        lblTotal.Text = CellDgvInfo_AgentName.ReadOnly
+            Dim str As String = NumberofItemsSTR()
+            tt.Show(str, ToolStrip1, 10000)
 
-    End Sub
-
-
-
-    Dim tt As New ByteToolTip()
-    Private Sub sdf(ByVal CurrentID As Object, ByVal CurrentDisplayCellRect As Rectangle) Handles cboItem.DGVChangedCurrenCell
-
-
-        Dim ID As Int64 = Mid(CurrentID, 3)
-
-        tt.Hide(cboItem.dgv)
-        tt.Show(GetProductInfo(ID), cboItem.dgv, CurrentDisplayCellRect.X + CurrentDisplayCellRect.Height / 2, CurrentDisplayCellRect.Y + CurrentDisplayCellRect.Height / 2, 10000)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
 
 
 
     End Sub
+
+
+
 
 
 

@@ -81,6 +81,103 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to 
+        '''/****** Object:  StoredProcedure [dbo].[sp_tbl_Invoice_Insert]    Script Date: 09/07/2017 15:18:00 ******/
+        '''IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N&apos;[dbo].[sp_tbl_Invoice_Insert]&apos;) AND type in (N&apos;P&apos;, N&apos;PC&apos;))
+        '''DROP PROCEDURE [dbo].[sp_tbl_Invoice_Insert]
+        ''';
+        '''/****** Object:  StoredProcedure [dbo].[sp_tbl_Invoice_Update]    Script Date: 09/07/2017 15:18:00 ******/
+        '''IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N&apos;[dbo].[sp_tbl_Invoice_Update]&apos;) AND type in (N&apos;P&apos; [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property a_All_Proc_Func() As String
+            Get
+                Return ResourceManager.GetString("a_All_Proc_Func", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to 
+        '''
+        '''if not exists (Select * from Settings where SettingName = &apos;IsMultiExDateAllowed&apos;)
+        '''insert into Settings (SettingName ,SettingValue ) values (&apos;IsMultiExDateAllowed&apos;,N&apos;false&apos;)
+        '''
+        '''if not exists (Select * from Settings where SettingName = &apos;IsPacketDefault&apos;)
+        '''insert into Settings (SettingName ,SettingValue ) values (&apos;IsPacketDefault&apos;,N&apos;false&apos;)
+        '''
+        '''if not exists (Select * from Settings where SettingName = &apos;OwenerID&apos;)
+        '''insert into Settings (SettingName ,SettingValue ) values (&apos;OwenerID&apos;,N&apos;&apos;)
+        '''
+        '''if not exists (S [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property a_Insert_All_Settings() As String
+            Get
+                Return ResourceManager.GetString("a_Insert_All_Settings", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to update Version set VersoinNumber = 4
+        '''
+        '''.
+        '''</summary>
+        Friend ReadOnly Property a_UpdateVersion4() As String
+            Get
+                Return ResourceManager.GetString("a_UpdateVersion4", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to update Version set VersoinNumber = 5
+        '''
+        '''.
+        '''</summary>
+        Friend ReadOnly Property a_UpdateVersion5() As String
+            Get
+                Return ResourceManager.GetString("a_UpdateVersion5", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to update Version set VersoinNumber = 6
+        '''
+        '''.
+        '''</summary>
+        Friend ReadOnly Property a_UpdateVersion6() As String
+            Get
+                Return ResourceManager.GetString("a_UpdateVersion6", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to /*
+        '''   Sunday, September 17, 201712:16:52 PM
+        '''   User: 
+        '''   Server: (local)
+        '''   Database: GT1
+        '''   Application: 
+        '''*/
+        '''
+        '''/* To prevent any potential data loss issues, you should review this script in detail before running it outside the context of the database designer.*/
+        '''BEGIN TRANSACTION
+        '''SET QUOTED_IDENTIFIER ON
+        '''SET ARITHABORT ON
+        '''SET NUMERIC_ROUNDABORT OFF
+        '''SET CONCAT_NULL_YIELDS_NULL ON
+        '''SET ANSI_NULLS ON
+        '''SET ANSI_PADDING ON
+        '''SET ANSI_WARNINGS ON
+        '''COMMIT
+        '''BEGIN TRANSACTION
+        ''';
+        '''ALTER TABLE dbo.Service        ''' [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property a01_Add_UserID_To_Services() As String
+            Get
+                Return ResourceManager.GetString("a01_Add_UserID_To_Services", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to CREATE TABLE [dbo].[Settings](
         '''	[SettingID] [bigint] IDENTITY(1,1) NOT NULL,
         '''	[SettingName] [nvarchar](200) NOT NULL,
@@ -171,6 +268,35 @@ Namespace My.Resources
         Friend ReadOnly Property a02_07_Update_Version_Table() As String
             Get
                 Return ResourceManager.GetString("a02_07_Update_Version_Table", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to /*
+        '''   Sunday, September 17, 201712:20:48 PM
+        '''   User: 
+        '''   Server: (local)
+        '''   Database: GT1
+        '''   Application: 
+        '''*/
+        '''
+        '''/* To prevent any potential data loss issues, you should review this script in detail before running it outside the context of the database designer.*/
+        '''BEGIN TRANSACTION
+        '''SET QUOTED_IDENTIFIER ON
+        '''SET ARITHABORT ON
+        '''SET NUMERIC_ROUNDABORT OFF
+        '''SET CONCAT_NULL_YIELDS_NULL ON
+        '''SET ANSI_NULLS ON
+        '''SET ANSI_PADDING ON
+        '''SET ANSI_WARNINGS ON
+        '''COMMIT
+        '''BEGIN TRANSACTION
+        ''';
+        '''ALTER TABLE dbo.Users SE [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property a02_Add_UserID_Relation_To_Services() As String
+            Get
+                Return ResourceManager.GetString("a02_Add_UserID_Relation_To_Services", resourceCulture)
             End Get
         End Property
         

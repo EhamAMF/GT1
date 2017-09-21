@@ -49,10 +49,104 @@ Module Module_DB_Upgrade
 
 
             PubdbVersion = ByteClassLibrary.MyFunctions.GetScalarValue(PubCn, "Version", "VersoinNumber", "1 = 1")
+            CheckUpgradeDB()
 
 
 
 
+        ElseIf PubdbVersion = 3 Then
+
+            Dim MyTrans As SqlTransaction
+            Try
+                If PubCn.State <> ConnectionState.Open Then PubCn.Open()
+                MyTrans = PubCn.BeginTransaction(IsolationLevel.Serializable)
+                cmd.Transaction = MyTrans
+
+
+
+                cmd.CommandText = My.Resources.a_Insert_All_Settings
+                cmd.ExecuteNonQuery()
+
+                cmd.CommandText = My.Resources.a_All_Proc_Func
+                cmd.ExecuteNonQuery()
+
+                cmd.CommandText = My.Resources.a_UpdateVersion4
+                cmd.ExecuteNonQuery()
+
+                MyTrans.Commit()
+
+            Catch ex As Exception
+                MyTrans.Rollback()
+                HandleMyError(ex, , , Settings.IsDebug)
+            Finally
+                If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
+            End Try
+
+
+            PubdbVersion = ByteClassLibrary.MyFunctions.GetScalarValue(PubCn, "Version", "VersoinNumber", "1 = 1")
+            CheckUpgradeDB()
+
+        ElseIf PubdbVersion = 4 Then
+
+            Dim MyTrans As SqlTransaction
+            Try
+                If PubCn.State <> ConnectionState.Open Then PubCn.Open()
+                MyTrans = PubCn.BeginTransaction(IsolationLevel.Serializable)
+                cmd.Transaction = MyTrans
+
+
+
+                cmd.CommandText = My.Resources.a_UpdateVersion5
+                cmd.ExecuteNonQuery()
+
+                MyTrans.Commit()
+
+            Catch ex As Exception
+                MyTrans.Rollback()
+                HandleMyError(ex, , , Settings.IsDebug)
+            Finally
+                If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
+            End Try
+
+
+            PubdbVersion = ByteClassLibrary.MyFunctions.GetScalarValue(PubCn, "Version", "VersoinNumber", "1 = 1")
+            CheckUpgradeDB()
+
+
+        ElseIf PubdbVersion = 5 Then
+
+            Dim MyTrans As SqlTransaction
+            Try
+                If PubCn.State <> ConnectionState.Open Then PubCn.Open()
+                MyTrans = PubCn.BeginTransaction(IsolationLevel.Serializable)
+                cmd.Transaction = MyTrans
+
+
+                cmd.CommandText = My.Resources.a01_Add_UserID_To_Services
+                cmd.ExecuteNonQuery()
+
+                cmd.CommandText = My.Resources.a02_Add_UserID_Relation_To_Services
+                cmd.ExecuteNonQuery()
+
+
+                cmd.CommandText = My.Resources.a_All_Proc_Func
+                cmd.ExecuteNonQuery()
+
+                cmd.CommandText = My.Resources.a_UpdateVersion6
+                cmd.ExecuteNonQuery()
+
+                MyTrans.Commit()
+
+            Catch ex As Exception
+                MyTrans.Rollback()
+                HandleMyError(ex, , , Settings.IsDebug)
+            Finally
+                If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
+            End Try
+
+
+            PubdbVersion = ByteClassLibrary.MyFunctions.GetScalarValue(PubCn, "Version", "VersoinNumber", "1 = 1")
+            CheckUpgradeDB()
 
         End If
 
