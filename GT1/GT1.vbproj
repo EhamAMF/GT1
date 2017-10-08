@@ -195,6 +195,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\Settings.vb" />
+    <Compile Include="Forms\Main\frm_Settings.Designer.vb">
+      <DependentUpon>frm_Settings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\frm_Settings.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\In\frm_About.Designer.vb">
       <DependentUpon>frm_About.vb</DependentUpon>
     </Compile>
@@ -423,6 +429,12 @@
     <Compile Include="Forms\Out\frm_sp_rpt_StockBalance.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Out\frm_sp_rpt_StockCorrect.Designer.vb">
+      <DependentUpon>frm_sp_rpt_StockCorrect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Out\frm_sp_rpt_StockCorrect.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Out\frm_sp_rpt_StockValue.Designer.vb">
       <DependentUpon>frm_sp_rpt_StockValue.vb</DependentUpon>
     </Compile>
@@ -472,6 +484,9 @@
     <Compile Include="Settings.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\Main\frm_Settings.resx">
+      <DependentUpon>frm_Settings.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\In\frm_About.resx">
       <DependentUpon>frm_About.vb</DependentUpon>
     </EmbeddedResource>
@@ -586,6 +601,9 @@
     <EmbeddedResource Include="Forms\Out\frm_sp_rpt_StockBalance.resx">
       <DependentUpon>frm_sp_rpt_StockBalance.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Out\frm_sp_rpt_StockCorrect.resx">
+      <DependentUpon>frm_sp_rpt_StockCorrect.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Out\frm_sp_rpt_StockValue.resx">
       <DependentUpon>frm_sp_rpt_StockValue.vb</DependentUpon>
     </EmbeddedResource>
@@ -694,6 +712,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cvc.ico" />
+    <Content Include="Forms\other\ToDo.txt" />
     <Content Include="ppp.ico" />
     <None Include="Resources\a02_02_CREATE_TABLE_Settings.txt" />
     <None Include="Resources\a02_03_Update_Account.txt" />
@@ -707,7 +726,12 @@
     <None Include="Resources\a_UpdateVersion6.txt" />
     <None Include="Resources\a01_Add_UserID_To_Services.txt" />
     <None Include="Resources\a02_Add_UserID_Relation_To_Services.txt" />
+    <None Include="Resources\a_UpdateVersion.txt" />
     <None Include="Resources\a_All_Proc_Func.txt" />
+    <None Include="Resources\a08To09_01_Add_ProductSearchName.txt" />
+    <None Include="Resources\a08To09_02_Update_ProductSearchName.txt" />
+    <None Include="Resources\a08To09_03_UnNull_ProductSearchName.txt" />
+    <None Include="Resources\a08To09_04_AddIndex_ProductSearchName.txt" />
     <Content Include="To Do\To Do.txt" />
     <None Include="Resources\byteStartUp.bmp" />
     <None Include="Service References\WebServiceUpdateUri\Reference.svcmap">

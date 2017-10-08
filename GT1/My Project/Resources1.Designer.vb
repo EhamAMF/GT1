@@ -82,11 +82,11 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to 
-        '''/****** Object:  StoredProcedure [dbo].[sp_tbl_Invoice_Insert]    Script Date: 09/07/2017 15:18:00 ******/
+        '''/****** Object:  StoredProcedure [dbo].[sp_tbl_Invoice_Insert]    Script Date: 10/01/2017 13:04:35 ******/
         '''IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N&apos;[dbo].[sp_tbl_Invoice_Insert]&apos;) AND type in (N&apos;P&apos;, N&apos;PC&apos;))
         '''DROP PROCEDURE [dbo].[sp_tbl_Invoice_Insert]
         ''';
-        '''/****** Object:  StoredProcedure [dbo].[sp_tbl_Invoice_Update]    Script Date: 09/07/2017 15:18:00 ******/
+        '''/****** Object:  StoredProcedure [dbo].[sp_tbl_Invoice_Update]    Script Date: 10/01/2017 13:04:35 ******/
         '''IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N&apos;[dbo].[sp_tbl_Invoice_Update]&apos;) AND type in (N&apos;P&apos; [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property a_All_Proc_Func() As String
@@ -112,6 +112,17 @@ Namespace My.Resources
         Friend ReadOnly Property a_Insert_All_Settings() As String
             Get
                 Return ResourceManager.GetString("a_Insert_All_Settings", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to update Version set VersoinNumber = @VersoinNumber
+        '''
+        '''.
+        '''</summary>
+        Friend ReadOnly Property a_UpdateVersion() As String
+            Get
+                Return ResourceManager.GetString("a_UpdateVersion", resourceCulture)
             End Get
         End Property
         
@@ -297,6 +308,96 @@ Namespace My.Resources
         Friend ReadOnly Property a02_Add_UserID_Relation_To_Services() As String
             Get
                 Return ResourceManager.GetString("a02_Add_UserID_Relation_To_Services", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to /* To prevent any potential data loss issues, you should review this script in detail before running it outside the context of the database designer.*/
+        '''BEGIN TRANSACTION
+        '''SET QUOTED_IDENTIFIER ON
+        '''SET ARITHABORT ON
+        '''SET NUMERIC_ROUNDABORT OFF
+        '''SET CONCAT_NULL_YIELDS_NULL ON
+        '''SET ANSI_NULLS ON
+        '''SET ANSI_PADDING ON
+        '''SET ANSI_WARNINGS ON
+        '''COMMIT
+        '''BEGIN TRANSACTION
+        '''GO
+        '''ALTER TABLE dbo.Product
+        '''	DROP CONSTRAINT FK_Product_Users
+        '''GO
+        '''ALTER TABLE dbo.Users SET (LOCK_ESCALATION = TABLE)
+        '''GO
+        '''COMMIT
+        '''BEGIN TRANSAC [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property a08To09_01_Add_ProductSearchName() As String
+            Get
+                Return ResourceManager.GetString("a08To09_01_Add_ProductSearchName", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to update Product 
+        '''set ProductSearchName = ProductName
+        '''.
+        '''</summary>
+        Friend ReadOnly Property a08To09_02_Update_ProductSearchName() As String
+            Get
+                Return ResourceManager.GetString("a08To09_02_Update_ProductSearchName", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to 
+        '''/* To prevent any potential data loss issues, you should review this script in detail before running it outside the context of the database designer.*/
+        '''BEGIN TRANSACTION
+        '''SET QUOTED_IDENTIFIER ON
+        '''SET ARITHABORT ON
+        '''SET NUMERIC_ROUNDABORT OFF
+        '''SET CONCAT_NULL_YIELDS_NULL ON
+        '''SET ANSI_NULLS ON
+        '''SET ANSI_PADDING ON
+        '''SET ANSI_WARNINGS ON
+        '''COMMIT
+        '''BEGIN TRANSACTION
+        '''GO
+        '''ALTER TABLE dbo.Product
+        '''	DROP CONSTRAINT FK_Product_Users
+        '''GO
+        '''ALTER TABLE dbo.Users SET (LOCK_ESCALATION = TABLE)
+        '''GO
+        '''COMMIT
+        '''BEGIN TRANS [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property a08To09_03_UnNull_ProductSearchName() As String
+            Get
+                Return ResourceManager.GetString("a08To09_03_UnNull_ProductSearchName", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to /* To prevent any potential data loss issues, you should review this script in detail before running it outside the context of the database designer.*/
+        '''BEGIN TRANSACTION
+        '''SET QUOTED_IDENTIFIER ON
+        '''SET ARITHABORT ON
+        '''SET NUMERIC_ROUNDABORT OFF
+        '''SET CONCAT_NULL_YIELDS_NULL ON
+        '''SET ANSI_NULLS ON
+        '''SET ANSI_PADDING ON
+        '''SET ANSI_WARNINGS ON
+        '''COMMIT
+        '''BEGIN TRANSACTION
+        '''GO
+        '''CREATE NONCLUSTERED INDEX IX_Product ON dbo.Product
+        '''	(
+        '''	ProductSearchName
+        '''	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLO [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property a08To09_04_AddIndex_ProductSearchName() As String
+            Get
+                Return ResourceManager.GetString("a08To09_04_AddIndex_ProductSearchName", resourceCulture)
             End Get
         End Property
         

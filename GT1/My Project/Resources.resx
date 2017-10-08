@@ -235,4 +235,19 @@
   <data name="a02_Add_UserID_Relation_To_Services" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\a02_Add_UserID_Relation_To_Services.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
+  <data name="a_UpdateVersion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a_UpdateVersion.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="a08To09_01_Add_ProductSearchName" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a08To09_01_Add_ProductSearchName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="a08To09_02_Update_ProductSearchName" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a08To09_02_Update_ProductSearchName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="a08To09_03_UnNull_ProductSearchName" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a08To09_03_UnNull_ProductSearchName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="a08To09_04_AddIndex_ProductSearchName" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a08To09_04_AddIndex_ProductSearchName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
 </root>

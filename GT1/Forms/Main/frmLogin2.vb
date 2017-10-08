@@ -76,7 +76,7 @@ Public Class frmLogin2
 
             If IsApproved = True Then
 
-                CheckUpgradeDB()
+                CheckUpgradeDB2()
 
                 MDIParent1.Show()
                 Me.Close()

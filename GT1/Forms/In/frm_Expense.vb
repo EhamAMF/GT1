@@ -159,15 +159,15 @@ Public Class frm_Expense
 
         dt.Clear()
         da.Fill(dt)
-        dt.Rows.RemoveAt(0)
+
         bs.DataSource = dt
 
-
+        bs.RemoveAt(bs.Find("ExpenseTypeID", DBNull.Value))
 
         With cboExpenseTypeID
             .MySource = bs
-            .SetColumn(ByteClassLibrary.MyComboBoxGrid.ColType.ValueMember, "ExpenseTypeID", False, "")
-            .SetColumn(ByteClassLibrary.MyComboBoxGrid.ColType.DisplayMember, "ExpenseType", True, "")
+            .SetColumn(ByteClassLibrary.MyGridTextBox3.ColType.ValueMember, "ExpenseTypeID", False, "")
+            .SetColumn(ByteClassLibrary.MyGridTextBox3.ColType.DisplayMember, "ExpenseType", True, "")
             .MyBeginProcess()
         End With
 
@@ -448,6 +448,11 @@ Public Class frm_Expense
             bs.Current("UserID") = PubUserID
             bs.Current("Username") = PubUserName
             bs.EndEdit()
+
+
+
+
+
         End If
         If e.ListChangedType = System.ComponentModel.ListChangedType.ItemAdded Then
             bs.Item(e.NewIndex)("UserID") = PubUserID

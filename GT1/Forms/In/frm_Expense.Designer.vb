@@ -330,242 +330,242 @@ Partial Class frm_Expense
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
-     Me.lblInvoiceID = New System.Windows.Forms.Label()
-Me.numInvoiceID = New ByteClassLibrary.MyNumericBox()
-Me.PInvoiceID = New System.Windows.Forms.Panel()
-Me.PInvoiceID.SuspendLayout()
-Me.lblExpenseTypeID = New System.Windows.Forms.Label()
-Me.cboExpenseTypeID = New ByteClassLibrary.MyComboBoxGrid()
-Me.PExpenseTypeID = New System.Windows.Forms.Panel()
-Me.PExpenseTypeID.SuspendLayout()
-Me.lblExpenseCost = New System.Windows.Forms.Label()
-Me.numExpenseCost = New ByteClassLibrary.MyNumericBox()
-Me.PExpenseCost = New System.Windows.Forms.Panel()
-Me.PExpenseCost.SuspendLayout()
-Me.lblExpenseDate = New System.Windows.Forms.Label()
-Me.dtpExpenseDate = New ByteClassLibrary.MyDateTimePicker()
-Me.PExpenseDate = New System.Windows.Forms.Panel()
-Me.PExpenseDate.SuspendLayout()
-Me.lblNote = New System.Windows.Forms.Label()
-Me.txtNote = New ByteClassLibrary.MyTextBox()
-Me.PNote = New System.Windows.Forms.Panel()
-Me.PNote.SuspendLayout()
+        Me.lblInvoiceID = New System.Windows.Forms.Label()
+        Me.numInvoiceID = New ByteClassLibrary.MyNumericBox()
+        Me.PInvoiceID = New System.Windows.Forms.Panel()
+        Me.PInvoiceID.SuspendLayout()
+        Me.lblExpenseTypeID = New System.Windows.Forms.Label()
+        Me.cboExpenseTypeID = New ByteClassLibrary.MyGridTextBox3()
+        Me.PExpenseTypeID = New System.Windows.Forms.Panel()
+        Me.PExpenseTypeID.SuspendLayout()
+        Me.lblExpenseCost = New System.Windows.Forms.Label()
+        Me.numExpenseCost = New ByteClassLibrary.MyNumericBox()
+        Me.PExpenseCost = New System.Windows.Forms.Panel()
+        Me.PExpenseCost.SuspendLayout()
+        Me.lblExpenseDate = New System.Windows.Forms.Label()
+        Me.dtpExpenseDate = New ByteClassLibrary.MyDateTimePicker()
+        Me.PExpenseDate = New System.Windows.Forms.Panel()
+        Me.PExpenseDate.SuspendLayout()
+        Me.lblNote = New System.Windows.Forms.Label()
+        Me.txtNote = New ByteClassLibrary.MyTextBox()
+        Me.PNote = New System.Windows.Forms.Panel()
+        Me.PNote.SuspendLayout()
 
-'lblInvoiceID
-'
+        'lblInvoiceID
+        '
 
-Me.lblInvoiceID.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-Me.lblInvoiceID.AutoSize = True
+        Me.lblInvoiceID.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblInvoiceID.AutoSize = True
         Me.lblInvoiceID.ForeColor = System.Drawing.Color.RoyalBlue
-Me.lblInvoiceID.Location = New System.Drawing.Point(234, 3)
-Me.lblInvoiceID.Name = "lblInvoiceID"
-Me.lblInvoiceID.TabIndex = 100
-Me.lblInvoiceID.Text = "رقم الفاتورة"
+        Me.lblInvoiceID.Location = New System.Drawing.Point(234, 3)
+        Me.lblInvoiceID.Name = "lblInvoiceID"
+        Me.lblInvoiceID.TabIndex = 100
+        Me.lblInvoiceID.Text = "رقم الفاتورة"
 
 
-'numInvoiceID
-'
+        'numInvoiceID
+        '
         Me.numInvoiceID.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
         Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.numInvoiceID.Size = New System.Drawing.Size(228, 31)
-Me.numInvoiceID.Location = New System.Drawing.Point(0,0)
-Me.numInvoiceID.Name = "numInvoiceID"
-Me.numInvoiceID.TabIndex = 0
+        Me.numInvoiceID.Location = New System.Drawing.Point(0, 0)
+        Me.numInvoiceID.Name = "numInvoiceID"
+        Me.numInvoiceID.TabIndex = 0
 
 
-'PInvoiceID
-'
-Me.PInvoiceID.Location = New System.Drawing.Point(56, 10)
-Me.PInvoiceID.Margin = New System.Windows.Forms.Padding(0)
-Me.PInvoiceID.Name = "PInvoiceID"
-Me.PInvoiceID.Size = New System.Drawing.Size(359, 37)
+        'PInvoiceID
+        '
+        Me.PInvoiceID.Location = New System.Drawing.Point(56, 10)
+        Me.PInvoiceID.Margin = New System.Windows.Forms.Padding(0)
+        Me.PInvoiceID.Name = "PInvoiceID"
+        Me.PInvoiceID.Size = New System.Drawing.Size(359, 37)
 
-Me.PInvoiceID.Location = New System.Drawing.Point(56, 10)
-Me.PInvoiceID.TabIndex = 200
+        Me.PInvoiceID.Location = New System.Drawing.Point(56, 10)
+        Me.PInvoiceID.TabIndex = 200
 
-Me.PInvoiceID.Controls.Add(Me.lblInvoiceID)
-Me.PInvoiceID.Controls.Add(Me.numInvoiceID)
+        Me.PInvoiceID.Controls.Add(Me.lblInvoiceID)
+        Me.PInvoiceID.Controls.Add(Me.numInvoiceID)
 
-'lblExpenseTypeID
-'
+        'lblExpenseTypeID
+        '
 
-Me.lblExpenseTypeID.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-Me.lblExpenseTypeID.AutoSize = True
+        Me.lblExpenseTypeID.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblExpenseTypeID.AutoSize = True
         Me.lblExpenseTypeID.ForeColor = System.Drawing.Color.RoyalBlue
-Me.lblExpenseTypeID.Location = New System.Drawing.Point(234, 3)
-Me.lblExpenseTypeID.Name = "lblExpenseTypeID"
-Me.lblExpenseTypeID.TabIndex = 101
-Me.lblExpenseTypeID.Text = "البند"
-Me.lblExpenseTypeID.Cursor = System.Windows.Forms.Cursors.Hand
-Me.lblExpenseTypeID.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.lblExpenseTypeID.Location = New System.Drawing.Point(234, 3)
+        Me.lblExpenseTypeID.Name = "lblExpenseTypeID"
+        Me.lblExpenseTypeID.TabIndex = 101
+        Me.lblExpenseTypeID.Text = "البند"
+        Me.lblExpenseTypeID.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.lblExpenseTypeID.ForeColor = System.Drawing.Color.RoyalBlue
 
 
-'cboExpenseTypeID
-'
+        'cboExpenseTypeID
+        '
         Me.cboExpenseTypeID.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
         Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cboExpenseTypeID.FormattingEnabled = True
+
         Me.cboExpenseTypeID.Size = New System.Drawing.Size(228, 31)
         Me.cboExpenseTypeID.TabOnEnter = True
-Me.cboExpenseTypeID.Location = New System.Drawing.Point(0,0)
-Me.cboExpenseTypeID.Name = "cboExpenseTypeID"
-Me.cboExpenseTypeID.TabIndex = 1
+        Me.cboExpenseTypeID.Location = New System.Drawing.Point(0, 0)
+        Me.cboExpenseTypeID.Name = "cboExpenseTypeID"
+        Me.cboExpenseTypeID.TabIndex = 1
 
 
-'PExpenseTypeID
-'
-Me.PExpenseTypeID.Location = New System.Drawing.Point(56, 10)
-Me.PExpenseTypeID.Margin = New System.Windows.Forms.Padding(0)
-Me.PExpenseTypeID.Name = "PExpenseTypeID"
-Me.PExpenseTypeID.Size = New System.Drawing.Size(359, 37)
+        'PExpenseTypeID
+        '
+        Me.PExpenseTypeID.Location = New System.Drawing.Point(56, 10)
+        Me.PExpenseTypeID.Margin = New System.Windows.Forms.Padding(0)
+        Me.PExpenseTypeID.Name = "PExpenseTypeID"
+        Me.PExpenseTypeID.Size = New System.Drawing.Size(359, 37)
 
-Me.PExpenseTypeID.Location = New System.Drawing.Point(56, 47)
-Me.PExpenseTypeID.TabIndex = 201
+        Me.PExpenseTypeID.Location = New System.Drawing.Point(56, 47)
+        Me.PExpenseTypeID.TabIndex = 201
 
-Me.PExpenseTypeID.Controls.Add(Me.lblExpenseTypeID)
-Me.PExpenseTypeID.Controls.Add(Me.cboExpenseTypeID)
+        Me.PExpenseTypeID.Controls.Add(Me.lblExpenseTypeID)
+        Me.PExpenseTypeID.Controls.Add(Me.cboExpenseTypeID)
 
-'lblExpenseCost
-'
+        'lblExpenseCost
+        '
 
-Me.lblExpenseCost.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-Me.lblExpenseCost.AutoSize = True
+        Me.lblExpenseCost.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblExpenseCost.AutoSize = True
         Me.lblExpenseCost.ForeColor = System.Drawing.Color.RoyalBlue
-Me.lblExpenseCost.Location = New System.Drawing.Point(234, 3)
-Me.lblExpenseCost.Name = "lblExpenseCost"
-Me.lblExpenseCost.TabIndex = 102
-Me.lblExpenseCost.Text = "القيمة"
+        Me.lblExpenseCost.Location = New System.Drawing.Point(234, 3)
+        Me.lblExpenseCost.Name = "lblExpenseCost"
+        Me.lblExpenseCost.TabIndex = 102
+        Me.lblExpenseCost.Text = "القيمة"
 
 
-'numExpenseCost
-'
+        'numExpenseCost
+        '
         Me.numExpenseCost.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
         Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.numExpenseCost.Size = New System.Drawing.Size(228, 31)
-Me.numExpenseCost.Location = New System.Drawing.Point(0,0)
-Me.numExpenseCost.Name = "numExpenseCost"
-Me.numExpenseCost.TabIndex = 2
+        Me.numExpenseCost.Location = New System.Drawing.Point(0, 0)
+        Me.numExpenseCost.Name = "numExpenseCost"
+        Me.numExpenseCost.TabIndex = 2
 
 
-'PExpenseCost
-'
-Me.PExpenseCost.Location = New System.Drawing.Point(56, 10)
-Me.PExpenseCost.Margin = New System.Windows.Forms.Padding(0)
-Me.PExpenseCost.Name = "PExpenseCost"
-Me.PExpenseCost.Size = New System.Drawing.Size(359, 37)
+        'PExpenseCost
+        '
+        Me.PExpenseCost.Location = New System.Drawing.Point(56, 10)
+        Me.PExpenseCost.Margin = New System.Windows.Forms.Padding(0)
+        Me.PExpenseCost.Name = "PExpenseCost"
+        Me.PExpenseCost.Size = New System.Drawing.Size(359, 37)
 
-Me.PExpenseCost.Location = New System.Drawing.Point(56, 84)
-Me.PExpenseCost.TabIndex = 202
+        Me.PExpenseCost.Location = New System.Drawing.Point(56, 84)
+        Me.PExpenseCost.TabIndex = 202
 
-Me.PExpenseCost.Controls.Add(Me.lblExpenseCost)
-Me.PExpenseCost.Controls.Add(Me.numExpenseCost)
+        Me.PExpenseCost.Controls.Add(Me.lblExpenseCost)
+        Me.PExpenseCost.Controls.Add(Me.numExpenseCost)
 
-'lblExpenseDate
-'
+        'lblExpenseDate
+        '
 
-Me.lblExpenseDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-Me.lblExpenseDate.AutoSize = True
+        Me.lblExpenseDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblExpenseDate.AutoSize = True
         Me.lblExpenseDate.ForeColor = System.Drawing.Color.RoyalBlue
-Me.lblExpenseDate.Location = New System.Drawing.Point(234, 3)
-Me.lblExpenseDate.Name = "lblExpenseDate"
-Me.lblExpenseDate.TabIndex = 103
-Me.lblExpenseDate.Text = "التاريخ"
+        Me.lblExpenseDate.Location = New System.Drawing.Point(234, 3)
+        Me.lblExpenseDate.Name = "lblExpenseDate"
+        Me.lblExpenseDate.TabIndex = 103
+        Me.lblExpenseDate.Text = "التاريخ"
 
 
-'dtpExpenseDate
-'
+        'dtpExpenseDate
+        '
         Me.dtpExpenseDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
         Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtpExpenseDate.CustomFormat = "yyyy-MM-dd        HH:mm "
         Me.dtpExpenseDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpExpenseDate.Size = New System.Drawing.Size(228, 31)
-Me.dtpExpenseDate.Location = New System.Drawing.Point(0,0)
-Me.dtpExpenseDate.Name = "dtpExpenseDate"
-Me.dtpExpenseDate.TabIndex = 3
+        Me.dtpExpenseDate.Location = New System.Drawing.Point(0, 0)
+        Me.dtpExpenseDate.Name = "dtpExpenseDate"
+        Me.dtpExpenseDate.TabIndex = 3
 
 
-'PExpenseDate
-'
-Me.PExpenseDate.Location = New System.Drawing.Point(56, 10)
-Me.PExpenseDate.Margin = New System.Windows.Forms.Padding(0)
-Me.PExpenseDate.Name = "PExpenseDate"
-Me.PExpenseDate.Size = New System.Drawing.Size(359, 37)
+        'PExpenseDate
+        '
+        Me.PExpenseDate.Location = New System.Drawing.Point(56, 10)
+        Me.PExpenseDate.Margin = New System.Windows.Forms.Padding(0)
+        Me.PExpenseDate.Name = "PExpenseDate"
+        Me.PExpenseDate.Size = New System.Drawing.Size(359, 37)
 
-Me.PExpenseDate.Location = New System.Drawing.Point(56, 121)
-Me.PExpenseDate.TabIndex = 203
+        Me.PExpenseDate.Location = New System.Drawing.Point(56, 121)
+        Me.PExpenseDate.TabIndex = 203
 
-Me.PExpenseDate.Controls.Add(Me.lblExpenseDate)
-Me.PExpenseDate.Controls.Add(Me.dtpExpenseDate)
+        Me.PExpenseDate.Controls.Add(Me.lblExpenseDate)
+        Me.PExpenseDate.Controls.Add(Me.dtpExpenseDate)
 
-'lblNote
-'
+        'lblNote
+        '
 
-Me.lblNote.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-Me.lblNote.AutoSize = True
+        Me.lblNote.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblNote.AutoSize = True
         Me.lblNote.ForeColor = System.Drawing.Color.RoyalBlue
-Me.lblNote.Location = New System.Drawing.Point(234, 3)
-Me.lblNote.Name = "lblNote"
-Me.lblNote.TabIndex = 104
-Me.lblNote.Text = "ملاحظة"
+        Me.lblNote.Location = New System.Drawing.Point(234, 3)
+        Me.lblNote.Name = "lblNote"
+        Me.lblNote.TabIndex = 104
+        Me.lblNote.Text = "ملاحظة"
 
 
-'txtNote
-'
+        'txtNote
+        '
         Me.txtNote.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
         Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtNote.Size = New System.Drawing.Size(228, 31)
-Me.txtNote.Location = New System.Drawing.Point(0,0)
-Me.txtNote.Name = "txtNote"
-Me.txtNote.TabIndex = 4
+        Me.txtNote.Location = New System.Drawing.Point(0, 0)
+        Me.txtNote.Name = "txtNote"
+        Me.txtNote.TabIndex = 4
 
 
-'PNote
-'
-Me.PNote.Location = New System.Drawing.Point(56, 10)
-Me.PNote.Margin = New System.Windows.Forms.Padding(0)
-Me.PNote.Name = "PNote"
-Me.PNote.Size = New System.Drawing.Size(359, 37)
+        'PNote
+        '
+        Me.PNote.Location = New System.Drawing.Point(56, 10)
+        Me.PNote.Margin = New System.Windows.Forms.Padding(0)
+        Me.PNote.Name = "PNote"
+        Me.PNote.Size = New System.Drawing.Size(359, 37)
 
-Me.PNote.Location = New System.Drawing.Point(56, 158)
-Me.PNote.TabIndex = 204
+        Me.PNote.Location = New System.Drawing.Point(56, 158)
+        Me.PNote.TabIndex = 204
 
-Me.PNote.Controls.Add(Me.lblNote)
-Me.PNote.Controls.Add(Me.txtNote)
+        Me.PNote.Controls.Add(Me.lblNote)
+        Me.PNote.Controls.Add(Me.txtNote)
 
 
-Me.FlowLayoutPanel1.Controls.Add(Me.PInvoiceID)
-Me.FlowLayoutPanel1.Controls.Add(Me.PExpenseTypeID)
-Me.FlowLayoutPanel1.Controls.Add(Me.PExpenseCost)
-Me.FlowLayoutPanel1.Controls.Add(Me.PExpenseDate)
-Me.FlowLayoutPanel1.Controls.Add(Me.PNote)
+        Me.FlowLayoutPanel1.Controls.Add(Me.PInvoiceID)
+        Me.FlowLayoutPanel1.Controls.Add(Me.PExpenseTypeID)
+        Me.FlowLayoutPanel1.Controls.Add(Me.PExpenseCost)
+        Me.FlowLayoutPanel1.Controls.Add(Me.PExpenseDate)
+        Me.FlowLayoutPanel1.Controls.Add(Me.PNote)
 
-Me.PInvoiceID.ResumeLayout(False)
-Me.PInvoiceID.PerformLayout()
-Me.PExpenseTypeID.ResumeLayout(False)
-Me.PExpenseTypeID.PerformLayout()
-Me.PExpenseCost.ResumeLayout(False)
-Me.PExpenseCost.PerformLayout()
-Me.PExpenseDate.ResumeLayout(False)
-Me.PExpenseDate.PerformLayout()
-Me.PNote.ResumeLayout(False)
-Me.PNote.PerformLayout()
+        Me.PInvoiceID.ResumeLayout(False)
+        Me.PInvoiceID.PerformLayout()
+        Me.PExpenseTypeID.ResumeLayout(False)
+        Me.PExpenseTypeID.PerformLayout()
+        Me.PExpenseCost.ResumeLayout(False)
+        Me.PExpenseCost.PerformLayout()
+        Me.PExpenseDate.ResumeLayout(False)
+        Me.PExpenseDate.PerformLayout()
+        Me.PNote.ResumeLayout(False)
+        Me.PNote.PerformLayout()
 
-End Sub 'xx__End sub__xx
-Friend WithEvents lblInvoiceID As System.Windows.Forms.Label
-Friend WithEvents numInvoiceID As ByteClassLibrary.MyNumericBox
-Friend WithEvents PInvoiceID As System.Windows.Forms.Panel
-Friend WithEvents lblExpenseTypeID As System.Windows.Forms.Label
-Friend WithEvents cboExpenseTypeID As ByteClassLibrary.MyComboBoxGrid
-Friend WithEvents PExpenseTypeID As System.Windows.Forms.Panel
-Friend WithEvents lblExpenseCost As System.Windows.Forms.Label
-Friend WithEvents numExpenseCost As ByteClassLibrary.MyNumericBox
-Friend WithEvents PExpenseCost As System.Windows.Forms.Panel
-Friend WithEvents lblExpenseDate As System.Windows.Forms.Label
-Friend WithEvents dtpExpenseDate As ByteClassLibrary.MyDateTimePicker
-Friend WithEvents PExpenseDate As System.Windows.Forms.Panel
-Friend WithEvents lblNote As System.Windows.Forms.Label
-Friend WithEvents txtNote As ByteClassLibrary.MyTextBox
-Friend WithEvents PNote As System.Windows.Forms.Panel
+    End Sub 'xx__End sub__xx
+    Friend WithEvents lblInvoiceID As System.Windows.Forms.Label
+    Friend WithEvents numInvoiceID As ByteClassLibrary.MyNumericBox
+    Friend WithEvents PInvoiceID As System.Windows.Forms.Panel
+    Friend WithEvents lblExpenseTypeID As System.Windows.Forms.Label
+    Friend WithEvents cboExpenseTypeID As ByteClassLibrary.MyGridTextBox3
+    Friend WithEvents PExpenseTypeID As System.Windows.Forms.Panel
+    Friend WithEvents lblExpenseCost As System.Windows.Forms.Label
+    Friend WithEvents numExpenseCost As ByteClassLibrary.MyNumericBox
+    Friend WithEvents PExpenseCost As System.Windows.Forms.Panel
+    Friend WithEvents lblExpenseDate As System.Windows.Forms.Label
+    Friend WithEvents dtpExpenseDate As ByteClassLibrary.MyDateTimePicker
+    Friend WithEvents PExpenseDate As System.Windows.Forms.Panel
+    Friend WithEvents lblNote As System.Windows.Forms.Label
+    Friend WithEvents txtNote As ByteClassLibrary.MyTextBox
+    Friend WithEvents PNote As System.Windows.Forms.Panel
 
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator

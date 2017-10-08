@@ -417,9 +417,6 @@ Public Class Frm_Invoice
 
 
 
-
-
-
     Protected Overrides Function ProcessKeyEventArgs(ByRef msg As Message) As Boolean
         If msg.WParam = Keys.PrintScreen Then
             btnSave.PerformClick()
@@ -440,12 +437,12 @@ Public Class Frm_Invoice
             IniItemType()
             Get_sp_hlp_Agent()
             Get_sp_hlp_Distibutor()
-            Get_sp_hlp_Item()
+
 
 
             Ini_Invoice_Det_DataAdapter()
             GetInvoice()
-
+            Get_sp_hlp_Item()
 
 
 
@@ -1116,20 +1113,25 @@ Public Class Frm_Invoice
             CellDgvInfo_AgentName.Value = v
             cboAgent.MySelectedValue = AgentID
 
-            If IsNumeric(Me.AgentID) AndAlso Me.AgentID > 1 Then
-                CellDgvInfo_CustomerName.OwningRow.Visible = False
-
-                cboPayment.Enabled = True
-                '  cboPayment.SelectedIndex = 1
-
-            Else
-                CellDgvInfo_CustomerName.OwningRow.Visible = True
-
-                cboPayment.Enabled = False
-                'cboPayment.SelectedIndex = 0
 
 
+            If CellDgvInfo_AgentName.OwningRow.Visible = True Then
+                If IsNumeric(Me.AgentID) AndAlso Me.AgentID > 1 Then
+                    CellDgvInfo_CustomerName.OwningRow.Visible = False
+
+                    cboPayment.Enabled = True
+                    '  cboPayment.SelectedIndex = 1
+
+                Else
+                    CellDgvInfo_CustomerName.OwningRow.Visible = True
+
+                    cboPayment.Enabled = False
+                    'cboPayment.SelectedIndex = 0
+
+
+                End If
             End If
+
 
 
 
@@ -1233,6 +1235,12 @@ Public Class Frm_Invoice
             .Clear()
             .AddWithValue("@Source", cboItemType.SelectedValue)
             .AddWithValue("@InvoiceID", OrgInvoiceID)
+            If Me.InvoiceTypeID = InvoiceTypes.StockBalance Then
+                .AddWithValue("@ProductsOnly", True)
+            Else
+                .AddWithValue("@ProductsOnly", False)
+            End If
+
         End With
 
 
@@ -1244,15 +1252,15 @@ Public Class Frm_Invoice
 
         _BsItem.DataSource = dt
 
+   
+
 
         With cboItem
 
             .MySource = _BsItem
             .SetColumn(ByteClassLibrary.MyGridTextBox3.ColType.ValueMember, "GID", True, "رم")
             .SetColumn(ByteClassLibrary.MyGridTextBox3.ColType.DisplayMember, "ProductName", True, "الصنف")
-            .SetColumn("Barcode", True, False, "باركود", , 120)
-            .SetColumn("Rack", True, True, "الموقع", , 50)
-            .SetColumn("ProductDetails", True, False, "تفاصيل")
+
 
 
             .MyIsColumnHeaderVisible = True
@@ -1365,16 +1373,16 @@ Public Class Frm_Invoice
 
 
         str = str & "---بيانات القطعة---" & vbNewLine
-        If IsNullNothing(AmountLeft, 0) <> 0 Then
+        If IsNumeric(AmountLeft) Then
             str = str & "الكمية المتبقية : " & Format(AmountLeft, "#,##0.###") & vbNewLine
         End If
-        If IsNullNothing(AvgUnitCost, 0) <> 0 Then
+        If IsNumeric(AvgUnitCost) Then
             str = str & "متوسط التكلفة : " & Format(AvgUnitCost, "#,##0.###") & vbNewLine
         End If
-        If IsNullNothing(LastUnitCost, 0) <> 0 Then
+        If IsNumeric(LastUnitCost) Then
             str = str & "اخر تكلفة : " & Format(LastUnitCost, "#,##0.###") & vbNewLine
         End If
-        If IsNullNothing(SellPrice, 0) <> 0 Then
+        If IsNumeric(SellPrice) Then
             str = str & "سعر البيع :" & Format(SellPrice, "#,##0.###") & vbNewLine
         End If
 
@@ -1386,16 +1394,16 @@ Public Class Frm_Invoice
             str = str & vbNewLine
             str = str & "---بيانات الصندوق---" + vbNewLine
 
-            If IsNullNothing(AmountLeftPacket, 0) <> 0 Then
+            If IsNumeric(AmountLeftPacket) Then
                 str = str & "الكمية المتبقية  : " & Format(AmountLeftPacket, "#,##0.###") & vbNewLine
             End If
-            If IsNullNothing(AvgUnitCostPacket, 0) <> 0 Then
+            If IsNumeric(AvgUnitCostPacket) Then
                 str = str & "متوسط التكلفة : " & Format(AvgUnitCostPacket, "#,##0.###") & vbNewLine
             End If
-            If IsNullNothing(LastUnitCostPacket, 0) <> 0 Then
+            If IsNumeric(LastUnitCostPacket) Then
                 str = str & "اخر تكلفة : " & Format(LastUnitCostPacket, "#,##0.###") & vbNewLine
             End If
-            If IsNullNothing(SellPricePacket, 0) <> 0 Then
+            If IsNumeric(SellPricePacket) Then
                 str = str & "سعر البيع :" & Format(SellPricePacket, "#,##0.###")
             End If
 
@@ -2022,6 +2030,7 @@ Public Class Frm_Invoice
             .Parameters.Add("@Sort", SqlDbType.Int, 0, "Sort")
             .Parameters.Add("@WareHouseID", SqlDbType.BigInt, 0, "WareHouseID")
             .Parameters.Add("@IsPacket", SqlDbType.Bit, 0, "IsPacket")
+            .Parameters.Add("@PlusOrMinus", SqlDbType.Int, 0, "PlusOrMinus")
             .Parameters.Add("@Amount", SqlDbType.Decimal, 0, "Amount")
             .Parameters.Add("@UnitPrice", SqlDbType.Decimal, 0, "UnitPrice")
             .Parameters.Add("@AvgCost", SqlDbType.Decimal, 0, "AvgCost")
@@ -2584,6 +2593,20 @@ Public Class Frm_Invoice
                 End If
 
                 AnalyzeEntry(dt)
+
+
+            ElseIf InvoiceType = InvoiceTypes.StockBalance Then
+
+                Dim dt As DataTable
+                If Mid(ItemID, 1, 1) = "1" Then
+                    dt = GetItemFromDB(ID, True, DBNull.Value, DBNull.Value)
+
+                    AnalyzeEntry(dt)
+                End If
+
+
+
+
             End If
 
 
@@ -2811,6 +2834,10 @@ Public Class Frm_Invoice
         Dim IsPacket As Object
 
 
+        Dim AmountLeft As Object
+        Dim AlertAmount As Object
+
+
 
         Select Case InvoiceTypeID
 
@@ -2888,14 +2915,90 @@ Public Class Frm_Invoice
 
                 End If
 
+                AmountLeft = DR.Item("AmountLeft")
+                AlertAmount = DR.Item("AlertAmount")
 
 
 
-                Dt_Invoice_Add_Item(GID, IsProduct, StockID, SubAmount, StockName, ProductDetails, Barcode, Amount, AvgCost, PlusOrMinus, UnitPrice, 0, IsPacket, AmountPacket, UnitPricePacket, AvgCostPacket)
+                Dt_Invoice_Add_Item(GID, IsProduct, StockID, SubAmount, StockName, ProductDetails, Barcode, Amount, AvgCost, PlusOrMinus, UnitPrice, 0, IsPacket, AmountPacket, UnitPricePacket, AvgCostPacket, AmountLeft, AlertAmount)
 
 
             Case InvoiceTypes.Purchase, InvoiceTypes.InitialAmount
 
+
+            Case InvoiceTypes.StockBalance
+
+                Dim DR As DataRow
+                If dt.Rows.Count = 1 Then
+                    DR = dt.Rows(0)
+                Else
+
+                    Dim f As New frm_Choise(dt)
+                    f.SetCol("Exdate", "الصلاحية", "yyyy-MM-dd")
+                    f.SetCol("UnitPrice", "السعر", "#0.00")
+                    f.SetCol("AmountLeft", "الكمية المتبقية", "#,##0.###")
+                    f.dgv.Font = New Font(Me.Font.Name, 14)
+                    f.dgv.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells)
+                    f.ShowDialog()
+
+                    DR = f._DR
+
+                End If
+
+
+
+
+
+                PlusOrMinus = 1
+
+
+
+
+                GID = DR.Item("GID")
+                IsProduct = DR.Item("IsProduct")
+                StockID = DR.Item("ItemID")
+                SubAmount = DR.Item("SubAmount")
+
+                StockName = DR.Item("ItemName")
+                ProductDetails = DR.Item("ProductDetails")
+                Barcode = DR.Item("Barcode")
+
+                UnitPrice = DR.Item("AvgCost")
+                AvgCost = DR.Item("AvgCost")
+
+                UnitPricePacket = DR.Item("AvgCostPacket")
+                AvgCostPacket = DR.Item("AvgCostPacket")
+
+
+                IsPacket = DR.Item("IsPacket")
+
+                If IsDBNull(IsPacket) Then
+                    If IsDBNull(SubAmount) OrElse SubAmount <= 1 Then
+                        IsPacket = False
+                    Else
+                        IsPacket = Settings.IsPacketDefault
+                        If IsFromBarcodeReader = True Then IsPacket = False
+                    End If
+                End If
+
+                If IsPacket = True Then
+                    AmountPacket = 1
+                    Amount = SubAmount
+                Else
+                    Amount = 1
+
+                    If Not IsDBNull(SubAmount) AndAlso SubAmount > 1 Then
+                        AmountPacket = Amount / SubAmount
+                    Else
+                        AmountPacket = DBNull.Value
+                    End If
+
+                End If
+
+
+
+
+                Dt_Invoice_Add_Item(GID, IsProduct, StockID, SubAmount, StockName, ProductDetails, Barcode, Amount, AvgCost, PlusOrMinus, UnitPrice, 0, IsPacket, AmountPacket, UnitPricePacket, AvgCostPacket)
 
 
 
@@ -2957,7 +3060,8 @@ Public Class Frm_Invoice
     , ByVal Barcode As Object, ByVal Amount As Object, ByVal AvgCost As Object _
     , ByVal PlusOrMinus As Object, ByVal UnitPrice As Object, Optional ByVal Total As Object = 0 _
     , Optional ByVal IsPacket As Boolean = False _
-    , Optional ByVal AmountPacket As Object = Nothing, Optional ByVal UnitPricePacket As Object = Nothing, Optional ByVal AvgCostPacket As Object = Nothing)
+    , Optional ByVal AmountPacket As Object = Nothing, Optional ByVal UnitPricePacket As Object = Nothing, Optional ByVal AvgCostPacket As Object = Nothing _
+    , Optional ByVal AmountLeft As Object = Nothing, Optional ByVal AlertAmount As Object = Nothing)
 
 
         AmountPacket = IIf(IsNothing(AmountPacket), DBNull.Value, AmountPacket)
@@ -2978,7 +3082,7 @@ Public Class Frm_Invoice
             _BsInvoice.Position = _BsInvoice.Find("GID", GID)
             DR = DirectCast(_BsInvoice.Current, DataRowView).Row
 
-            If InvoiceType <> InvoiceTypes.Purchase AndAlso InvoiceType <> InvoiceTypes.InitialAmount Then
+            If InvoiceType <> InvoiceTypes.Purchase AndAlso InvoiceType <> InvoiceTypes.InitialAmount AndAlso InvoiceType <> InvoiceTypes.StockBalance Then
                 DR("Amount_inv") = DR("Amount_inv") + 1
             End If
 
@@ -3014,6 +3118,11 @@ Public Class Frm_Invoice
                 DR("UnitPrice_inv") = UnitPricePacket
                 DR("AvgCost_inv") = AvgCostPacket
             End If
+
+
+            DR("AmountLeft") = IIf(IsNothing(AmountLeft), DBNull.Value, AmountLeft)
+            DR("AlertAmount") = IIf(IsNothing(AlertAmount), DBNull.Value, AlertAmount)
+
 
             _DtInvoice.Rows.Add(DR)
 
@@ -3069,6 +3178,7 @@ Public Class Frm_Invoice
 
             If R.Cells("Amount_inv").Value = 0 Then R.Cells("Amount_inv").Value = 1
 
+            Dim PlusOrMinus As DataGridViewCell = R.Cells("PlusOrMinus")
 
             Dim SubAmount As DataGridViewCell = R.Cells("SubAmount")
             Dim IsPacket As DataGridViewCell = R.Cells("IsPacket")
@@ -3087,6 +3197,23 @@ Public Class Frm_Invoice
             Dim Total As DataGridViewCell = R.Cells("Total")
             Dim TotalCost As DataGridViewCell = R.Cells("TotalCost")
             Dim Revenue As DataGridViewCell = R.Cells("Revenue")
+
+
+
+
+
+            If ColumnName = "Amount_inv" Then
+                If Me.InvoiceType = InvoiceTypes.StockBalance Then
+                    If Amount_inv.Value >= 0 Then
+                        PlusOrMinus.Value = 1
+                    Else
+                        PlusOrMinus.Value = -1
+                    End If
+                End If
+                Amount_inv.Value = Math.Abs(Amount_inv.Value)
+            End If
+
+
 
 
             Select Case ColumnName
@@ -3216,6 +3343,53 @@ Public Class Frm_Invoice
         Return MyNumber
     End Function
 
+    Private Sub dgvInvoice_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvInvoice.CellFormatting
+        Try
+
+            If Me.InvoiceType = InvoiceTypes.StockBalance Then
+                If dgvInvoice.Rows(e.RowIndex).Cells("PlusOrMinus").Value = 1 Then
+                    dgvInvoice.Rows(e.RowIndex).Cells("Amount_Inv").Style.BackColor = Color.PaleGreen
+                Else
+                    dgvInvoice.Rows(e.RowIndex).Cells("Amount_Inv").Style.BackColor = Color.PaleVioletRed
+                End If
+            End If
+
+
+            Dim CellAmountLeft As DataGridViewCell = dgvInvoice.Rows(e.RowIndex).Cells("AmountLeft")
+            Dim CellAlertAmount As DataGridViewCell = dgvInvoice.Rows(e.RowIndex).Cells("AlertAmount")
+
+            Dim CellGID As DataGridViewCell = dgvInvoice.Rows(e.RowIndex).Cells("GID")
+
+            If IsNumeric(CellAmountLeft.Value) Then
+
+
+
+
+                If CellAmountLeft.Value < 0 Then
+                    CellGID.Style.BackColor = Color.PaleVioletRed
+                ElseIf CellAmountLeft.Value = 0 Then
+                    CellGID.Style.BackColor = Color.Gold
+                ElseIf IsNumeric(CellAlertAmount.Value) AndAlso CellAlertAmount.Value > CellAmountLeft.Value Then
+                    CellGID.Style.BackColor = Color.Gold
+                Else
+                    CellGID.Style.BackColor = Color.White
+                End If
+
+
+
+
+
+            Else
+                CellGID.Style.BackColor = Color.White
+            End If
+
+
+
+        Catch ex As Exception
+            HandleMyError(ex, , , My.Settings.IsDebug)
+        End Try
+    End Sub
+
     Private Sub dgvInvoice_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles dgvInvoice.KeyDown
         Try
             If e.KeyCode = Keys.Enter Then
@@ -3258,7 +3432,56 @@ Public Class Frm_Invoice
     End Sub
 
 
+    Private Sub StockBalanceToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StockBalanceToolStripMenuItem.Click
+        Try
+            Dim f As New frm_sp_rpt_StockCorrect
+            f.ShowDialog()
 
+            Dim dt As DataTable = f._dt
+
+            For Each R As DataRow In dt.Rows
+
+
+                Dim GID As Object = "1." & R.Item("StockID")
+                Dim IsProduct As Object = True
+                Dim StockID As Object = R.Item("StockID")
+                Dim SubAmount As Object = R.Item("SubAmount")
+                Dim StockName As Object = R.Item("ProductName")
+                Dim ProductDetails As Object
+                Dim Barcode As Object
+
+                'Dim PlusOrMinus As Object = IIf(R.Item("AmountLeftDiff") > 0, 1, -1)
+                Dim PlusOrMinus As Object = 1
+                Dim IsPacket As Object = R.Item("IsPacket")
+
+                Dim Amount As Object = R.Item("AmountLeftDiff")
+                Dim AvgCost As Object = R.Item("AvgUnitCost")
+
+                Dim UnitPrice As Object = R.Item("AvgUnitCost")
+
+
+                Dim AmountPacket As Object = (R.Item("AmountLeftPacketDiff"))
+                Dim UnitPricePacket As Object = R.Item("AvgUnitCostPacket")
+                Dim AvgCostPacket As Object = R.Item("AvgUnitCostPacket")
+
+
+                Dim Total As Object
+
+
+
+                Dt_Invoice_Add_Item(GID, True, StockID, SubAmount, StockName, ProductDetails, Barcode, Amount, AvgCost, PlusOrMinus, UnitPrice, , IsPacket, AmountPacket, UnitPricePacket, AvgCostPacket)
+
+
+
+
+
+            Next
+
+
+        Catch ex As Exception
+            HandleMyError(ex, , , My.Settings.IsDebug)
+        End Try
+    End Sub
 
 #End Region
 #Region "       Apearance and Layout"
@@ -3353,6 +3576,9 @@ Public Class Frm_Invoice
 
 
         btnAddItem.Visible = False
+        StockBalanceToolStripMenuItem.Visible = False
+
+
 
         Select Case DirectCast(Me.InvoiceTypeID, InvoiceTypes)
             Case InvoiceTypes.InitialAmount
@@ -3492,6 +3718,10 @@ Public Class Frm_Invoice
                 CellDgvInfo_CustomerName.OwningRow.Visible = True
                 CellDgvInfo_DistributorName.OwningRow.Visible = True
 
+
+              
+
+
             Case InvoiceTypes.Sell_R
 
                 btnView.Visible = True
@@ -3515,13 +3745,14 @@ Public Class Frm_Invoice
 
             Case InvoiceTypes.StockBalance
 
-                btnView.Visible = True
-                btnPrint.Visible = True
+                btnView.Visible = False
+                btnPrint.Visible = False
                 btnReturn.Visible = False
                 btnPay.Visible = False
                 btnCreateSellInvoce.Visible = False
                 btnDelete.Visible = True
 
+                CellTotal.OwningRow.Visible = False
                 CellDiscount.OwningRow.Visible = False
                 CellFinal.OwningRow.Visible = False
                 CellRev.OwningRow.Visible = False
@@ -3529,7 +3760,7 @@ Public Class Frm_Invoice
                 CellAmountPaid.OwningRow.Visible = False
 
                 cboPayment.Visible = False
-                dgvInvoice.Columns("Revenue").Visible = False
+
 
 
                 CellDgvInfo_InvoiceRealNumber.OwningRow.Visible = False
@@ -3537,6 +3768,16 @@ Public Class Frm_Invoice
                 CellDgvInfo_AgentName.OwningRow.Visible = False
                 CellDgvInfo_CustomerName.OwningRow.Visible = False
                 CellDgvInfo_DistributorName.OwningRow.Visible = False
+             
+                dgvInvoice.Columns("Revenue").Visible = False
+                dgvInvoice.Columns("Total").Visible = False
+                dgvInvoice.Columns("UnitPrice_inv").Visible = False
+                'dgvInvoice.Columns("PlusOrMinus").Visible = True
+
+                lblTotal.Visible = False
+                ToolStripLabel1.Visible = False
+
+                StockBalanceToolStripMenuItem.Visible = True
 
         End Select
 
@@ -3691,7 +3932,6 @@ Public Class Frm_Invoice
 
 
 
-
-
+    
 End Class
 

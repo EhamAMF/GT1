@@ -1,0 +1,8 @@
+﻿invoice items												1 x
+Products naming and setting					2 x
+user permission											2
+security															2
+Activation														2
+Fast Product List											1
+Barcode for all product Forms				2
+Reports															4

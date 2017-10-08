@@ -42,12 +42,10 @@ Partial Class Frm_Invoice
         Me.btnPay = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnCreateSellInvoce = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnDelete = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StockBalanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
-        Me.dgvInfo = New ByteDGV
-        Me.Title = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Disc = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Pbenterbig1 = New ByteMyPictureBox.pbenterbig()
         Me.Pb91 = New ByteMyPictureBox.pb9()
@@ -78,9 +76,11 @@ Partial Class Frm_Invoice
         Me.ادارةالباركودToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnAddItem = New System.Windows.Forms.Button()
-        Me.cboItemType = New System.Windows.Forms.ComboBox()
         Me.cboItem = New ByteClassLibrary.MyGridTextBox3()
-
+        Me.cboItemType = New System.Windows.Forms.ComboBox()
+        Me.dgvInfo = New GT1.ByteDGV()
+        Me.Title = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Disc = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,7 +88,6 @@ Partial Class Frm_Invoice
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
-        CType(Me.dgvInfo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         CType(Me.Pbenterbig1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Pb91, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,6 +111,7 @@ Partial Class Frm_Invoice
         CType(Me.dgvInvoice, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cmsDGV.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        CType(Me.dgvInfo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -202,7 +202,7 @@ Partial Class Frm_Invoice
         '
         Me.ToolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnView, Me.btnPrint, Me.btnReturn, Me.btnPay, Me.btnCreateSellInvoce, Me.btnDelete})
+        Me.ToolStripButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnView, Me.btnPrint, Me.btnReturn, Me.btnPay, Me.btnCreateSellInvoce, Me.btnDelete, Me.StockBalanceToolStripMenuItem})
         Me.ToolStripButton1.Font = New System.Drawing.Font("Aljazeera", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripButton1.Image = Global.GT1.My.Resources.Resources._option
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -245,6 +245,12 @@ Partial Class Frm_Invoice
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(229, 34)
         Me.btnDelete.Text = "حدف"
+        '
+        'StockBalanceToolStripMenuItem
+        '
+        Me.StockBalanceToolStripMenuItem.Name = "StockBalanceToolStripMenuItem"
+        Me.StockBalanceToolStripMenuItem.Size = New System.Drawing.Size(229, 34)
+        Me.StockBalanceToolStripMenuItem.Text = "المساعد"
         '
         'TableLayoutPanel1
         '
@@ -296,39 +302,6 @@ Partial Class Frm_Invoice
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 301.0!))
         Me.TableLayoutPanel3.Size = New System.Drawing.Size(342, 578)
         Me.TableLayoutPanel3.TabIndex = 1
-        '
-        'dgvInfo
-        '
-        Me.dgvInfo.AllowUserToAddRows = False
-        Me.dgvInfo.AllowUserToDeleteRows = False
-        Me.dgvInfo.AllowUserToResizeRows = False
-        Me.dgvInfo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.dgvInfo.BackgroundColor = System.Drawing.Color.White
-        Me.dgvInfo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
-        Me.dgvInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvInfo.ColumnHeadersVisible = False
-        Me.dgvInfo.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Title, Me.Disc})
-        Me.dgvInfo.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvInfo.Location = New System.Drawing.Point(3, 3)
-        Me.dgvInfo.Name = "dgvInfo"
-        Me.dgvInfo.RowHeadersVisible = False
-        Me.dgvInfo.RowTemplate.Height = 33
-        Me.dgvInfo.Size = New System.Drawing.Size(336, 271)
-        Me.dgvInfo.TabIndex = 0
-        '
-        'Title
-        '
-        Me.Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.Title.HeaderText = "Title"
-        Me.Title.Name = "Title"
-        Me.Title.ReadOnly = True
-        Me.Title.Width = 5
-        '
-        'Disc
-        '
-        Me.Disc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Disc.HeaderText = "Disc"
-        Me.Disc.Name = "Disc"
         '
         'Panel4
         '
@@ -664,15 +637,6 @@ Partial Class Frm_Invoice
         Me.btnAddItem.Text = "+"
         Me.btnAddItem.UseVisualStyleBackColor = True
         '
-        'cboItemType
-        '
-        Me.cboItemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboItemType.FormattingEnabled = True
-        Me.cboItemType.Location = New System.Drawing.Point(52, 0)
-        Me.cboItemType.Name = "cboItemType"
-        Me.cboItemType.Size = New System.Drawing.Size(121, 33)
-        Me.cboItemType.TabIndex = 2
-        '
         'cboItem
         '
         Me.cboItem.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -688,6 +652,48 @@ Partial Class Frm_Invoice
         Me.cboItem.Size = New System.Drawing.Size(740, 32)
         Me.cboItem.TabIndex = 3
         Me.cboItem.TabOnEnter = True
+        '
+        'cboItemType
+        '
+        Me.cboItemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboItemType.FormattingEnabled = True
+        Me.cboItemType.Location = New System.Drawing.Point(52, 0)
+        Me.cboItemType.Name = "cboItemType"
+        Me.cboItemType.Size = New System.Drawing.Size(121, 33)
+        Me.cboItemType.TabIndex = 2
+        '
+        'dgvInfo
+        '
+        Me.dgvInfo.AllowUserToAddRows = False
+        Me.dgvInfo.AllowUserToDeleteRows = False
+        Me.dgvInfo.AllowUserToResizeRows = False
+        Me.dgvInfo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.dgvInfo.BackgroundColor = System.Drawing.Color.White
+        Me.dgvInfo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.dgvInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvInfo.ColumnHeadersVisible = False
+        Me.dgvInfo.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Title, Me.Disc})
+        Me.dgvInfo.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvInfo.Location = New System.Drawing.Point(3, 3)
+        Me.dgvInfo.Name = "dgvInfo"
+        Me.dgvInfo.RowHeadersVisible = False
+        Me.dgvInfo.RowTemplate.Height = 33
+        Me.dgvInfo.Size = New System.Drawing.Size(336, 271)
+        Me.dgvInfo.TabIndex = 0
+        '
+        'Title
+        '
+        Me.Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.Title.HeaderText = "Title"
+        Me.Title.Name = "Title"
+        Me.Title.ReadOnly = True
+        Me.Title.Width = 5
+        '
+        'Disc
+        '
+        Me.Disc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Disc.HeaderText = "Disc"
+        Me.Disc.Name = "Disc"
         '
         'Frm_Invoice
         '
@@ -710,7 +716,6 @@ Partial Class Frm_Invoice
         Me.SplitContainer1.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
-        CType(Me.dgvInfo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         CType(Me.Pbenterbig1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Pb91, System.ComponentModel.ISupportInitialize).EndInit()
@@ -735,6 +740,7 @@ Partial Class Frm_Invoice
         Me.cmsDGV.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.dgvInfo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -793,5 +799,6 @@ Partial Class Frm_Invoice
     Friend WithEvents Pbdot1 As ByteMyPictureBox.pbdot
     Friend WithEvents Pbc1 As ByteMyPictureBox.pbc
     Friend WithEvents Pb01 As ByteMyPictureBox.pb0
+    Friend WithEvents StockBalanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

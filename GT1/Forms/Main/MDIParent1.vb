@@ -703,4 +703,50 @@ Public Class MDIParent1
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
+
+    Private Sub TestToolStripMenuItem_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Try
+            Dim f As New frm_sp_rpt_StockCorrect
+            f.MdiParent = Me
+            f.Show()
+            f.WindowState = FormWindowState.Maximized
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+    Private Sub StockBalanceToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Try
+            Dim F As New Frm_Invoice(Frm_Invoice.InvoiceTypes.StockBalance)
+            F.MdiParent = Me
+            F.WindowState = FormWindowState.Maximized
+            F.Show()
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+
+    Private Sub StockBalanceToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StockBalanceToolStripMenuItem1.Click
+        Try
+            Dim F As New Frm_Invoice(Frm_Invoice.InvoiceTypes.StockBalance)
+            F.MdiParent = Me
+            F.WindowState = FormWindowState.Maximized
+            F.Show()
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+    Private Sub اعدادتToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles اعدادتToolStripMenuItem.Click
+        Try
+            Dim F As New frm_Settings
+            ' F.MdiParent = Me
+            F.WindowState = FormWindowState.Normal
+            F.StartPosition = FormStartPosition.CenterScreen
+            F.ShowDialog()
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
 End Class

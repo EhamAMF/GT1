@@ -900,7 +900,6 @@
                       </Style>
                     </Textbox>
                     <ColSpan>3</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -914,9 +913,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=iif(Parameters!AgentBalance.Value &lt; 0
+                              <Value>=iif(Parameters!AgentID.Value &gt;1,
+iif(Parameters!AgentBalance.Value &lt; 0
 ,"الرصيد المستحق عليه " &amp; abs(Parameters!AgentBalance.Value)
-,"الرصيد المستحق له " &amp; abs(Parameters!AgentBalance.Value))</Value>
+,"الرصيد المستحق له " &amp; abs(Parameters!AgentBalance.Value))
+,"")</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <Language>en-US</Language>
@@ -942,6 +943,7 @@
                       </Style>
                     </Textbox>
                     <ColSpan>2</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -986,6 +988,9 @@
               <KeepWithGroup>Before</KeepWithGroup>
             </TablixMember>
             <TablixMember>
+              <Visibility>
+                <Hidden>=iif(Parameters!InvoiceTypeID.Value&gt;4,True,False)</Hidden>
+              </Visibility>
               <KeepWithGroup>Before</KeepWithGroup>
             </TablixMember>
           </TablixMembers>

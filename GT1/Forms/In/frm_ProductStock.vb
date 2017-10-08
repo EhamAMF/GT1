@@ -64,7 +64,7 @@ Public Class frm_ProductStock
             SplitContainer1.Panel2Collapsed = True
             '508, 528
             Me.Width = 500
-            Me.Height = 570
+            Me.Height = 677
 
 
         End If
@@ -136,7 +136,25 @@ Public Class frm_ProductStock
 
                 _StockID = 0
 
+
+         
+
             End If
+
+
+
+            PBarcode.Visible = Settings.IsBarcodeShown
+            PProductCode.Visible = Settings.IsProductCodeShown
+            PProductDetails.Visible = Settings.IsProductDetailsShown
+            PRack.Visible = Settings.IsRackShown
+            PExDate.Visible = Settings.IsExDateShown
+
+            dgv.Columns("Barcode").Visible = Settings.IsBarcodeShown
+            dgv.Columns("ProductCode").Visible = Settings.IsProductCodeShown
+            dgv.Columns("ProductDetails").Visible = Settings.IsProductDetailsShown
+            dgv.Columns("Rack").Visible = Settings.IsRackShown
+            dgv.Columns("ExDate").Visible = Settings.IsExDateShown
+
 
         Catch ex As Exception
             HandleMyError(ex, , , Settings.IsDebug)
@@ -956,6 +974,7 @@ Public Class frm_ProductStock
 
 
     Private Sub btnEnter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnter.Click
+
 
 
         Try

@@ -33,6 +33,7 @@ Partial Class MDIParent1
         Me.PreSellToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LossToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.IniToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StockBalanceToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ShowInvoicesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -87,6 +88,7 @@ Partial Class MDIParent1
         Me.pb1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.bkHardwareCheck = New System.ComponentModel.BackgroundWorker()
+        Me.اعدادتToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -105,7 +107,7 @@ Partial Class MDIParent1
         '
         'InvoicesToolStripMenuItem
         '
-        Me.InvoicesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SellToolStripMenuItem, Me.SellRToolStripMenuItem, Me.PurchaseToolStripMenuItem, Me.PurchaseRToolStripMenuItem, Me.PreSellToolStripMenuItem, Me.LossToolStripMenuItem, Me.IniToolStripMenuItem, Me.ToolStripSeparator1, Me.ShowInvoicesToolStripMenuItem})
+        Me.InvoicesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SellToolStripMenuItem, Me.SellRToolStripMenuItem, Me.PurchaseToolStripMenuItem, Me.PurchaseRToolStripMenuItem, Me.PreSellToolStripMenuItem, Me.LossToolStripMenuItem, Me.IniToolStripMenuItem, Me.StockBalanceToolStripMenuItem1, Me.ToolStripSeparator1, Me.ShowInvoicesToolStripMenuItem})
         Me.InvoicesToolStripMenuItem.Name = "InvoicesToolStripMenuItem"
         Me.InvoicesToolStripMenuItem.Size = New System.Drawing.Size(66, 23)
         Me.InvoicesToolStripMenuItem.Text = "الفواتير"
@@ -153,6 +155,12 @@ Partial Class MDIParent1
         Me.IniToolStripMenuItem.Name = "IniToolStripMenuItem"
         Me.IniToolStripMenuItem.Size = New System.Drawing.Size(244, 24)
         Me.IniToolStripMenuItem.Text = "رصيد أول المدة"
+        '
+        'StockBalanceToolStripMenuItem1
+        '
+        Me.StockBalanceToolStripMenuItem1.Name = "StockBalanceToolStripMenuItem1"
+        Me.StockBalanceToolStripMenuItem1.Size = New System.Drawing.Size(244, 24)
+        Me.StockBalanceToolStripMenuItem1.Text = "تصحيح الجرد"
         '
         'ToolStripSeparator1
         '
@@ -304,7 +312,7 @@ Partial Class MDIParent1
         '
         Me.ProductsToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.حركةصنفToolStripMenuItem})
         Me.ProductsToolStripMenuItem1.Name = "ProductsToolStripMenuItem1"
-        Me.ProductsToolStripMenuItem1.Size = New System.Drawing.Size(152, 24)
+        Me.ProductsToolStripMenuItem1.Size = New System.Drawing.Size(148, 24)
         Me.ProductsToolStripMenuItem1.Text = "الاصناف"
         '
         'حركةصنفToolStripMenuItem
@@ -317,7 +325,7 @@ Partial Class MDIParent1
         '
         Me.AgentsToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgentBalanceToolStripMenuItem, Me.AgentLogToolStripMenuItem})
         Me.AgentsToolStripMenuItem1.Name = "AgentsToolStripMenuItem1"
-        Me.AgentsToolStripMenuItem1.Size = New System.Drawing.Size(152, 24)
+        Me.AgentsToolStripMenuItem1.Size = New System.Drawing.Size(148, 24)
         Me.AgentsToolStripMenuItem1.Text = "العملاء"
         '
         'AgentBalanceToolStripMenuItem
@@ -336,7 +344,7 @@ Partial Class MDIParent1
         '
         Me.FinanceToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TreasuryLogToolStripMenuItem1, Me.SalesCashFlowConcToolStripMenuItem, Me.ProfitsToolStripMenuItem, Me.قيمةالمخزونToolStripMenuItem})
         Me.FinanceToolStripMenuItem.Name = "FinanceToolStripMenuItem"
-        Me.FinanceToolStripMenuItem.Size = New System.Drawing.Size(152, 24)
+        Me.FinanceToolStripMenuItem.Size = New System.Drawing.Size(148, 24)
         Me.FinanceToolStripMenuItem.Text = "مالية"
         '
         'TreasuryLogToolStripMenuItem1
@@ -367,7 +375,7 @@ Partial Class MDIParent1
         '
         Me.ExpensesToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExpensesCostToolStripMenuItem, Me.ExpenseLogToolStripMenuItem})
         Me.ExpensesToolStripMenuItem1.Name = "ExpensesToolStripMenuItem1"
-        Me.ExpensesToolStripMenuItem1.Size = New System.Drawing.Size(152, 24)
+        Me.ExpensesToolStripMenuItem1.Size = New System.Drawing.Size(148, 24)
         Me.ExpensesToolStripMenuItem1.Text = "المصروفات"
         '
         'ExpensesCostToolStripMenuItem
@@ -421,7 +429,7 @@ Partial Class MDIParent1
         '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangePasswordToolStripMenuItem, Me.UsersToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangePasswordToolStripMenuItem, Me.UsersToolStripMenuItem, Me.اعدادتToolStripMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(71, 23)
         Me.SettingsToolStripMenuItem.Text = "اعدادات"
@@ -482,6 +490,12 @@ Partial Class MDIParent1
         'bkHardwareCheck
         '
         Me.bkHardwareCheck.WorkerReportsProgress = True
+        '
+        'اعدادتToolStripMenuItem
+        '
+        Me.اعدادتToolStripMenuItem.Name = "اعدادتToolStripMenuItem"
+        Me.اعدادتToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
+        Me.اعدادتToolStripMenuItem.Text = "اعدادت"
         '
         'MDIParent1
         '
@@ -572,5 +586,7 @@ Partial Class MDIParent1
     Friend WithEvents ExpensesToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ExpensesCostToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ExpenseLogToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents StockBalanceToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents اعدادتToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

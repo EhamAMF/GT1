@@ -564,6 +564,16 @@ Public Class frm_sp_rpt_invoices
                                 dgv.Columns("IsPaid").Visible = False
                                 dgv.Columns("AgentName").Visible = False
                                 dgv.Columns("Revenue").Visible = False
+                            Case 6
+                                dgv.Columns("InvoiceRealNumber").Visible = False
+                                dgv.Columns("orgInvoiceNumber").Visible = False
+                                dgv.Columns("IsPaid").Visible = False
+                                dgv.Columns("AgentName").Visible = False
+                                dgv.Columns("Revenue").Visible = False
+
+                                dgv.Columns("TotalPrice").Visible = False
+                                dgv.Columns("Discount").Visible = False
+                                dgv.Columns("FinalPrice").Visible = False
 
                         End Select
 

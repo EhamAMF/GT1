@@ -97,6 +97,8 @@ Partial Class frm_ProductStock
         Me.btnEnter = New ByteClassLibrary.MyButton()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.dgv = New System.Windows.Forms.DataGridView()
+        Me.cmsDGV = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ادارةالباركودToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.btnAdd = New System.Windows.Forms.ToolStripButton()
@@ -112,8 +114,6 @@ Partial Class frm_ProductStock
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmsDGV = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ادارةالباركودToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -142,10 +142,10 @@ Partial Class frm_ProductStock
         Me.PExpressButtons.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.cmsDGV.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
-        Me.cmsDGV.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStripSeparator3
@@ -180,13 +180,14 @@ Partial Class frm_ProductStock
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.TableLayoutPanel1)
         Me.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.SplitContainer1.Size = New System.Drawing.Size(985, 528)
+        Me.SplitContainer1.Size = New System.Drawing.Size(985, 640)
         Me.SplitContainer1.SplitterDistance = 508
         Me.SplitContainer1.TabIndex = 2
         '
         'FlowLayoutPanel1
         '
         Me.FlowLayoutPanel1.AutoScroll = True
+        Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.White
         Me.FlowLayoutPanel1.Controls.Add(Me.PProductName)
         Me.FlowLayoutPanel1.Controls.Add(Me.PProductCode)
         Me.FlowLayoutPanel1.Controls.Add(Me.PBarcode)
@@ -198,12 +199,12 @@ Partial Class frm_ProductStock
         Me.FlowLayoutPanel1.Controls.Add(Me.PSubAmount)
         Me.FlowLayoutPanel1.Controls.Add(Me.Panel1)
         Me.FlowLayoutPanel1.Controls.Add(Me.PExpressButtons)
-        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel1.Margin = New System.Windows.Forms.Padding(0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Padding = New System.Windows.Forms.Padding(0, 10, 0, 0)
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(508, 528)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(508, 640)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
         'PProductName
@@ -242,10 +243,10 @@ Partial Class frm_ProductStock
         '
         Me.PProductCode.Controls.Add(Me.lblProductCode)
         Me.PProductCode.Controls.Add(Me.txtProductCode)
-        Me.PProductCode.Location = New System.Drawing.Point(258, 47)
+        Me.PProductCode.Location = New System.Drawing.Point(40, 47)
         Me.PProductCode.Margin = New System.Windows.Forms.Padding(0)
         Me.PProductCode.Name = "PProductCode"
-        Me.PProductCode.Size = New System.Drawing.Size(250, 37)
+        Me.PProductCode.Size = New System.Drawing.Size(468, 37)
         Me.PProductCode.TabIndex = 1
         '
         'lblProductCode
@@ -253,7 +254,7 @@ Partial Class frm_ProductStock
         Me.lblProductCode.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblProductCode.AutoSize = True
         Me.lblProductCode.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.lblProductCode.Location = New System.Drawing.Point(125, 3)
+        Me.lblProductCode.Location = New System.Drawing.Point(343, 3)
         Me.lblProductCode.Name = "lblProductCode"
         Me.lblProductCode.Size = New System.Drawing.Size(29, 23)
         Me.lblProductCode.TabIndex = 101
@@ -265,7 +266,7 @@ Partial Class frm_ProductStock
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtProductCode.Location = New System.Drawing.Point(0, 0)
         Me.txtProductCode.Name = "txtProductCode"
-        Me.txtProductCode.Size = New System.Drawing.Size(119, 31)
+        Me.txtProductCode.Size = New System.Drawing.Size(337, 31)
         Me.txtProductCode.TabIndex = 0
         '
         'PBarcode
@@ -273,10 +274,10 @@ Partial Class frm_ProductStock
         Me.PBarcode.Controls.Add(Me.lblBarcode)
         Me.PBarcode.Controls.Add(Me.txtBarcode)
         Me.PBarcode.Enabled = False
-        Me.PBarcode.Location = New System.Drawing.Point(40, 47)
+        Me.PBarcode.Location = New System.Drawing.Point(40, 84)
         Me.PBarcode.Margin = New System.Windows.Forms.Padding(0)
         Me.PBarcode.Name = "PBarcode"
-        Me.PBarcode.Size = New System.Drawing.Size(218, 37)
+        Me.PBarcode.Size = New System.Drawing.Size(468, 37)
         Me.PBarcode.TabIndex = 2
         '
         'lblBarcode
@@ -284,7 +285,7 @@ Partial Class frm_ProductStock
         Me.lblBarcode.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblBarcode.AutoSize = True
         Me.lblBarcode.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.lblBarcode.Location = New System.Drawing.Point(165, 3)
+        Me.lblBarcode.Location = New System.Drawing.Point(343, 3)
         Me.lblBarcode.Name = "lblBarcode"
         Me.lblBarcode.Size = New System.Drawing.Size(43, 23)
         Me.lblBarcode.TabIndex = 102
@@ -296,17 +297,17 @@ Partial Class frm_ProductStock
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtBarcode.Location = New System.Drawing.Point(0, 0)
         Me.txtBarcode.Name = "txtBarcode"
-        Me.txtBarcode.Size = New System.Drawing.Size(156, 31)
+        Me.txtBarcode.Size = New System.Drawing.Size(337, 31)
         Me.txtBarcode.TabIndex = 0
         '
         'PExDate
         '
         Me.PExDate.Controls.Add(Me.lblExDate)
         Me.PExDate.Controls.Add(Me.dtpExDate)
-        Me.PExDate.Location = New System.Drawing.Point(258, 84)
+        Me.PExDate.Location = New System.Drawing.Point(40, 121)
         Me.PExDate.Margin = New System.Windows.Forms.Padding(0)
         Me.PExDate.Name = "PExDate"
-        Me.PExDate.Size = New System.Drawing.Size(250, 37)
+        Me.PExDate.Size = New System.Drawing.Size(468, 37)
         Me.PExDate.TabIndex = 3
         '
         'lblExDate
@@ -314,7 +315,7 @@ Partial Class frm_ProductStock
         Me.lblExDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblExDate.AutoSize = True
         Me.lblExDate.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.lblExDate.Location = New System.Drawing.Point(125, 3)
+        Me.lblExDate.Location = New System.Drawing.Point(343, 3)
         Me.lblExDate.Name = "lblExDate"
         Me.lblExDate.Size = New System.Drawing.Size(61, 23)
         Me.lblExDate.TabIndex = 103
@@ -331,17 +332,17 @@ Partial Class frm_ProductStock
         Me.dtpExDate.IsHighLight = False
         Me.dtpExDate.Location = New System.Drawing.Point(0, 0)
         Me.dtpExDate.Name = "dtpExDate"
-        Me.dtpExDate.Size = New System.Drawing.Size(119, 31)
+        Me.dtpExDate.Size = New System.Drawing.Size(337, 31)
         Me.dtpExDate.TabIndex = 0
         '
         'PRack
         '
         Me.PRack.Controls.Add(Me.lblRack)
         Me.PRack.Controls.Add(Me.txtRack)
-        Me.PRack.Location = New System.Drawing.Point(40, 84)
+        Me.PRack.Location = New System.Drawing.Point(40, 158)
         Me.PRack.Margin = New System.Windows.Forms.Padding(0)
         Me.PRack.Name = "PRack"
-        Me.PRack.Size = New System.Drawing.Size(218, 37)
+        Me.PRack.Size = New System.Drawing.Size(468, 37)
         Me.PRack.TabIndex = 4
         '
         'lblRack
@@ -349,7 +350,7 @@ Partial Class frm_ProductStock
         Me.lblRack.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblRack.AutoSize = True
         Me.lblRack.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.lblRack.Location = New System.Drawing.Point(163, 3)
+        Me.lblRack.Location = New System.Drawing.Point(338, 3)
         Me.lblRack.Name = "lblRack"
         Me.lblRack.Size = New System.Drawing.Size(48, 23)
         Me.lblRack.TabIndex = 104
@@ -361,17 +362,17 @@ Partial Class frm_ProductStock
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtRack.Location = New System.Drawing.Point(0, 0)
         Me.txtRack.Name = "txtRack"
-        Me.txtRack.Size = New System.Drawing.Size(156, 31)
+        Me.txtRack.Size = New System.Drawing.Size(337, 31)
         Me.txtRack.TabIndex = 0
         '
         'PTypeID
         '
         Me.PTypeID.Controls.Add(Me.lblTypeID)
         Me.PTypeID.Controls.Add(Me.cboTypeID)
-        Me.PTypeID.Location = New System.Drawing.Point(258, 121)
+        Me.PTypeID.Location = New System.Drawing.Point(40, 195)
         Me.PTypeID.Margin = New System.Windows.Forms.Padding(0)
         Me.PTypeID.Name = "PTypeID"
-        Me.PTypeID.Size = New System.Drawing.Size(250, 37)
+        Me.PTypeID.Size = New System.Drawing.Size(468, 37)
         Me.PTypeID.TabIndex = 5
         '
         'lblTypeID
@@ -380,7 +381,7 @@ Partial Class frm_ProductStock
         Me.lblTypeID.AutoSize = True
         Me.lblTypeID.Cursor = System.Windows.Forms.Cursors.Hand
         Me.lblTypeID.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.lblTypeID.Location = New System.Drawing.Point(125, 3)
+        Me.lblTypeID.Location = New System.Drawing.Point(343, 3)
         Me.lblTypeID.Name = "lblTypeID"
         Me.lblTypeID.Size = New System.Drawing.Size(36, 23)
         Me.lblTypeID.TabIndex = 105
@@ -398,7 +399,7 @@ Partial Class frm_ProductStock
         Me.cboTypeID.MySelectedValue = Nothing
         Me.cboTypeID.MySelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.cboTypeID.Name = "cboTypeID"
-        Me.cboTypeID.Size = New System.Drawing.Size(119, 31)
+        Me.cboTypeID.Size = New System.Drawing.Size(337, 31)
         Me.cboTypeID.TabIndex = 0
         Me.cboTypeID.TabOnEnter = True
         '
@@ -406,10 +407,10 @@ Partial Class frm_ProductStock
         '
         Me.PBrandID.Controls.Add(Me.lblBrandID)
         Me.PBrandID.Controls.Add(Me.cboBrandID)
-        Me.PBrandID.Location = New System.Drawing.Point(40, 121)
+        Me.PBrandID.Location = New System.Drawing.Point(40, 232)
         Me.PBrandID.Margin = New System.Windows.Forms.Padding(0)
         Me.PBrandID.Name = "PBrandID"
-        Me.PBrandID.Size = New System.Drawing.Size(218, 37)
+        Me.PBrandID.Size = New System.Drawing.Size(468, 37)
         Me.PBrandID.TabIndex = 6
         '
         'lblBrandID
@@ -418,7 +419,7 @@ Partial Class frm_ProductStock
         Me.lblBrandID.AutoSize = True
         Me.lblBrandID.Cursor = System.Windows.Forms.Cursors.Hand
         Me.lblBrandID.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.lblBrandID.Location = New System.Drawing.Point(165, 8)
+        Me.lblBrandID.Location = New System.Drawing.Point(340, 3)
         Me.lblBrandID.Name = "lblBrandID"
         Me.lblBrandID.Size = New System.Drawing.Size(46, 23)
         Me.lblBrandID.TabIndex = 106
@@ -436,7 +437,7 @@ Partial Class frm_ProductStock
         Me.cboBrandID.MySelectedValue = Nothing
         Me.cboBrandID.MySelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.cboBrandID.Name = "cboBrandID"
-        Me.cboBrandID.Size = New System.Drawing.Size(156, 31)
+        Me.cboBrandID.Size = New System.Drawing.Size(337, 31)
         Me.cboBrandID.TabIndex = 0
         Me.cboBrandID.TabOnEnter = True
         '
@@ -444,7 +445,7 @@ Partial Class frm_ProductStock
         '
         Me.PProductDetails.Controls.Add(Me.lblProductDetails)
         Me.PProductDetails.Controls.Add(Me.txtProductDetails)
-        Me.PProductDetails.Location = New System.Drawing.Point(40, 158)
+        Me.PProductDetails.Location = New System.Drawing.Point(40, 269)
         Me.PProductDetails.Margin = New System.Windows.Forms.Padding(0)
         Me.PProductDetails.Name = "PProductDetails"
         Me.PProductDetails.Size = New System.Drawing.Size(468, 37)
@@ -474,7 +475,7 @@ Partial Class frm_ProductStock
         '
         Me.PSubAmount.Controls.Add(Me.lblSubAmount)
         Me.PSubAmount.Controls.Add(Me.numSubAmount)
-        Me.PSubAmount.Location = New System.Drawing.Point(40, 210)
+        Me.PSubAmount.Location = New System.Drawing.Point(40, 321)
         Me.PSubAmount.Margin = New System.Windows.Forms.Padding(0, 15, 0, 0)
         Me.PSubAmount.Name = "PSubAmount"
         Me.PSubAmount.Size = New System.Drawing.Size(468, 37)
@@ -502,6 +503,7 @@ Partial Class frm_ProductStock
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.PAlertAmount)
@@ -514,7 +516,7 @@ Partial Class frm_ProductStock
         Me.Panel1.Controls.Add(Me.PLastUnitCost)
         Me.Panel1.Controls.Add(Me.PAlertAmountPacket)
         Me.Panel1.Controls.Add(Me.PSellPrice)
-        Me.Panel1.Location = New System.Drawing.Point(40, 250)
+        Me.Panel1.Location = New System.Drawing.Point(40, 361)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(465, 212)
         Me.Panel1.TabIndex = 9
@@ -852,9 +854,10 @@ Partial Class frm_ProductStock
         '
         'PExpressButtons
         '
+        Me.PExpressButtons.BackColor = System.Drawing.Color.White
         Me.PExpressButtons.Controls.Add(Me.btnExit)
         Me.PExpressButtons.Controls.Add(Me.btnEnter)
-        Me.PExpressButtons.Location = New System.Drawing.Point(40, 468)
+        Me.PExpressButtons.Location = New System.Drawing.Point(40, 579)
         Me.PExpressButtons.Name = "PExpressButtons"
         Me.PExpressButtons.Size = New System.Drawing.Size(465, 49)
         Me.PExpressButtons.TabIndex = 10
@@ -898,7 +901,7 @@ Partial Class frm_ProductStock
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(473, 528)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(473, 640)
         Me.TableLayoutPanel1.TabIndex = 1
         '
         'dgv
@@ -945,8 +948,21 @@ Partial Class frm_ProductStock
         Me.dgv.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dgv.RowHeadersWidth = 35
         Me.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgv.Size = New System.Drawing.Size(467, 520)
+        Me.dgv.Size = New System.Drawing.Size(467, 632)
         Me.dgv.TabIndex = 0
+        '
+        'cmsDGV
+        '
+        Me.cmsDGV.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ادارةالباركودToolStripMenuItem})
+        Me.cmsDGV.Name = "cmsDGV"
+        Me.cmsDGV.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.cmsDGV.Size = New System.Drawing.Size(136, 26)
+        '
+        'ادارةالباركودToolStripMenuItem
+        '
+        Me.ادارةالباركودToolStripMenuItem.Name = "ادارةالباركودToolStripMenuItem"
+        Me.ادارةالباركودToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.ادارةالباركودToolStripMenuItem.Text = "ادارة الباركود"
         '
         'ErrorProvider1
         '
@@ -1084,24 +1100,11 @@ Partial Class frm_ProductStock
         Me.ToolStripButton1.Name = "ToolStripButton1"
         Me.ToolStripButton1.Size = New System.Drawing.Size(6, 42)
         '
-        'cmsDGV
-        '
-        Me.cmsDGV.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ادارةالباركودToolStripMenuItem})
-        Me.cmsDGV.Name = "cmsDGV"
-        Me.cmsDGV.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.cmsDGV.Size = New System.Drawing.Size(136, 26)
-        '
-        'ادارةالباركودToolStripMenuItem
-        '
-        Me.ادارةالباركودToolStripMenuItem.Name = "ادارةالباركودToolStripMenuItem"
-        Me.ادارةالباركودToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
-        Me.ادارةالباركودToolStripMenuItem.Text = "ادارة الباركود"
-        '
         'frm_ProductStock
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(985, 570)
+        Me.ClientSize = New System.Drawing.Size(985, 682)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Font = New System.Drawing.Font("Aljazeera", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1159,11 +1162,11 @@ Partial Class frm_ProductStock
         Me.PExpressButtons.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.cmsDGV.ResumeLayout(False)
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        Me.cmsDGV.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
