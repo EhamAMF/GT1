@@ -21,7 +21,7 @@ Module Module_DB_Upgrade
                     PubdbVersion7()
                 Case 8
                     PubdbVersion8()
-                Case 8
+                Case 9
                     PubdbVersion9()
             End Select
         End While
