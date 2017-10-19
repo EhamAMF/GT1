@@ -31,6 +31,15 @@ Partial Class frm_Service
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.PServiceName = New System.Windows.Forms.Panel()
+        Me.lblServiceName = New System.Windows.Forms.Label()
+        Me.txtServiceName = New ByteClassLibrary.MyTextBox()
+        Me.PServiceCost = New System.Windows.Forms.Panel()
+        Me.lblServiceCost = New System.Windows.Forms.Label()
+        Me.numServiceCost = New ByteClassLibrary.MyNumericBox()
+        Me.PServicePrice = New System.Windows.Forms.Panel()
+        Me.lblServicePrice = New System.Windows.Forms.Label()
+        Me.numServicePrice = New ByteClassLibrary.MyNumericBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.dgv = New System.Windows.Forms.DataGridView()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
@@ -52,6 +61,10 @@ Partial Class frm_Service
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
+        Me.FlowLayoutPanel1.SuspendLayout()
+        Me.PServiceName.SuspendLayout()
+        Me.PServiceCost.SuspendLayout()
+        Me.PServicePrice.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,6 +111,9 @@ Partial Class frm_Service
         '
         'FlowLayoutPanel1
         '
+        Me.FlowLayoutPanel1.Controls.Add(Me.PServiceName)
+        Me.FlowLayoutPanel1.Controls.Add(Me.PServiceCost)
+        Me.FlowLayoutPanel1.Controls.Add(Me.PServicePrice)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel1.Margin = New System.Windows.Forms.Padding(0)
@@ -105,6 +121,96 @@ Partial Class frm_Service
         Me.FlowLayoutPanel1.Padding = New System.Windows.Forms.Padding(0, 10, 0, 0)
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(415, 384)
         Me.FlowLayoutPanel1.TabIndex = 107
+        '
+        'PServiceName
+        '
+        Me.PServiceName.Controls.Add(Me.lblServiceName)
+        Me.PServiceName.Controls.Add(Me.txtServiceName)
+        Me.PServiceName.Location = New System.Drawing.Point(56, 10)
+        Me.PServiceName.Margin = New System.Windows.Forms.Padding(0)
+        Me.PServiceName.Name = "PServiceName"
+        Me.PServiceName.Size = New System.Drawing.Size(359, 37)
+        Me.PServiceName.TabIndex = 200
+        '
+        'lblServiceName
+        '
+        Me.lblServiceName.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblServiceName.AutoSize = True
+        Me.lblServiceName.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.lblServiceName.Location = New System.Drawing.Point(234, 3)
+        Me.lblServiceName.Name = "lblServiceName"
+        Me.lblServiceName.Size = New System.Drawing.Size(46, 23)
+        Me.lblServiceName.TabIndex = 100
+        Me.lblServiceName.Text = "الخدمة"
+        '
+        'txtServiceName
+        '
+        Me.txtServiceName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtServiceName.Location = New System.Drawing.Point(0, 0)
+        Me.txtServiceName.Name = "txtServiceName"
+        Me.txtServiceName.Size = New System.Drawing.Size(228, 31)
+        Me.txtServiceName.TabIndex = 0
+        '
+        'PServiceCost
+        '
+        Me.PServiceCost.Controls.Add(Me.lblServiceCost)
+        Me.PServiceCost.Controls.Add(Me.numServiceCost)
+        Me.PServiceCost.Location = New System.Drawing.Point(56, 47)
+        Me.PServiceCost.Margin = New System.Windows.Forms.Padding(0)
+        Me.PServiceCost.Name = "PServiceCost"
+        Me.PServiceCost.Size = New System.Drawing.Size(359, 37)
+        Me.PServiceCost.TabIndex = 201
+        '
+        'lblServiceCost
+        '
+        Me.lblServiceCost.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblServiceCost.AutoSize = True
+        Me.lblServiceCost.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.lblServiceCost.Location = New System.Drawing.Point(234, 3)
+        Me.lblServiceCost.Name = "lblServiceCost"
+        Me.lblServiceCost.Size = New System.Drawing.Size(49, 23)
+        Me.lblServiceCost.TabIndex = 101
+        Me.lblServiceCost.Text = "التكلفة"
+        '
+        'numServiceCost
+        '
+        Me.numServiceCost.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.numServiceCost.Location = New System.Drawing.Point(0, 0)
+        Me.numServiceCost.Name = "numServiceCost"
+        Me.numServiceCost.Size = New System.Drawing.Size(228, 31)
+        Me.numServiceCost.TabIndex = 1
+        '
+        'PServicePrice
+        '
+        Me.PServicePrice.Controls.Add(Me.lblServicePrice)
+        Me.PServicePrice.Controls.Add(Me.numServicePrice)
+        Me.PServicePrice.Location = New System.Drawing.Point(56, 84)
+        Me.PServicePrice.Margin = New System.Windows.Forms.Padding(0)
+        Me.PServicePrice.Name = "PServicePrice"
+        Me.PServicePrice.Size = New System.Drawing.Size(359, 37)
+        Me.PServicePrice.TabIndex = 202
+        '
+        'lblServicePrice
+        '
+        Me.lblServicePrice.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblServicePrice.AutoSize = True
+        Me.lblServicePrice.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.lblServicePrice.Location = New System.Drawing.Point(234, 3)
+        Me.lblServicePrice.Name = "lblServicePrice"
+        Me.lblServicePrice.Size = New System.Drawing.Size(37, 23)
+        Me.lblServicePrice.TabIndex = 102
+        Me.lblServicePrice.Text = "البيع"
+        '
+        'numServicePrice
+        '
+        Me.numServicePrice.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.numServicePrice.Location = New System.Drawing.Point(0, 0)
+        Me.numServicePrice.Name = "numServicePrice"
+        Me.numServicePrice.Size = New System.Drawing.Size(228, 31)
+        Me.numServicePrice.TabIndex = 2
         '
         'TableLayoutPanel1
         '
@@ -175,7 +281,7 @@ Partial Class frm_Service
         '
         Me.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.btnAdd.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.btnAdd.Image = My.Resources.Resources.add
+        Me.btnAdd.Image = Global.GT1.My.Resources.Resources.add
         Me.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnAdd.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAdd.Name = "btnAdd"
@@ -188,7 +294,7 @@ Partial Class frm_Service
         '
         Me.btnCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.btnCopy.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.btnCopy.Image = My.Resources.Resources.copy
+        Me.btnCopy.Image = Global.GT1.My.Resources.Resources.copy
         Me.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnCopy.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCopy.Name = "btnCopy"
@@ -200,7 +306,7 @@ Partial Class frm_Service
         '
         Me.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.btnEdit.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.btnEdit.Image = My.Resources.Resources.edit
+        Me.btnEdit.Image = Global.GT1.My.Resources.Resources.edit
         Me.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnEdit.Margin = New System.Windows.Forms.Padding(4)
         Me.btnEdit.Name = "btnEdit"
@@ -212,7 +318,7 @@ Partial Class frm_Service
         '
         Me.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.btnSave.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.btnSave.Image = My.Resources.Resources.save
+        Me.btnSave.Image = Global.GT1.My.Resources.Resources.save
         Me.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnSave.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSave.Name = "btnSave"
@@ -224,7 +330,7 @@ Partial Class frm_Service
         '
         Me.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.btnDelete.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.btnDelete.Image = My.Resources.Resources.delete
+        Me.btnDelete.Image = Global.GT1.My.Resources.Resources.delete
         Me.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnDelete.Margin = New System.Windows.Forms.Padding(4)
         Me.btnDelete.Name = "btnDelete"
@@ -236,7 +342,7 @@ Partial Class frm_Service
         '
         Me.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.btnRefresh.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.btnRefresh.Image = My.Resources.Resources.refresh
+        Me.btnRefresh.Image = Global.GT1.My.Resources.Resources.refresh
         Me.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnRefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnRefresh.Name = "btnRefresh"
@@ -316,11 +422,17 @@ Partial Class frm_Service
         Me.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.RightToLeftLayout = True
         Me.Text = "خدمات"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
+        Me.FlowLayoutPanel1.ResumeLayout(False)
+        Me.PServiceName.ResumeLayout(False)
+        Me.PServiceName.PerformLayout()
+        Me.PServiceCost.ResumeLayout(False)
+        Me.PServiceCost.PerformLayout()
+        Me.PServicePrice.ResumeLayout(False)
+        Me.PServicePrice.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -330,137 +442,7 @@ Partial Class frm_Service
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
-     Me.lblServiceName = New System.Windows.Forms.Label()
-Me.txtServiceName = New ByteClassLibrary.MyTextBox()
-Me.PServiceName = New System.Windows.Forms.Panel()
-Me.PServiceName.SuspendLayout()
-Me.lblServiceCost = New System.Windows.Forms.Label()
-Me.numServiceCost = New ByteClassLibrary.MyNumericBox()
-Me.PServiceCost = New System.Windows.Forms.Panel()
-Me.PServiceCost.SuspendLayout()
-Me.lblServicePrice = New System.Windows.Forms.Label()
-Me.numServicePrice = New ByteClassLibrary.MyNumericBox()
-Me.PServicePrice = New System.Windows.Forms.Panel()
-Me.PServicePrice.SuspendLayout()
-
-'lblServiceName
-'
-
-Me.lblServiceName.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-Me.lblServiceName.AutoSize = True
-        Me.lblServiceName.ForeColor = System.Drawing.Color.RoyalBlue
-Me.lblServiceName.Location = New System.Drawing.Point(234, 3)
-Me.lblServiceName.Name = "lblServiceName"
-Me.lblServiceName.TabIndex = 100
-Me.lblServiceName.Text = "الخدمة"
-
-
-'txtServiceName
-'
-        Me.txtServiceName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtServiceName.Size = New System.Drawing.Size(228, 31)
-Me.txtServiceName.Location = New System.Drawing.Point(0,0)
-Me.txtServiceName.Name = "txtServiceName"
-Me.txtServiceName.TabIndex = 0
-
-
-'PServiceName
-'
-Me.PServiceName.Location = New System.Drawing.Point(56, 10)
-Me.PServiceName.Margin = New System.Windows.Forms.Padding(0)
-Me.PServiceName.Name = "PServiceName"
-Me.PServiceName.Size = New System.Drawing.Size(359, 37)
-
-Me.PServiceName.Location = New System.Drawing.Point(56, 10)
-Me.PServiceName.TabIndex = 200
-
-Me.PServiceName.Controls.Add(Me.lblServiceName)
-Me.PServiceName.Controls.Add(Me.txtServiceName)
-
-'lblServiceCost
-'
-
-Me.lblServiceCost.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-Me.lblServiceCost.AutoSize = True
-        Me.lblServiceCost.ForeColor = System.Drawing.Color.RoyalBlue
-Me.lblServiceCost.Location = New System.Drawing.Point(234, 3)
-Me.lblServiceCost.Name = "lblServiceCost"
-Me.lblServiceCost.TabIndex = 101
-Me.lblServiceCost.Text = "التكلفة"
-
-
-'numServiceCost
-'
-        Me.numServiceCost.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.numServiceCost.Size = New System.Drawing.Size(228, 31)
-Me.numServiceCost.Location = New System.Drawing.Point(0,0)
-Me.numServiceCost.Name = "numServiceCost"
-Me.numServiceCost.TabIndex = 1
-
-
-'PServiceCost
-'
-Me.PServiceCost.Location = New System.Drawing.Point(56, 10)
-Me.PServiceCost.Margin = New System.Windows.Forms.Padding(0)
-Me.PServiceCost.Name = "PServiceCost"
-Me.PServiceCost.Size = New System.Drawing.Size(359, 37)
-
-Me.PServiceCost.Location = New System.Drawing.Point(56, 47)
-Me.PServiceCost.TabIndex = 201
-
-Me.PServiceCost.Controls.Add(Me.lblServiceCost)
-Me.PServiceCost.Controls.Add(Me.numServiceCost)
-
-'lblServicePrice
-'
-
-Me.lblServicePrice.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-Me.lblServicePrice.AutoSize = True
-        Me.lblServicePrice.ForeColor = System.Drawing.Color.RoyalBlue
-Me.lblServicePrice.Location = New System.Drawing.Point(234, 3)
-Me.lblServicePrice.Name = "lblServicePrice"
-Me.lblServicePrice.TabIndex = 102
-Me.lblServicePrice.Text = "البيع"
-
-
-'numServicePrice
-'
-        Me.numServicePrice.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.numServicePrice.Size = New System.Drawing.Size(228, 31)
-Me.numServicePrice.Location = New System.Drawing.Point(0,0)
-Me.numServicePrice.Name = "numServicePrice"
-Me.numServicePrice.TabIndex = 2
-
-
-'PServicePrice
-'
-Me.PServicePrice.Location = New System.Drawing.Point(56, 10)
-Me.PServicePrice.Margin = New System.Windows.Forms.Padding(0)
-Me.PServicePrice.Name = "PServicePrice"
-Me.PServicePrice.Size = New System.Drawing.Size(359, 37)
-
-Me.PServicePrice.Location = New System.Drawing.Point(56, 84)
-Me.PServicePrice.TabIndex = 202
-
-Me.PServicePrice.Controls.Add(Me.lblServicePrice)
-Me.PServicePrice.Controls.Add(Me.numServicePrice)
-
-
-Me.FlowLayoutPanel1.Controls.Add(Me.PServiceName)
-Me.FlowLayoutPanel1.Controls.Add(Me.PServiceCost)
-Me.FlowLayoutPanel1.Controls.Add(Me.PServicePrice)
-
-Me.PServiceName.ResumeLayout(False)
-Me.PServiceName.PerformLayout()
-Me.PServiceCost.ResumeLayout(False)
-Me.PServiceCost.PerformLayout()
-Me.PServicePrice.ResumeLayout(False)
-Me.PServicePrice.PerformLayout()
-
-End Sub 'xx__End sub__xx
+    End Sub 'xx__End sub__xx
 Friend WithEvents lblServiceName As System.Windows.Forms.Label
 Friend WithEvents txtServiceName As ByteClassLibrary.MyTextBox
 Friend WithEvents PServiceName As System.Windows.Forms.Panel

@@ -661,7 +661,8 @@ Public Class frm_sp_rpt_invoices
 
 
                     If req = RequestType.rdlc Then
-                        frm.Show()
+                        frm.Text = Me.Text
+                        FrmMain.AddForm(frm)
                     Else
                         Dim m As New ByteClassLibrary.PrintReport
                         m.PrintLocalReport(frm.rvReport.LocalReport)
@@ -695,9 +696,8 @@ Public Class frm_sp_rpt_invoices
 
                 Dim ID As Int64 = MyBs.Current("InvoiceID")
                 Dim f As New Frm_Invoice(ID)
-                f.MdiParent = Me.MdiParent
-                f.WindowState = FormWindowState.Maximized
-                f.Show()
+                FrmMain.AddForm(f)
+
 
 
 

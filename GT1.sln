@@ -2,10 +2,36 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GT1", "GT1\GT1.vbproj", "{A4E01275-CB40-497B-B77D-5BB0F2F4833F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3} = {F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3}
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ByteClassLibrary", "..\ByteClassLibrary\ByteClassLibrary\ByteClassLibrary.vbproj", "{147522CB-BC6E-4640-8719-A9ED09DA1BF7}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MyUpdater", "MyUpdater\MyUpdater.vbproj", "{A277126F-FF61-463A-88A1-B9FAD11CAA6B}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MyActivator", "MyActivator\MyActivator.vbproj", "{1991FFEE-9D73-45DB-9497-99DC53D40519}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ByteServices", "..\ByteServices\", "{F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/ByteServices"
+		Debug.AspNetCompiler.PhysicalPath = "..\ByteServices\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\ByteServices\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/ByteServices"
+		Release.AspNetCompiler.PhysicalPath = "..\ByteServices\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\ByteServices\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "10071"
+		DefaultWebSiteLanguage = "Visual Basic"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +76,26 @@ Global
 		{A277126F-FF61-463A-88A1-B9FAD11CAA6B}.Release|Mixed Platforms.Build.0 = Release|x86
 		{A277126F-FF61-463A-88A1-B9FAD11CAA6B}.Release|x86.ActiveCfg = Release|x86
 		{A277126F-FF61-463A-88A1-B9FAD11CAA6B}.Release|x86.Build.0 = Release|x86
+		{1991FFEE-9D73-45DB-9497-99DC53D40519}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{1991FFEE-9D73-45DB-9497-99DC53D40519}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{1991FFEE-9D73-45DB-9497-99DC53D40519}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{1991FFEE-9D73-45DB-9497-99DC53D40519}.Debug|x86.ActiveCfg = Debug|x86
+		{1991FFEE-9D73-45DB-9497-99DC53D40519}.Debug|x86.Build.0 = Debug|x86
+		{1991FFEE-9D73-45DB-9497-99DC53D40519}.Release|Any CPU.ActiveCfg = Release|x86
+		{1991FFEE-9D73-45DB-9497-99DC53D40519}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{1991FFEE-9D73-45DB-9497-99DC53D40519}.Release|Mixed Platforms.Build.0 = Release|x86
+		{1991FFEE-9D73-45DB-9497-99DC53D40519}.Release|x86.ActiveCfg = Release|x86
+		{1991FFEE-9D73-45DB-9497-99DC53D40519}.Release|x86.Build.0 = Release|x86
+		{F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F4311AA6-DFEB-4B5F-B056-AFD7A1B7FCF3}.Release|x86.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,7 +5,14 @@ Public Class frm_Settings
 
     Private Sub frm_Settings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+
+            FontMyControl(Me)
+
+
             Picturebox1.Visible = False
+
+
+            GetInvoiceLayouts()
             GetSettings()
 
             Me.MaximumSize = Me.Size
@@ -20,6 +27,18 @@ Public Class frm_Settings
 
             Picturebox1.Visible = True
             btnSave.Text = "الرجاء الانتظار قليلا"
+
+            Settings.HeaderSTR = txtHeaderSTR.Text
+            Settings.FooterSTR = txtFooterSTR.Text
+
+            Settings.IsPacketSystem = chkIsPacketSystem.Checked.ToString.ToLower
+            Settings.IsPacketDefault = chkIsPacketDefault.Checked.ToString.ToLower
+
+            Settings.IsDuplicateProductInInvoice = chkIsDuplicateProductInInvoice.Checked.ToString.ToLower
+
+            Settings.InvoiceLayout = cboInvoiceLayout.SelectedValue.ToString
+
+
             bw.RunWorkerAsync()
 
         Catch ex As Exception
@@ -30,6 +49,13 @@ Public Class frm_Settings
 
 
     Private Sub GetSettings()
+
+
+
+
+
+        cboInvoiceLayout.SelectedValue = Settings.InvoiceLayout
+
         txtHeaderSTR.Text = Settings.HeaderSTR
         txtFooterSTR.Text = Settings.FooterSTR
 
@@ -41,6 +67,33 @@ Public Class frm_Settings
         chkIsBarcodeShown.Checked = Settings.IsBarcodeShown
         chkIsRackShown.Checked = Settings.IsRackShown
         chkIsExDateShown.Checked = Settings.IsExDateShown
+
+
+        chkIsDuplicateProductInInvoice.Checked = Settings.IsDuplicateProductInInvoice
+
+    End Sub
+
+
+    Private Sub GetInvoiceLayouts()
+
+        Dim dt As New DataTable
+        dt.Columns.Add("Value")
+        dt.Columns.Add("Name")
+
+        dt.Rows.Add({"rpt_sp_rpt_Invoice_A4.rdlc", "A4"})
+        dt.Rows.Add({"rpt_sp_rpt_Invoice_A5.rdlc", "A5"})
+
+        With cboInvoiceLayout
+
+            .DataSource = dt
+            .ValueMember = "Value"
+            .DisplayMember = "Name"
+
+        End With
+
+
+
+
     End Sub
 
 
@@ -66,11 +119,8 @@ Public Class frm_Settings
     Private Sub bw_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles bw.DoWork
 
 
-        Settings.HeaderSTR = txtHeaderSTR.Text
-        Settings.FooterSTR = txtFooterSTR.Text
 
-        Settings.IsPacketSystem = chkIsPacketSystem.Checked.ToString.ToLower
-        Settings.IsPacketDefault = chkIsPacketDefault.Checked.ToString.ToLower
+
 
         If chkIsProductCodeShown.Checked <> Settings.IsProductCodeShown _
        Or chkIsProductDetailsShown.Checked <> Settings.IsProductDetailsShown _

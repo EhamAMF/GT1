@@ -373,8 +373,8 @@ Public Class frm_sp_rpt_Payments
                     Dim ID As Long = MyBs.Current("PaymentID")
                     Dim f As New frm_Payment(ID)
                     'f.MdiParent = Me.MdiParent
-                    f.StartPosition = FormStartPosition.CenterScreen
-                    f.ShowDialog()
+                    FrmMain.AddForm(f)
+
 
 
 
@@ -384,8 +384,7 @@ Public Class frm_sp_rpt_Payments
                     Dim ID As Long = MyBs.Current("OtherPaymentID")
                     Dim f As New frm_OtherPayment(ID)
                     'f.MdiParent = Me.MdiParent
-                    f.StartPosition = FormStartPosition.CenterScreen
-                    f.ShowDialog()
+                    FrmMain.AddForm(f)
 
 
 
@@ -393,17 +392,15 @@ Public Class frm_sp_rpt_Payments
 
                     Dim ID As Long = MyBs.Current("ExpenseID")
                     Dim f As New frm_Expense(ID)
-                    'f.MdiParent = Me.MdiParent
-                    f.StartPosition = FormStartPosition.CenterScreen
-                    f.ShowDialog()
+                    FrmMain.AddForm(f)
+
 
 
                 ElseIf IsNumeric(MyBs.Current("InvoiceID")) Then
 
                     Dim ID As Long = MyBs.Current("InvoiceID")
                     Dim f As New Frm_Invoice(ID)
-                    f.MdiParent = Me.MdiParent
-                    f.Show()
+                    FrmMain.AddForm(f)
 
                 End If
 
@@ -535,7 +532,8 @@ Public Class frm_sp_rpt_Payments
 
 
                     If req = RequestType.rdlc Then
-                        frm.Show()
+                        frm.Text = Me.Text
+                        FrmMain.AddForm(frm)
                     Else
                         Dim m As New ByteClassLibrary.PrintReport
                         m.PrintLocalReport(frm.rvReport.LocalReport)

@@ -13,13 +13,12 @@ Public Class frm_Backgroudjob
         bk1.RunWorkerAsync()
 
     End Sub
-
     Private Sub bk1_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles bk1.DoWork
         Try
             Dim Size As Long = MyFunctions.GetFolderSize(My.Application.Info.DirectoryPath & "\per\backup", True)
             Dim AllowedSize As Long = 10000000000
             If Settings.IsDebug = True Then
-                AllowedSize = 1000000000
+                AllowedSize = 500000000
             End If
 
 
@@ -38,7 +37,6 @@ Public Class frm_Backgroudjob
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
-
     Private Sub bk1_RunWorkerCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bk1.RunWorkerCompleted
         Try
 

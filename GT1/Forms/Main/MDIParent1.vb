@@ -319,86 +319,86 @@ Public Class MDIParent1
 
 
 
-    Private Sub BtnUpdateToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnUpdateToolStripMenuItem.Click
-        Try
+    'Private Sub BtnUpdateToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnUpdateToolStripMenuItem.Click
+    '    Try
 
 
-            If My.Settings.IsUpdateReady = True Then
-                ReadyUpdateExists()
-            Else
-                Dim ws As New WebServiceUpdateUri.wsSoapClient
-                Dim s As String = ws.GetUpdateUrl(PubAppID, PubAppVersion, "")
+    '        If My.Settings.IsUpdateReady = True Then
+    '            ReadyUpdateExists()
+    '        Else
+    '            Dim ws As New WebServiceUpdateUri.wsSoapClient
+    '            Dim s As String = ws.GetUpdateUrl(PubAppID, PubAppVersion, "")
 
-                If s = "Last Version" Then
-                    msgShow("لا يوجد تحديثات لديك اخر اصدار")
-                    Exit Sub
-                End If
+    '            If s = "Last Version" Then
+    '                msgShow("لا يوجد تحديثات لديك اخر اصدار")
+    '                Exit Sub
+    '            End If
 
-                pb1.Visible = True
+    '            pb1.Visible = True
 
-                If client.IsBusy = False Then
-                    AddHandler client.DownloadProgressChanged, AddressOf client_ProgressChanged
-                    AddHandler client.DownloadFileCompleted, AddressOf client_DownloadCompleted
-                    If (Not System.IO.Directory.Exists(My.Application.Info.DirectoryPath & "\Update\")) Then
-                        System.IO.Directory.CreateDirectory(My.Application.Info.DirectoryPath & "\Update\")
-                    End If
-                    client.DownloadFileAsync(New Uri(s), My.Application.Info.DirectoryPath & "\Update\Update.zip")
-                End If
-            End If
-
-
-        Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
-        End Try
-    End Sub
-    Private Sub client_ProgressChanged(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs)
-        Dim bytesIn As Double = Double.Parse(e.BytesReceived.ToString())
-        Dim totalBytes As Double = Double.Parse(e.TotalBytesToReceive.ToString())
-        Dim percentage As Double = bytesIn / totalBytes * 100
-        pb1.Value = Int32.Parse(Math.Truncate(percentage).ToString())
-    End Sub
-    Private Sub client_DownloadCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs)
-        If Not e.Cancelled AndAlso e.Error Is Nothing Then
-            My.Settings.IsUpdateReady = True
-            My.Settings.Save()
-            ReadyUpdateExists()
-        Else
-            DeleteFilesFromFolder(My.Application.Info.DirectoryPath & "\Update")
-            My.Settings.IsUpdateReady = False
-            My.Settings.Save()
-
-        End If
-
-        pb1.Visible = False
-    End Sub
-    Sub DeleteFilesFromFolder(ByVal Folder As String)
-        If Directory.Exists(Folder) Then
-            For Each _file As String In Directory.GetFiles(Folder)
-                File.Delete(_file)
-            Next
-            For Each _folder As String In Directory.GetDirectories(Folder)
-
-                DeleteFilesFromFolder(_folder)
-            Next
-
-        End If
-
-    End Sub
-    Private Sub ReadyUpdateExists()
-        Try
+    '            If client.IsBusy = False Then
+    '                AddHandler client.DownloadProgressChanged, AddressOf client_ProgressChanged
+    '                AddHandler client.DownloadFileCompleted, AddressOf client_DownloadCompleted
+    '                If (Not System.IO.Directory.Exists(My.Application.Info.DirectoryPath & "\Update\")) Then
+    '                    System.IO.Directory.CreateDirectory(My.Application.Info.DirectoryPath & "\Update\")
+    '                End If
+    '                client.DownloadFileAsync(New Uri(s), My.Application.Info.DirectoryPath & "\Update\Update.zip")
+    '            End If
+    '        End If
 
 
+    '    Catch ex As Exception
+    '        HandleMyError(ex, , , Settings.IsDebug)
+    '    End Try
+    'End Sub
+    'Private Sub client_ProgressChanged(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs)
+    '    Dim bytesIn As Double = Double.Parse(e.BytesReceived.ToString())
+    '    Dim totalBytes As Double = Double.Parse(e.TotalBytesToReceive.ToString())
+    '    Dim percentage As Double = bytesIn / totalBytes * 100
+    '    pb1.Value = Int32.Parse(Math.Truncate(percentage).ToString())
+    'End Sub
+    'Private Sub client_DownloadCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs)
+    '    If Not e.Cancelled AndAlso e.Error Is Nothing Then
+    '        My.Settings.IsUpdateReady = True
+    '        My.Settings.Save()
+    '        ReadyUpdateExists()
+    '    Else
+    '        DeleteFilesFromFolder(My.Application.Info.DirectoryPath & "\Update")
+    '        My.Settings.IsUpdateReady = False
+    '        My.Settings.Save()
 
-            If msgShow("يوجد تحديث جاهز، هل تريد تثبيت التحديث ؟ سوف يتم اعادة تشغيل المنظومة ", Frm_msg.FormType.YesNoNormal) = Windows.Forms.DialogResult.Yes Then
-                My.Settings.IsUpdateReady = False
-                My.Settings.Save()
-                MDIParent1_FormClosing(Me, New FormClosingEventArgs(CloseReason.None, False), True)
-            End If
+    '    End If
 
-        Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
-        End Try
-    End Sub
+    '    pb1.Visible = False
+    'End Sub
+    'Sub DeleteFilesFromFolder(ByVal Folder As String)
+    '    If Directory.Exists(Folder) Then
+    '        For Each _file As String In Directory.GetFiles(Folder)
+    '            File.Delete(_file)
+    '        Next
+    '        For Each _folder As String In Directory.GetDirectories(Folder)
+
+    '            DeleteFilesFromFolder(_folder)
+    '        Next
+
+    '    End If
+
+    'End Sub
+    'Private Sub ReadyUpdateExists()
+    '    Try
+
+
+
+    '        If msgShow("يوجد تحديث جاهز، هل تريد تثبيت التحديث ؟ سوف يتم اعادة تشغيل المنظومة ", Frm_msg.FormType.YesNoNormal) = Windows.Forms.DialogResult.Yes Then
+    '            My.Settings.IsUpdateReady = False
+    '            My.Settings.Save()
+    '            MDIParent1_FormClosing(Me, New FormClosingEventArgs(CloseReason.None, False), True)
+    '        End If
+
+    '    Catch ex As Exception
+    '        HandleMyError(ex, , , Settings.IsDebug)
+    '    End Try
+    'End Sub
 
 
 
@@ -748,5 +748,10 @@ Public Class MDIParent1
         Catch ex As Exception
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
+    End Sub
+
+
+    Private Sub ChangePasswordToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChangePasswordToolStripMenuItem.Click
+
     End Sub
 End Class

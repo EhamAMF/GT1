@@ -677,12 +677,27 @@ Public Class frm_sp_rpt_Invoice
 
 
                     If req = RequestType.rdlc Then
-                        frm.Show()
+
+                        'frm.Show()
+                        frm.Text = Me.Text
+                        FrmMain.AddForm(frm)
+
+
                     Else
                         'Dim m As New ByteClassLibrary.PrintReport
                         'm.PrintLocalReport(frm.rvReport.LocalReport)
 
-                        print_microsoft_report(frm.rvReport.LocalReport, "A5")
+                        If Settings.InvoiceLayout = "rpt_sp_rpt_Invoice_A4.rdlc" Then
+                            print_microsoft_report(frm.rvReport.LocalReport, "A4")
+                        ElseIf Settings.InvoiceLayout = "rpt_sp_rpt_Invoice_A5.rdlc" Then
+                            print_microsoft_report(frm.rvReport.LocalReport, "A5")
+                        End If
+
+
+
+
+
+
 
 
                     End If

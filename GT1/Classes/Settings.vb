@@ -165,6 +165,13 @@ Public Class Settings
     End Property
 
 
-
+    Public Shared Property IsDuplicateProductInInvoice As String
+        Get
+            Return GetSettingValue("IsDuplicateProductInInvoice")
+        End Get
+        Set(ByVal value As String)
+            SetSetting("IsDuplicateProductInInvoice", value)
+        End Set
+    End Property
 
 End Class

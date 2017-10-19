@@ -413,10 +413,6 @@ Public Class Frm_Invoice
 
 
 
-
-
-
-
     Protected Overrides Function ProcessKeyEventArgs(ByRef msg As Message) As Boolean
         If msg.WParam = Keys.PrintScreen Then
             btnSave.PerformClick()
@@ -426,6 +422,8 @@ Public Class Frm_Invoice
 
         Return MyBase.ProcessKeyEventArgs(msg)
     End Function
+
+
 
 
 
@@ -2122,8 +2120,33 @@ Public Class Frm_Invoice
                 InvoiceTitle = "فاتورة استرجاع مبيعات " & IIf(InvoiceID = 0, "جديدة", "رقم " & InvoiceNumber.ToString)
             Case InvoiceTypes.PreSale
                 InvoiceTitle = "فاتورة مبدئية " & IIf(InvoiceID = 0, "جديدة", "رقم " & InvoiceNumber.ToString)
+            Case InvoiceTypes.Purchase_R
+                InvoiceTitle = "فاتورة استرجاع مشتريات " & IIf(InvoiceID = 0, "جديدة", "رقم " & InvoiceNumber.ToString)
+            Case InvoiceTypes.Loss
+                InvoiceTitle = "فاتورة تالف " & IIf(InvoiceID = 0, "جديدة", "رقم " & InvoiceNumber.ToString)
+            Case InvoiceTypes.StockBalance
+                InvoiceTitle = "فاتورة تصحيح جرد " & IIf(InvoiceID = 0, "جديدة", "رقم " & InvoiceNumber.ToString)
             Case Else
-                InvoiceTitle = ""
+                Select Case InvoiceTypeID
+                    Case InvoiceTypes.InitialAmount
+                        InvoiceTitle = "رصيد أول المدة"
+                    Case InvoiceTypes.Purchase
+                        InvoiceTitle = "فاتورة مشتريات " & IIf(InvoiceID = 0, "جديدة", "رقم " & InvoiceNumber.ToString)
+                    Case InvoiceTypes.Sell
+                        InvoiceTitle = "فاتورة مبيعات " & IIf(InvoiceID = 0, "جديدة", "رقم " & InvoiceNumber.ToString)
+                    Case InvoiceTypes.Sell_R
+                        InvoiceTitle = "فاتورة استرجاع مبيعات " & IIf(InvoiceID = 0, "جديدة", "رقم " & InvoiceNumber.ToString)
+                    Case InvoiceTypes.PreSale
+                        InvoiceTitle = "فاتورة مبدئية " & IIf(InvoiceID = 0, "جديدة", "رقم " & InvoiceNumber.ToString)
+                    Case InvoiceTypes.Purchase_R
+                        InvoiceTitle = "فاتورة استرجاع مشتريات " & IIf(InvoiceID = 0, "جديدة", "رقم " & InvoiceNumber.ToString)
+                    Case InvoiceTypes.Loss
+                        InvoiceTitle = "فاتورة تالف " & IIf(InvoiceID = 0, "جديدة", "رقم " & InvoiceNumber.ToString)
+                    Case InvoiceTypes.StockBalance
+                        InvoiceTitle = "فاتورة تصحيح جرد " & IIf(InvoiceID = 0, "جديدة", "رقم " & InvoiceNumber.ToString)
+                    Case Else
+                        InvoiceTitle = ""
+                End Select
         End Select
         Me.Text = InvoiceTitle
 
@@ -2461,14 +2484,7 @@ Public Class Frm_Invoice
             If DirectCast(_InvoiceTypeID, InvoiceTypes) = InvoiceTypes.Sell AndAlso _InvoiceID > 0 Then
 
                 Dim F As New Frm_Invoice(InvoiceTypes.Sell_R, _InvoiceID)
-                F.MdiParent = MDIParent1
-                F.WindowState = FormWindowState.Maximized
-                F.Show()
-
-                Me.Close()
-
-
-
+                FrmMain.AddForm(F)
             End If
 
 
@@ -2600,7 +2616,6 @@ Public Class Frm_Invoice
                 Dim dt As DataTable
                 If Mid(ItemID, 1, 1) = "1" Then
                     dt = GetItemFromDB(ID, True, DBNull.Value, DBNull.Value)
-
                     AnalyzeEntry(dt)
                 End If
 
@@ -3077,7 +3092,7 @@ Public Class Frm_Invoice
 
         Dim m As Object = _BsInvoice.Find("GID", GID)
 
-        If _BsInvoice.Find("GID", GID) >= 0 Then
+        If _BsInvoice.Find("GID", GID) >= 0 And Settings.IsDuplicateProductInInvoice = False Then
 
             _BsInvoice.Position = _BsInvoice.Find("GID", GID)
             DR = DirectCast(_BsInvoice.Current, DataRowView).Row
@@ -3126,9 +3141,14 @@ Public Class Frm_Invoice
 
             _DtInvoice.Rows.Add(DR)
 
+            _BsInvoice.MoveLast()
         End If
 
-        _BsInvoice.Position = _BsInvoice.Find("GID", GID)
+
+
+
+
+
 
 
         If InvoiceType <> InvoiceTypes.Purchase AndAlso InvoiceType <> InvoiceTypes.InitialAmount Then
@@ -3343,6 +3363,8 @@ Public Class Frm_Invoice
         Return MyNumber
     End Function
 
+
+    <DebuggerStepThrough()>
     Private Sub dgvInvoice_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvInvoice.CellFormatting
         Try
 

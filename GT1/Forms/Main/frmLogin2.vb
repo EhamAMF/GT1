@@ -1,5 +1,5 @@
 ﻿Imports System.Management
-
+Imports ByteClassLibrary.MyFunctions
 Public Class frmLogin2
 
     Private Sub frmLogin2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -16,6 +16,10 @@ Public Class frmLogin2
             Dim ServerIP As String = GetFileContents(My.Application.Info.DirectoryPath & "\per\ServerIP.dll")
             PubCn.ConnectionString = "Data Source=" & ServerIP & ";MultipleActiveResultSets=true;Initial Catalog=GT1;User ID=sa;Password=%C@tchM31fY0uC@N%"
             PubMasterCn.ConnectionString = "Data Source=" & ServerIP & ";Initial Catalog=Master;User ID=sa;Password=%C@tchM31fY0uC@N%"
+
+
+
+
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -46,6 +50,14 @@ Public Class frmLogin2
     Private Sub BEnter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BEnter.Click
         Try
             Dim IsApproved As Boolean = False
+
+            Dim ma As New MyActivattion
+            If ma.IsKeyOK = False Then
+                btnActivate.Visible = True
+                BEnter.Enabled = False
+                Return
+            End If
+
 
             If Trim(TbPassword.Text) = "" Or Trim(TbUserName.Text) = "" Then
 
@@ -78,12 +90,20 @@ Public Class frmLogin2
 
                 CheckUpgradeDB2()
 
-                MDIParent1.Show()
+                ' MDIParent1.Show()
+                FrmMain.Show()
                 Me.Close()
 
             Else
                 MessageBox.Show("اسم المستخدم أو كلمة المرور غير صحيحة", "", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign, False)
             End If
+
+
+
+
+    
+
+
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -103,4 +123,16 @@ Public Class frmLogin2
         End If
     End Sub
 
+
+    Private Sub btnActivate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActivate.Click
+        Try
+            Dim f As New frm_Activation
+            f.StartPosition = FormStartPosition.CenterParent
+            f.WindowState = FormWindowState.Normal
+            f.ShowDialog()
+
+        Catch ex As Exception
+            HandleMyError(ex, , , My.Settings.IsDebug)
+        End Try
+    End Sub
 End Class

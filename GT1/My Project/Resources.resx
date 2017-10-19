@@ -118,136 +118,157 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Aljazeera2_BEST___Copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Aljazeera2 BEST - Copy.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="report1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\report1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="report" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\report.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SHR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SHR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Done" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Done.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="delete1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="saveprint1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\saveprint1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Message" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Message.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sorry" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sorry.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="beep_08b" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\beep-08b.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Authentication" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Authentication.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="print" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="next" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Prev" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Prev.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SHL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SHL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="view" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="option" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\option.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="byteStartUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\byteStartUp.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="a08To09_04_AddIndex_ProductSearchName" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a08To09_04_AddIndex_ProductSearchName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
-  <data name="a02_02_CREATE_TABLE_Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a02_02_CREATE_TABLE_Settings.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1256</value>
-  </data>
-  <data name="a02_03_Update_Account" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a02_03_Update_Account.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1256</value>
-  </data>
-  <data name="a02_04_CREATE_UNIQUE_NONCLUSTERED_INDEX_IX_Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a02_04_CREATE UNIQUE NONCLUSTERED INDEX IX_Settings.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1256</value>
+  <data name="Aljazeera2_BEST___Copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Aljazeera2 BEST - Copy.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="a02_05_Insert_into_Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\a02_05 Insert into Settings.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
-  <data name="a02_06_All" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a02_06 All.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
-  </data>
-  <data name="a02_07_Update_Version_Table" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a02_07 Update Version Table.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1256</value>
-  </data>
-  <data name="a_All_Proc_Func" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a_All_Proc_Func.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
-  </data>
-  <data name="a_Insert_All_Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a_Insert_All_Settings.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
-  </data>
-  <data name="a_UpdateVersion4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a_UpdateVersion4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
-  </data>
-  <data name="a_UpdateVersion5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a_UpdateVersion5.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
-  </data>
   <data name="a_UpdateVersion6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\a_UpdateVersion6.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
-  <data name="a01_Add_UserID_To_Services" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a01_Add_UserID_To_Services.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  <data name="saveprint1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saveprint1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="a02_Add_UserID_Relation_To_Services" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a02_Add_UserID_Relation_To_Services.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="a_UpdateVersion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\a_UpdateVersion.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
-  <data name="a08To09_01_Add_ProductSearchName" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a08To09_01_Add_ProductSearchName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  <data name="delete1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="a02_02_CREATE_TABLE_Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a02_02_CREATE_TABLE_Settings.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1256</value>
+  </data>
+  <data name="a_UpdateVersion5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a_UpdateVersion5.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="a02_03_Update_Account" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a02_03_Update_Account.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1256</value>
+  </data>
+  <data name="copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sales" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sales.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="a02_06_All" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a02_06 All.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="a_UpdateVersion4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a_UpdateVersion4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="Authentication" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Authentication.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SHR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SHR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="a02_04_CREATE_UNIQUE_NONCLUSTERED_INDEX_IX_Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a02_04_CREATE UNIQUE NONCLUSTERED INDEX IX_Settings.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1256</value>
+  </data>
+  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="a02_Add_UserID_Relation_To_Services" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a02_Add_UserID_Relation_To_Services.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="Done" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Done.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="a08To09_02_Update_ProductSearchName" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\a08To09_02_Update_ProductSearchName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
+  <data name="beep_08b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\beep-08b.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="byteStartUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\byteStartUp.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="a01_Add_UserID_To_Services" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a01_Add_UserID_To_Services.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="report" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\report.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="report1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\report1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SHL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SHL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="panelbk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\panelbk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PanelBK214_239" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PanelBK214_239.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="next" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="a08To09_01_Add_ProductSearchName" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a08To09_01_Add_ProductSearchName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="Prev" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Prev.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sorry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sorry.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="panelbk1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\panelbk1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="view" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="a_Insert_All_Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a_Insert_All_Settings.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
   <data name="a08To09_03_UnNull_ProductSearchName" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\a08To09_03_UnNull_ProductSearchName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
-  <data name="a08To09_04_AddIndex_ProductSearchName" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a08To09_04_AddIndex_ProductSearchName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  <data name="ps" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ps.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="a02_07_Update_Version_Table" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a02_07 Update Version Table.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1256</value>
+  </data>
+  <data name="Message" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Message.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="a_All_Proc_Func" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a_All_Proc_Func.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="panelbkbyte" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\panelbkbyte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

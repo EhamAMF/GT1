@@ -477,7 +477,8 @@ Public Class frm_sp_rpt_Agents_Balance
 
 
                     If req = RequestType.rdlc Then
-                        frm.Show()
+                        frm.Text = Me.Text
+                        FrmMain.AddForm(frm)
                     Else
                         Dim m As New ByteClassLibrary.PrintReport
                         m.PrintLocalReport(frm.rvReport.LocalReport)

@@ -82,12 +82,12 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to 
-        '''/****** Object:  StoredProcedure [dbo].[sp_tbl_Invoice_Insert]    Script Date: 10/01/2017 13:04:35 ******/
+        '''/****** 09 Object:  StoredProcedure [dbo].[sp_tbl_Invoice_Insert]    Script Date: 10/08/2017 12:28:41 ******/
         '''IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N&apos;[dbo].[sp_tbl_Invoice_Insert]&apos;) AND type in (N&apos;P&apos;, N&apos;PC&apos;))
         '''DROP PROCEDURE [dbo].[sp_tbl_Invoice_Insert]
         ''';
-        '''/****** Object:  StoredProcedure [dbo].[sp_tbl_Invoice_Update]    Script Date: 10/01/2017 13:04:35 ******/
-        '''IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N&apos;[dbo].[sp_tbl_Invoice_Update]&apos;) AND type in (N&apos;P&apos; [rest of string was truncated]&quot;;.
+        '''/****** Object:  StoredProcedure [dbo].[sp_tbl_Invoice_Update]    Script Date: 10/08/2017 12:28:41 ******/
+        '''IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N&apos;[dbo].[sp_tbl_Invoice_Update]&apos;) AND type in (N [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property a_All_Proc_Func() As String
             Get
@@ -323,14 +323,14 @@ Namespace My.Resources
         '''SET ANSI_WARNINGS ON
         '''COMMIT
         '''BEGIN TRANSACTION
-        '''GO
+        ''';
         '''ALTER TABLE dbo.Product
         '''	DROP CONSTRAINT FK_Product_Users
-        '''GO
+        ''';
         '''ALTER TABLE dbo.Users SET (LOCK_ESCALATION = TABLE)
-        '''GO
+        ''';
         '''COMMIT
-        '''BEGIN TRANSAC [rest of string was truncated]&quot;;.
+        '''BEGIN TRANSACTIO [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property a08To09_01_Add_ProductSearchName() As String
             Get
@@ -362,14 +362,14 @@ Namespace My.Resources
         '''SET ANSI_WARNINGS ON
         '''COMMIT
         '''BEGIN TRANSACTION
-        '''GO
+        ''';
         '''ALTER TABLE dbo.Product
         '''	DROP CONSTRAINT FK_Product_Users
-        '''GO
+        ''';
         '''ALTER TABLE dbo.Users SET (LOCK_ESCALATION = TABLE)
-        '''GO
+        ''';
         '''COMMIT
-        '''BEGIN TRANS [rest of string was truncated]&quot;;.
+        '''BEGIN TRANSACT [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property a08To09_03_UnNull_ProductSearchName() As String
             Get
@@ -389,11 +389,11 @@ Namespace My.Resources
         '''SET ANSI_WARNINGS ON
         '''COMMIT
         '''BEGIN TRANSACTION
-        '''GO
+        ''';
         '''CREATE NONCLUSTERED INDEX IX_Product ON dbo.Product
         '''	(
         '''	ProductSearchName
-        '''	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLO [rest of string was truncated]&quot;;.
+        '''	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property a08To09_04_AddIndex_ProductSearchName() As String
             Get
@@ -523,6 +523,56 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property panelbk() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("panelbk", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property panelbk1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("panelbk1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property PanelBK214_239() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("PanelBK214_239", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property panelbkbyte() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("panelbkbyte", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property pm() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("pm", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Prev() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Prev", resourceCulture)
@@ -536,6 +586,16 @@ Namespace My.Resources
         Friend ReadOnly Property print() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("print", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ps() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ps", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -566,6 +626,16 @@ Namespace My.Resources
         Friend ReadOnly Property report1() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("report1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property sales() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("sales", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

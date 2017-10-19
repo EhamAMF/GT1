@@ -100,6 +100,23 @@ Namespace My
                 Me("IsActivated") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("true")>  _
+        Public ReadOnly Property EhabTest() As String
+            Get
+                Return CType(Me("EhabTest"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property HWKEYS() As Global.System.Data.DataTable
+            Get
+                Return CType(Me("HWKEYS"),Global.System.Data.DataTable)
+            End Get
+        End Property
     End Class
 End Namespace
 

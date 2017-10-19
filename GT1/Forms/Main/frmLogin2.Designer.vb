@@ -29,6 +29,8 @@ Partial Class frmLogin2
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.BExit = New System.Windows.Forms.Button()
+        Me.btnActivate = New System.Windows.Forms.Button()
+        Me.bk1 = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'TbUserName
@@ -95,14 +97,33 @@ Partial Class frmLogin2
         Me.BExit.Text = "خروج"
         Me.BExit.UseVisualStyleBackColor = False
         '
+        'btnActivate
+        '
+        Me.btnActivate.BackColor = System.Drawing.Color.White
+        Me.btnActivate.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnActivate.ForeColor = System.Drawing.Color.Blue
+        Me.btnActivate.Location = New System.Drawing.Point(427, 136)
+        Me.btnActivate.Name = "btnActivate"
+        Me.btnActivate.Size = New System.Drawing.Size(75, 30)
+        Me.btnActivate.TabIndex = 8
+        Me.btnActivate.Text = "تفعيل"
+        Me.btnActivate.UseVisualStyleBackColor = False
+        Me.btnActivate.Visible = False
+        '
+        'bk1
+        '
+        Me.bk1.WorkerReportsProgress = True
+        Me.bk1.WorkerSupportsCancellation = True
+        '
         'frmLogin2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.BackgroundImage = My.Resources.Resources.byteStartUp
+        Me.BackgroundImage = Global.GT1.My.Resources.Resources.byteStartUp
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(583, 247)
+        Me.Controls.Add(Me.btnActivate)
         Me.Controls.Add(Me.BExit)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -129,4 +150,6 @@ Partial Class frmLogin2
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents BExit As System.Windows.Forms.Button
+    Friend WithEvents btnActivate As System.Windows.Forms.Button
+    Friend WithEvents bk1 As System.ComponentModel.BackgroundWorker
 End Class

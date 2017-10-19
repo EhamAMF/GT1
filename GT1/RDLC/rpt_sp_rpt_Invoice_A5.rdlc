@@ -943,7 +943,6 @@ iif(Parameters!AgentBalance.Value &lt; 0
                       </Style>
                     </Textbox>
                     <ColSpan>2</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -1382,7 +1381,7 @@ Public Function SubAmountStr(ByVal subAmount As Object, ByVal IsPacket As Object
           <Sizing>FitProportional</Sizing>
           <Top>0cm</Top>
           <Left>0cm</Left>
-          <Height>3.75646cm</Height>
+          <Height>3.75cm</Height>
           <Width>14.8cm</Width>
           <Style>
             <Border>

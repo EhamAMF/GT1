@@ -80,6 +80,7 @@ Partial Class MDIParent1
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChangePasswordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.اعدادتToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.عنالمنظومةToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HWToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
@@ -88,7 +89,6 @@ Partial Class MDIParent1
         Me.pb1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.bkHardwareCheck = New System.ComponentModel.BackgroundWorker()
-        Me.اعدادتToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -446,6 +446,12 @@ Partial Class MDIParent1
         Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
         Me.UsersToolStripMenuItem.Text = "إدارة المستخدمين"
         '
+        'اعدادتToolStripMenuItem
+        '
+        Me.اعدادتToolStripMenuItem.Name = "اعدادتToolStripMenuItem"
+        Me.اعدادتToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
+        Me.اعدادتToolStripMenuItem.Text = "اعدادت"
+        '
         'عنالمنظومةToolStripMenuItem
         '
         Me.عنالمنظومةToolStripMenuItem.Name = "عنالمنظومةToolStripMenuItem"
@@ -490,12 +496,6 @@ Partial Class MDIParent1
         'bkHardwareCheck
         '
         Me.bkHardwareCheck.WorkerReportsProgress = True
-        '
-        'اعدادتToolStripMenuItem
-        '
-        Me.اعدادتToolStripMenuItem.Name = "اعدادتToolStripMenuItem"
-        Me.اعدادتToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
-        Me.اعدادتToolStripMenuItem.Text = "اعدادت"
         '
         'MDIParent1
         '

@@ -493,7 +493,8 @@ Public Class frm_sp_rpt_Stock
 
 
                     If req = RequestType.rdlc Then
-                        frm.Show()
+                        frm.Text = Me.Text
+                        FrmMain.AddForm(frm)
                     Else
                         Dim m As New ByteClassLibrary.PrintReport
                         m.PrintLocalReport(frm.rvReport.LocalReport)

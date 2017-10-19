@@ -534,7 +534,8 @@ Public Class frm_sp_rpt_Payment
 
 
                     If req = RequestType.rdlc Then
-                        frm.Show()
+                        frm.Text = Me.Text
+                        FrmMain.AddForm(frm)
                     Else
                         'Dim m As New PrintReport
                         'm.PrintLocalReport(frm.rvReport.LocalReport)

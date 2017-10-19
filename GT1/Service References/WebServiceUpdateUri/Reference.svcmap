@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2104a9f6-6bdd-437f-a013-67cdcfeb2770" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f32ee29a-cbdb-4d62-9698-45bf09b4cf28" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -21,8 +21,8 @@
     <MetadataSource Address="http://www.byte.com.ly/ws.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ws.disco" MetadataType="Disco" ID="5ee90439-5fb0-4ad8-a879-b7bc9e32308e" SourceId="1" SourceUrl="http://www.byte.com.ly/ws.asmx?disco" />
-    <MetadataFile FileName="ws.wsdl" MetadataType="Wsdl" ID="ccd6df4e-2384-4e4b-b504-47e34a3db2bd" SourceId="1" SourceUrl="http://www.byte.com.ly/ws.asmx?wsdl" />
+    <MetadataFile FileName="ws.disco" MetadataType="Disco" ID="e95e94ca-7451-4804-9a59-e0a8ba3f557d" SourceId="1" SourceUrl="http://www.byte.com.ly/ws.asmx?disco" />
+    <MetadataFile FileName="ws.wsdl" MetadataType="Wsdl" ID="66366966-847e-4e63-a40e-e63f5dba5b90" SourceId="1" SourceUrl="http://www.byte.com.ly/ws.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

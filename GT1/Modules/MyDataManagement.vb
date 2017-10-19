@@ -87,7 +87,7 @@ Module MyDataManagement
             CMD.ExecuteNonQuery()
             MessageBox.Show("تم استرجاع قاعدة البيانات ")
 
-            CheckUpgradeDB()
+            CheckUpgradeDB2()
 
 
    
@@ -120,7 +120,7 @@ Module MyDataManagement
     End Sub
 
     Public Sub Reset2()
-        Dim SC As New SqlCommand("SP_DELETE_RESEST_ALL", PubCn)
+        Dim SC As New SqlCommand("sp_zz_DELETE_ALL", PubCn)
         SC.CommandType = CommandType.StoredProcedure
 
         If PubCn.State <> ConnectionState.Open Then PubCn.Open()
