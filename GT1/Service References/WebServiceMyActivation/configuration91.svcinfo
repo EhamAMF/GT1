@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="jZCH8g3Y/a9wr3VwKJ63xR46S9g=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="846q9SCjHQ6rSkCBr6R/XUIO4hE=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="MyActivationSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="MyActivationSoap" contract="WebServiceMyActivation.MyActivationSoap" bindingType="basicHttpBinding" address="http://www.byte.com.ly/WebServices/MyActivation.asmx" bindingConfiguration="MyActivationSoap">
+    <endpoint name="MyActivationSoap" contract="WebServiceMyActivation.MyActivationSoap" bindingType="basicHttpBinding" address="http://webservices.byte.com.ly/MyActivation.asmx" bindingConfiguration="MyActivationSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://www.byte.com.ly/WebServices/MyActivation.asmx</serializedValue>
+          <serializedValue>http://webservices.byte.com.ly/MyActivation.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

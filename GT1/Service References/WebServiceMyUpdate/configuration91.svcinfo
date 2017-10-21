@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="rr5ih6EbIu6rixHH/32uGy/gGpw=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="UeLSLq7wbNETYnAQHb3FXPlZkVU=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="MyUpdateSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="MyUpdateSoap" contract="WebServiceMyUpdate.MyUpdateSoap" bindingType="basicHttpBinding" address="http://www.byte.com.ly/WebServices/MyUpdate.asmx" bindingConfiguration="MyUpdateSoap">
+    <endpoint name="MyUpdateSoap" contract="WebServiceMyUpdate.MyUpdateSoap" bindingType="basicHttpBinding" address="http://webservices.byte.com.ly/MyUpdate.asmx" bindingConfiguration="MyUpdateSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://www.byte.com.ly/WebServices/MyUpdate.asmx</serializedValue>
+          <serializedValue>http://webservices.byte.com.ly/MyUpdate.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

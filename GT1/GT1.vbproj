@@ -494,11 +494,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\WebServiceUpdateUri\Reference.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Settings.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -675,9 +670,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="Service References\WebServiceMyActivation\MyActivation.wsdl" />
-    <None Include="Service References\WebServiceMyUpdate\MyUpdate.wsdl" />
-    <None Include="Service References\WebServiceUpdateUri\ws.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Aljazeera2 BEST - Copy.ttf" />
@@ -761,21 +753,14 @@
     <None Include="Resources\panelbk.png" />
     <None Include="Resources\panelbk1.png" />
     <None Include="Resources\panelbkbyte.png" />
-    <None Include="Service References\WebServiceUpdateUri\ws.disco" />
-    <None Include="Service References\WebServiceUpdateUri\configuration91.svcinfo" />
-    <None Include="Service References\WebServiceUpdateUri\configuration.svcinfo" />
-    <None Include="Service References\WebServiceUpdateUri\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.vb</LastGenOutput>
-    </None>
-    <None Include="Service References\WebServiceMyUpdate\MyUpdate.disco" />
+    <None Include="Service References\WebServiceMyActivation\MyActivation1.wsdl" />
     <None Include="Service References\WebServiceMyUpdate\configuration91.svcinfo" />
     <None Include="Service References\WebServiceMyUpdate\configuration.svcinfo" />
+    <None Include="Service References\WebServiceMyUpdate\MyUpdate1.wsdl" />
     <None Include="Service References\WebServiceMyUpdate\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
-    <None Include="Service References\WebServiceMyActivation\MyActivation.disco" />
     <None Include="Service References\WebServiceMyActivation\configuration91.svcinfo" />
     <None Include="Service References\WebServiceMyActivation\configuration.svcinfo" />
     <None Include="Service References\WebServiceMyActivation\Reference.svcmap">
@@ -784,6 +769,8 @@
     </None>
     <None Include="Resources\a_Insert_All_Settings.txt" />
     <None Include="Resources\a_All_Proc_Func.txt" />
+    <None Include="Service References\WebServiceMyUpdate\MyUpdate1.disco" />
+    <None Include="Service References\WebServiceMyActivation\MyActivation1.disco" />
     <Content Include="To Do\To Do.txt" />
     <None Include="Resources\byteStartUp.bmp" />
     <None Include="Resources\option.png" />
@@ -830,7 +817,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\WebServiceMyActivation\" />
     <WCFMetadataStorage Include="Service References\WebServiceMyUpdate\" />
-    <WCFMetadataStorage Include="Service References\WebServiceUpdateUri\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

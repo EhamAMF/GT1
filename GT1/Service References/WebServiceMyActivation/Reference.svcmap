@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://www.byte.com.ly/WebServices/MyActivation.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://webservices.byte.com.ly/MyActivation.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="MyActivation.wsdl" MetadataType="Wsdl" ID="11fe5b2c-d94f-430e-abc8-b0f41a02e056" SourceId="1" SourceUrl="http://www.byte.com.ly/WebServices/MyActivation.asmx?wsdl" />
-    <MetadataFile FileName="MyActivation.disco" MetadataType="Disco" ID="0f573813-fe96-4f90-b680-73985561bbe7" SourceId="1" SourceUrl="http://www.byte.com.ly/WebServices/MyActivation.asmx?disco" />
+    <MetadataFile FileName="MyActivation1.wsdl" MetadataType="Wsdl" ID="800dd886-522b-4a58-95bf-e6eea2744d92" SourceId="1" SourceUrl="http://webservices.byte.com.ly/MyActivation.asmx?wsdl" />
+    <MetadataFile FileName="MyActivation1.disco" MetadataType="Disco" ID="4f430544-c968-429a-9da1-6a87273e07d1" SourceId="1" SourceUrl="http://webservices.byte.com.ly/MyActivation.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

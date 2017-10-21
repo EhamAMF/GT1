@@ -58,10 +58,10 @@
   </wsdl:binding>
   <wsdl:service name="MyUpdate">
     <wsdl:port name="MyUpdateSoap" binding="tns:MyUpdateSoap">
-      <soap:address location="http://www.byte.com.ly/WebServices/MyUpdate.asmx" />
+      <soap:address location="http://webservices.byte.com.ly/MyUpdate.asmx" />
     </wsdl:port>
     <wsdl:port name="MyUpdateSoap12" binding="tns:MyUpdateSoap12">
-      <soap12:address location="http://www.byte.com.ly/WebServices/MyUpdate.asmx" />
+      <soap12:address location="http://webservices.byte.com.ly/MyUpdate.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

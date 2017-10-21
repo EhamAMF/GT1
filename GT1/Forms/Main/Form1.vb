@@ -613,6 +613,7 @@ Public Class FrmMain
                 Dim ws As New WebServiceMyUpdate.MyUpdateSoapClient
                 Dim s As String = ws.GetUpdateUrl(PubAppID, PubAppVersion, "")
 
+
                 If s = "Last Version" Then
                     msgShow("لا يوجد تحديثات لديك اخر اصدار")
                     Exit Sub

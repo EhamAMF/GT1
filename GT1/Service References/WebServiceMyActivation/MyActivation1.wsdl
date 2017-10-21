@@ -60,10 +60,10 @@
   </wsdl:binding>
   <wsdl:service name="MyActivation">
     <wsdl:port name="MyActivationSoap" binding="tns:MyActivationSoap">
-      <soap:address location="http://www.byte.com.ly/WebServices/MyActivation.asmx" />
+      <soap:address location="http://webservices.byte.com.ly/MyActivation.asmx" />
     </wsdl:port>
     <wsdl:port name="MyActivationSoap12" binding="tns:MyActivationSoap12">
-      <soap12:address location="http://www.byte.com.ly/WebServices/MyActivation.asmx" />
+      <soap12:address location="http://webservices.byte.com.ly/MyActivation.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

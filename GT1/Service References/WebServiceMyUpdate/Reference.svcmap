@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://www.byte.com.ly/WebServices/MyUpdate.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://webservices.byte.com.ly/MyUpdate.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="MyUpdate.wsdl" MetadataType="Wsdl" ID="b6e508b3-da88-45bc-86e6-acbbf8dc600e" SourceId="1" SourceUrl="http://www.byte.com.ly/WebServices/MyUpdate.asmx?wsdl" />
-    <MetadataFile FileName="MyUpdate.disco" MetadataType="Disco" ID="a308962a-1e44-4655-9a04-c3c18c8353c7" SourceId="1" SourceUrl="http://www.byte.com.ly/WebServices/MyUpdate.asmx?disco" />
+    <MetadataFile FileName="MyUpdate1.disco" MetadataType="Disco" ID="2581f776-3f68-40d9-8027-ece68dd1b7fc" SourceId="1" SourceUrl="http://webservices.byte.com.ly/MyUpdate.asmx?disco" />
+    <MetadataFile FileName="MyUpdate1.wsdl" MetadataType="Wsdl" ID="67050a77-c82e-4034-ad30-08ab08cc4610" SourceId="1" SourceUrl="http://webservices.byte.com.ly/MyUpdate.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
