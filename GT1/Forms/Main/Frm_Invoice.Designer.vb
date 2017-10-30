@@ -1,5 +1,4 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-
+﻿
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Frm_Invoice
     Inherits System.Windows.Forms.Form
@@ -30,12 +29,10 @@ Partial Class Frm_Invoice
         Me.btnNew = New System.Windows.Forms.ToolStripButton()
         Me.btnPreviosInvoice = New System.Windows.Forms.ToolStripButton()
         Me.btnNextInvoice = New System.Windows.Forms.ToolStripButton()
-        Me.btnSave = New System.Windows.Forms.ToolStripButton()
+        Me.btnSave2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
-        Me.lblTotal = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.btnSave = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnView = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnPrint = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnReturn = New System.Windows.Forms.ToolStripMenuItem()
@@ -43,9 +40,16 @@ Partial Class Frm_Invoice
         Me.btnCreateSellInvoce = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnDelete = New System.Windows.Forms.ToolStripMenuItem()
         Me.StockBalanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.أصنافأخرىToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
+        Me.lblTotal = New System.Windows.Forms.ToolStripLabel()
+        Me.btnOtherProducts = New System.Windows.Forms.ToolStripButton()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
+        Me.dgvInfo = New GT1.ByteDGV()
+        Me.Title = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Disc = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Pbenterbig1 = New ByteMyPictureBox.pbenterbig()
         Me.Pb91 = New ByteMyPictureBox.pb9()
@@ -78,9 +82,6 @@ Partial Class Frm_Invoice
         Me.btnAddItem = New System.Windows.Forms.Button()
         Me.cboItem = New ByteClassLibrary.MyGridTextBox3()
         Me.cboItemType = New System.Windows.Forms.ComboBox()
-        Me.dgvInfo = New GT1.ByteDGV()
-        Me.Title = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Disc = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,6 +89,7 @@ Partial Class Frm_Invoice
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
+        CType(Me.dgvInfo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         CType(Me.Pbenterbig1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Pb91, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -111,7 +113,6 @@ Partial Class Frm_Invoice
         CType(Me.dgvInvoice, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cmsDGV.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        CType(Me.dgvInfo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -120,11 +121,12 @@ Partial Class Frm_Invoice
         Me.ToolStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(70, 70)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnPreviosInvoice, Me.btnNextInvoice, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.lblTotal, Me.ToolStripSeparator2, Me.ToolStripButton1})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnPreviosInvoice, Me.btnNextInvoice, Me.btnSave2, Me.ToolStripSeparator1, Me.ToolStripButton1, Me.ToolStripLabel1, Me.lblTotal, Me.btnOtherProducts})
         Me.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Margin = New System.Windows.Forms.Padding(4)
         Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Padding = New System.Windows.Forms.Padding(0)
         Me.ToolStrip1.Size = New System.Drawing.Size(1008, 86)
         Me.ToolStrip1.Stretch = True
         Me.ToolStrip1.TabIndex = 23
@@ -163,52 +165,42 @@ Partial Class Frm_Invoice
         Me.btnNextInvoice.Text = "الفاتورة التالية"
         Me.btnNextInvoice.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
         '
-        'btnSave
+        'btnSave2
         '
-        Me.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnSave.Image = Global.GT1.My.Resources.Resources.save
-        Me.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnSave.Margin = New System.Windows.Forms.Padding(6, 6, 0, 6)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(74, 74)
-        Me.btnSave.Text = "حفظ"
-        Me.btnSave.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
+        Me.btnSave2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnSave2.Image = Global.GT1.My.Resources.Resources.save
+        Me.btnSave2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSave2.Margin = New System.Windows.Forms.Padding(6, 6, 0, 6)
+        Me.btnSave2.Name = "btnSave2"
+        Me.btnSave2.Size = New System.Drawing.Size(74, 74)
+        Me.btnSave2.Text = "حفظ"
+        Me.btnSave2.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 86)
         '
-        'ToolStripLabel1
-        '
-        Me.ToolStripLabel1.Font = New System.Drawing.Font("Aljazeera", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(107, 83)
-        Me.ToolStripLabel1.Text = "الاجمالي :"
-        '
-        'lblTotal
-        '
-        Me.lblTotal.Font = New System.Drawing.Font("Arial", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(145, 83)
-        Me.lblTotal.Text = "88.75"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 86)
-        '
         'ToolStripButton1
         '
         Me.ToolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnView, Me.btnPrint, Me.btnReturn, Me.btnPay, Me.btnCreateSellInvoce, Me.btnDelete, Me.StockBalanceToolStripMenuItem})
+        Me.ToolStripButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnSave, Me.btnView, Me.btnPrint, Me.btnReturn, Me.btnPay, Me.btnCreateSellInvoce, Me.btnDelete, Me.StockBalanceToolStripMenuItem, Me.أصنافأخرىToolStripMenuItem})
         Me.ToolStripButton1.Font = New System.Drawing.Font("Aljazeera", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripButton1.Image = Global.GT1.My.Resources.Resources._option
+        Me.ToolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(83, 83)
+        Me.ToolStripButton1.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
+        Me.ToolStripButton1.ShowDropDownArrow = False
+        Me.ToolStripButton1.Size = New System.Drawing.Size(79, 83)
         Me.ToolStripButton1.Text = "ToolStripButton1"
+        '
+        'btnSave
+        '
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(229, 34)
+        Me.btnSave.Text = "حفظ"
         '
         'btnView
         '
@@ -252,6 +244,37 @@ Partial Class Frm_Invoice
         Me.StockBalanceToolStripMenuItem.Size = New System.Drawing.Size(229, 34)
         Me.StockBalanceToolStripMenuItem.Text = "المساعد"
         '
+        'أصنافأخرىToolStripMenuItem
+        '
+        Me.أصنافأخرىToolStripMenuItem.Name = "أصنافأخرىToolStripMenuItem"
+        Me.أصنافأخرىToolStripMenuItem.Size = New System.Drawing.Size(229, 34)
+        Me.أصنافأخرىToolStripMenuItem.Text = "أصناف أخرى"
+        '
+        'ToolStripLabel1
+        '
+        Me.ToolStripLabel1.Font = New System.Drawing.Font("Aljazeera", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripLabel1.Name = "ToolStripLabel1"
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(107, 83)
+        Me.ToolStripLabel1.Text = "الاجمالي :"
+        '
+        'lblTotal
+        '
+        Me.lblTotal.Font = New System.Drawing.Font("Arial", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(145, 83)
+        Me.lblTotal.Text = "88.75"
+        '
+        'btnOtherProducts
+        '
+        Me.btnOtherProducts.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.btnOtherProducts.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnOtherProducts.Image = Global.GT1.My.Resources.Resources.MyGrid
+        Me.btnOtherProducts.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnOtherProducts.Margin = New System.Windows.Forms.Padding(5, 1, 5, 2)
+        Me.btnOtherProducts.Name = "btnOtherProducts"
+        Me.btnOtherProducts.Size = New System.Drawing.Size(74, 83)
+        Me.btnOtherProducts.Text = "ToolStripButton2"
+        '
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 1
@@ -284,7 +307,7 @@ Partial Class Frm_Invoice
         Me.SplitContainer1.Panel2.Controls.Add(Me.TableLayoutPanel2)
         Me.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.SplitContainer1.Size = New System.Drawing.Size(1002, 578)
-        Me.SplitContainer1.SplitterDistance = 342
+        Me.SplitContainer1.SplitterDistance = 331
         Me.SplitContainer1.SplitterWidth = 10
         Me.SplitContainer1.TabIndex = 21
         '
@@ -300,8 +323,41 @@ Partial Class Frm_Invoice
         Me.TableLayoutPanel3.RowCount = 2
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 301.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(342, 578)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(331, 578)
         Me.TableLayoutPanel3.TabIndex = 1
+        '
+        'dgvInfo
+        '
+        Me.dgvInfo.AllowUserToAddRows = False
+        Me.dgvInfo.AllowUserToDeleteRows = False
+        Me.dgvInfo.AllowUserToResizeRows = False
+        Me.dgvInfo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.dgvInfo.BackgroundColor = System.Drawing.Color.White
+        Me.dgvInfo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.dgvInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvInfo.ColumnHeadersVisible = False
+        Me.dgvInfo.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Title, Me.Disc})
+        Me.dgvInfo.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvInfo.Location = New System.Drawing.Point(3, 3)
+        Me.dgvInfo.Name = "dgvInfo"
+        Me.dgvInfo.RowHeadersVisible = False
+        Me.dgvInfo.RowTemplate.Height = 33
+        Me.dgvInfo.Size = New System.Drawing.Size(325, 271)
+        Me.dgvInfo.TabIndex = 0
+        '
+        'Title
+        '
+        Me.Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.Title.HeaderText = "Title"
+        Me.Title.Name = "Title"
+        Me.Title.ReadOnly = True
+        Me.Title.Width = 5
+        '
+        'Disc
+        '
+        Me.Disc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Disc.HeaderText = "Disc"
+        Me.Disc.Name = "Disc"
         '
         'Panel4
         '
@@ -320,11 +376,11 @@ Partial Class Frm_Invoice
         Me.Panel4.Controls.Add(Me.Pbdot1)
         Me.Panel4.Controls.Add(Me.Pbc1)
         Me.Panel4.Controls.Add(Me.Pb01)
-        Me.Panel4.Location = New System.Drawing.Point(4, 277)
+        Me.Panel4.Location = New System.Drawing.Point(0, 277)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.Panel4.Size = New System.Drawing.Size(338, 298)
+        Me.Panel4.Size = New System.Drawing.Size(331, 298)
         Me.Panel4.TabIndex = 23
         '
         'Pbenterbig1
@@ -487,7 +543,7 @@ Partial Class Frm_Invoice
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.51834!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 141.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(650, 578)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(661, 578)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'Panel1
@@ -498,7 +554,7 @@ Partial Class Frm_Invoice
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(3, 440)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(644, 135)
+        Me.Panel1.Size = New System.Drawing.Size(655, 135)
         Me.Panel1.TabIndex = 0
         '
         'dgvTotal2
@@ -601,7 +657,7 @@ Partial Class Frm_Invoice
         Me.dgvInvoice.Location = New System.Drawing.Point(3, 3)
         Me.dgvInvoice.Name = "dgvInvoice"
         Me.dgvInvoice.RowHeadersVisible = False
-        Me.dgvInvoice.Size = New System.Drawing.Size(644, 431)
+        Me.dgvInvoice.Size = New System.Drawing.Size(655, 431)
         Me.dgvInvoice.TabIndex = 1
         '
         'cmsDGV
@@ -662,39 +718,6 @@ Partial Class Frm_Invoice
         Me.cboItemType.Size = New System.Drawing.Size(121, 33)
         Me.cboItemType.TabIndex = 2
         '
-        'dgvInfo
-        '
-        Me.dgvInfo.AllowUserToAddRows = False
-        Me.dgvInfo.AllowUserToDeleteRows = False
-        Me.dgvInfo.AllowUserToResizeRows = False
-        Me.dgvInfo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.dgvInfo.BackgroundColor = System.Drawing.Color.White
-        Me.dgvInfo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
-        Me.dgvInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvInfo.ColumnHeadersVisible = False
-        Me.dgvInfo.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Title, Me.Disc})
-        Me.dgvInfo.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvInfo.Location = New System.Drawing.Point(3, 3)
-        Me.dgvInfo.Name = "dgvInfo"
-        Me.dgvInfo.RowHeadersVisible = False
-        Me.dgvInfo.RowTemplate.Height = 33
-        Me.dgvInfo.Size = New System.Drawing.Size(336, 271)
-        Me.dgvInfo.TabIndex = 0
-        '
-        'Title
-        '
-        Me.Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.Title.HeaderText = "Title"
-        Me.Title.Name = "Title"
-        Me.Title.ReadOnly = True
-        Me.Title.Width = 5
-        '
-        'Disc
-        '
-        Me.Disc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Disc.HeaderText = "Disc"
-        Me.Disc.Name = "Disc"
-        '
         'Frm_Invoice
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -716,6 +739,7 @@ Partial Class Frm_Invoice
         Me.SplitContainer1.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
+        CType(Me.dgvInfo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         CType(Me.Pbenterbig1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Pb91, System.ComponentModel.ISupportInitialize).EndInit()
@@ -740,7 +764,6 @@ Partial Class Frm_Invoice
         Me.cmsDGV.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.dgvInfo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -749,11 +772,10 @@ Partial Class Frm_Invoice
     Friend WithEvents btnNew As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnPreviosInvoice As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnNextInvoice As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnSave As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnSave2 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripLabel1 As System.Windows.Forms.ToolStripLabel
     Friend WithEvents lblTotal As System.Windows.Forms.ToolStripLabel
-    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
     Friend WithEvents dgvInfo As ByteDGV
@@ -800,5 +822,8 @@ Partial Class Frm_Invoice
     Friend WithEvents Pbc1 As ByteMyPictureBox.pbc
     Friend WithEvents Pb01 As ByteMyPictureBox.pb0
     Friend WithEvents StockBalanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents أصنافأخرىToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents btnOtherProducts As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnSave As System.Windows.Forms.ToolStripMenuItem
 
 End Class

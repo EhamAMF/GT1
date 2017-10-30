@@ -10,8 +10,6 @@ Public Class frmInvoice
     Dim WithEvents _BsWareHouse As New BindingSource
 
 
-
-
     Dim _dtStock As New DataTable
     Dim WithEvents _BsStock As New BindingSource
 
@@ -1714,15 +1712,8 @@ Public Class frmInvoice
 #End Region
 
 
-
-
     Private Sub btnEdit_Click(sender As System.Object, e As System.EventArgs) Handles btnEdit.Click
         _bl_BarcodeReceived("001")
     End Sub
-
-
-
-
-
 
 End Class

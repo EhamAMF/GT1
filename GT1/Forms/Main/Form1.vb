@@ -79,7 +79,7 @@ Public Class FrmMain
 
                 Settings.InvoiceLayout = InputBox("InvoiceLayout", "InvoiceLayout", Settings.InvoiceLayout)
 
-                Settings.IsDebug = InputBox("IsDebug", "IsDebug", Settings.IsDebug)
+                My.Settings.IsDebug = InputBox("IsDebug", "IsDebug", My.Settings.IsDebug)
 
                 Settings.HeaderSTR = InputBox("اسم الشركة أو المحل", "اسم الشركة أو المحل", Settings.HeaderSTR)
                 Settings.FooterSTR = InputBox("عنوان - هاتف", "عنوان - هاتف", Settings.FooterSTR)
@@ -103,7 +103,7 @@ Public Class FrmMain
 
 
 
-
+            My.Settings.Save()
 
 
 
@@ -145,7 +145,7 @@ Public Class FrmMain
 
 
         tbMain_SelectedIndexChanged(Me, Nothing)
-
+        F.Select()
 
     End Sub
     Private Sub F_TextChanged(ByVal sender As Object, ByVal e As EventArgs)
@@ -614,6 +614,8 @@ Public Class FrmMain
                 Dim s As String = ws.GetUpdateUrl(PubAppID, PubAppVersion, "")
 
 
+
+
                 If s = "Last Version" Then
                     msgShow("لا يوجد تحديثات لديك اخر اصدار")
                     Exit Sub
@@ -627,6 +629,7 @@ Public Class FrmMain
                     If (Not System.IO.Directory.Exists(My.Application.Info.DirectoryPath & "\Update\")) Then
                         System.IO.Directory.CreateDirectory(My.Application.Info.DirectoryPath & "\Update\")
                     End If
+
                     client.DownloadFileAsync(New Uri(s), My.Application.Info.DirectoryPath & "\Update\Update.zip")
                 End If
             End If

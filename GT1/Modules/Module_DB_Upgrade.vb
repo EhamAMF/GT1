@@ -8,7 +8,7 @@ Module Module_DB_Upgrade
 
     Public Sub CheckUpgradeDB2()
         PubdbVersion = ByteClassLibrary.MyFunctions.GetScalarValue(PubCn, "Version", "VersoinNumber", "1 = 1")
-        Dim LastDBVersion As Integer = 10
+        Dim LastDBVersion As Integer = 12
 
 
 
@@ -23,6 +23,10 @@ Module Module_DB_Upgrade
                     PubdbVersion8()
                 Case 9
                     PubdbVersion9()
+                Case 10
+                    PubdbVersion10()
+                Case 11
+                    PubdbVersion11()
             End Select
         End While
 
@@ -31,8 +35,6 @@ Module Module_DB_Upgrade
     End Sub
 
 
-
-    
     Private Sub PubdbVersion6()
 
         Dim cmd As New SqlCommand("", PubCn)
@@ -165,7 +167,88 @@ Module Module_DB_Upgrade
 
 
 
+            MyTrans.Commit()
 
+            PubdbVersion = ByteClassLibrary.MyFunctions.GetScalarValue(PubCn, "Version", "VersoinNumber", "1 = 1")
+
+        Catch ex As Exception
+            MyTrans.Rollback()
+            HandleMyError(ex, , , Settings.IsDebug)
+        Finally
+            If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
+        End Try
+
+
+
+
+
+    End Sub
+    Private Sub PubdbVersion10()
+
+        Dim cmd As New SqlCommand("", PubCn)
+        Dim MyTrans As SqlTransaction
+        Try
+            If PubCn.State <> ConnectionState.Open Then PubCn.Open()
+            MyTrans = PubCn.BeginTransaction(IsolationLevel.Serializable)
+            cmd.Transaction = MyTrans
+
+
+
+
+
+            cmd.CommandText = My.Resources.a_UpdateVersion
+            cmd.Parameters.Clear()
+            cmd.Parameters.AddWithValue("@VersoinNumber", PubdbVersion + 1)
+            cmd.ExecuteNonQuery()
+            cmd.Parameters.Clear()
+
+
+
+
+            cmd.CommandText = My.Resources.a10To11_01_CreateButtonsTable
+            cmd.ExecuteNonQuery()
+
+
+       
+
+
+
+
+
+            MyTrans.Commit()
+
+            PubdbVersion = ByteClassLibrary.MyFunctions.GetScalarValue(PubCn, "Version", "VersoinNumber", "1 = 1")
+
+        Catch ex As Exception
+            MyTrans.Rollback()
+            HandleMyError(ex, , , Settings.IsDebug)
+        Finally
+            If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
+        End Try
+
+
+
+
+
+    End Sub
+    Private Sub PubdbVersion11()
+
+        Dim cmd As New SqlCommand("", PubCn)
+        Dim MyTrans As SqlTransaction
+        Try
+            If PubCn.State <> ConnectionState.Open Then PubCn.Open()
+            MyTrans = PubCn.BeginTransaction(IsolationLevel.Serializable)
+            cmd.Transaction = MyTrans
+
+
+
+
+
+            cmd.CommandText = My.Resources.a_UpdateVersion
+            cmd.Parameters.Clear()
+            cmd.Parameters.AddWithValue("@VersoinNumber", PubdbVersion + 1)
+            cmd.ExecuteNonQuery()
+            cmd.Parameters.Clear()
 
 
 

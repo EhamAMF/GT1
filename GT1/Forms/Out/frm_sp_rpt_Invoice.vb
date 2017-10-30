@@ -691,6 +691,8 @@ Public Class frm_sp_rpt_Invoice
                             print_microsoft_report(frm.rvReport.LocalReport, "A4")
                         ElseIf Settings.InvoiceLayout = "rpt_sp_rpt_Invoice_A5.rdlc" Then
                             print_microsoft_report(frm.rvReport.LocalReport, "A5")
+                        ElseIf Settings.InvoiceLayout = "rpt_sp_rpt_Invoice_Receipt.rdlc" Then
+                            print_microsoft_report(frm.rvReport.LocalReport, 300, 9000, False)
                         End If
 
 

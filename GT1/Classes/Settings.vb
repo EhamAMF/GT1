@@ -174,4 +174,15 @@ Public Class Settings
         End Set
     End Property
 
+
+    Public Shared Property IsOtherProductsVisible As String
+        Get
+            Return GetSettingValue("IsOtherProductsVisible")
+        End Get
+        Set(ByVal value As String)
+            SetSetting("IsOtherProductsVisible", value)
+        End Set
+    End Property
+
+
 End Class

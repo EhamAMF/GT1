@@ -59,6 +59,9 @@ Partial Class frm_sp_rpt_Stock
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.dgv = New System.Windows.Forms.DataGridView()
         Me.bw1 = New System.ComponentModel.BackgroundWorker()
+        Me.plocation = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.tblocation = New ByteClassLibrary.MyTextBox()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -73,6 +76,7 @@ Partial Class frm_sp_rpt_Stock
         CType(Me.Picturebox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.plocation.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStripSeparator3
@@ -196,6 +200,7 @@ Partial Class frm_sp_rpt_Stock
         Me.FlowLayoutPanel1.Controls.Add(Me.PExDate)
         Me.FlowLayoutPanel1.Controls.Add(Me.PBrandID)
         Me.FlowLayoutPanel1.Controls.Add(Me.PTypeID)
+        Me.FlowLayoutPanel1.Controls.Add(Me.plocation)
         Me.FlowLayoutPanel1.Controls.Add(Me.PSearch)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
@@ -355,7 +360,7 @@ Partial Class frm_sp_rpt_Stock
         '
         Me.PSearch.Controls.Add(Me.btnSearch)
         Me.PSearch.Controls.Add(Me.Picturebox1)
-        Me.PSearch.Location = New System.Drawing.Point(56, 158)
+        Me.PSearch.Location = New System.Drawing.Point(56, 195)
         Me.PSearch.Margin = New System.Windows.Forms.Padding(0)
         Me.PSearch.Name = "PSearch"
         Me.PSearch.Size = New System.Drawing.Size(359, 37)
@@ -450,6 +455,34 @@ Partial Class frm_sp_rpt_Stock
         Me.bw1.WorkerReportsProgress = True
         Me.bw1.WorkerSupportsCancellation = True
         '
+        'plocation
+        '
+        Me.plocation.Controls.Add(Me.tblocation)
+        Me.plocation.Controls.Add(Me.Label1)
+        Me.plocation.Location = New System.Drawing.Point(56, 158)
+        Me.plocation.Margin = New System.Windows.Forms.Padding(0)
+        Me.plocation.Name = "plocation"
+        Me.plocation.Size = New System.Drawing.Size(359, 37)
+        Me.plocation.TabIndex = 206
+        '
+        'Label1
+        '
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label1.AutoSize = True
+        Me.Label1.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.Label1.Location = New System.Drawing.Point(234, 3)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(48, 23)
+        Me.Label1.TabIndex = 104
+        Me.Label1.Text = "الموقع"
+        '
+        'tblocation
+        '
+        Me.tblocation.Location = New System.Drawing.Point(0, 0)
+        Me.tblocation.Name = "tblocation"
+        Me.tblocation.Size = New System.Drawing.Size(228, 31)
+        Me.tblocation.TabIndex = 105
+        '
         'frm_sp_rpt_Stock
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -484,25 +517,27 @@ Partial Class frm_sp_rpt_Stock
         CType(Me.Picturebox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.plocation.ResumeLayout(False)
+        Me.plocation.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub 'xx__End sub__xx
-Friend WithEvents lblAmountType As System.Windows.Forms.Label
-Friend WithEvents cboAmountType As ByteClassLibrary.MyGridTextBox3
-Friend WithEvents PAmountType As System.Windows.Forms.Panel
+    Friend WithEvents lblAmountType As System.Windows.Forms.Label
+    Friend WithEvents cboAmountType As ByteClassLibrary.MyGridTextBox3
+    Friend WithEvents PAmountType As System.Windows.Forms.Panel
     Friend WithEvents lblExDate As System.Windows.Forms.Label
-Friend WithEvents dtpExDate As ByteClassLibrary.MyDateTimePicker
-Friend WithEvents PExDate As System.Windows.Forms.Panel
-Friend WithEvents lblBrandID As System.Windows.Forms.Label
-Friend WithEvents cboBrandID As ByteClassLibrary.MyGridTextBox3
-Friend WithEvents PBrandID As System.Windows.Forms.Panel
-Friend WithEvents lblTypeID As System.Windows.Forms.Label
-Friend WithEvents cboTypeID As ByteClassLibrary.MyGridTextBox3
-Friend WithEvents PTypeID As System.Windows.Forms.Panel
-Friend WithEvents btnSearch As ByteClassLibrary.MyButton
-Friend WithEvents Picturebox1 As System.Windows.Forms.PictureBox
-Friend WithEvents PSearch As System.Windows.Forms.Panel
+    Friend WithEvents dtpExDate As ByteClassLibrary.MyDateTimePicker
+    Friend WithEvents PExDate As System.Windows.Forms.Panel
+    Friend WithEvents lblBrandID As System.Windows.Forms.Label
+    Friend WithEvents cboBrandID As ByteClassLibrary.MyGridTextBox3
+    Friend WithEvents PBrandID As System.Windows.Forms.Panel
+    Friend WithEvents lblTypeID As System.Windows.Forms.Label
+    Friend WithEvents cboTypeID As ByteClassLibrary.MyGridTextBox3
+    Friend WithEvents PTypeID As System.Windows.Forms.Panel
+    Friend WithEvents btnSearch As ByteClassLibrary.MyButton
+    Friend WithEvents Picturebox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents PSearch As System.Windows.Forms.Panel
 
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
@@ -521,6 +556,9 @@ Friend WithEvents PSearch As System.Windows.Forms.Panel
     Friend WithEvents dgv As System.Windows.Forms.DataGridView
     Friend WithEvents btnPrint As System.Windows.Forms.ToolStripButton
     Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
+    Friend WithEvents plocation As System.Windows.Forms.Panel
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents tblocation As ByteClassLibrary.MyTextBox
     'xx_Friend WithEvents_xx
 
 

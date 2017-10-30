@@ -101,22 +101,30 @@ Namespace My
             End Set
         End Property
         
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("true")>  _
-        Public ReadOnly Property EhabTest() As String
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+ Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+ Global.System.Configuration.DefaultSettingValueAttribute("False")> _
+        Public Property LsAlsoPrint() As Boolean
             Get
-                Return CType(Me("EhabTest"),String)
+                Return CType(Me("LsAlsoPrint"), Boolean)
             End Get
+            Set(ByVal value As Boolean)
+                Me("LsAlsoPrint") = value
+            End Set
         End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property HWKEYS() As Global.System.Data.DataTable
+
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+Global.System.Configuration.DefaultSettingValueAttribute("False")> _
+        Public Property LsAlsoNewInvoice() As Boolean
             Get
-                Return CType(Me("HWKEYS"),Global.System.Data.DataTable)
+                Return CType(Me("LsAlsoNewInvoice"), Boolean)
             End Get
+            Set(ByVal value As Boolean)
+                Me("LsAlsoNewInvoice") = value
+            End Set
         End Property
+
     End Class
 End Namespace
 

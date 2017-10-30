@@ -23,9 +23,9 @@ Partial Class frm_Agent
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -43,6 +43,7 @@ Partial Class frm_Agent
         Me.PNote = New System.Windows.Forms.Panel()
         Me.lblNote = New System.Windows.Forms.Label()
         Me.txtNote = New ByteClassLibrary.MyTextBox()
+        Me.PIniBalance = New System.Windows.Forms.FlowLayoutPanel()
         Me.PIniBalanceDebit = New System.Windows.Forms.Panel()
         Me.lblIniBalanceDebit = New System.Windows.Forms.Label()
         Me.numIniBalanceDebit = New ByteClassLibrary.MyNumericBox()
@@ -66,7 +67,6 @@ Partial Class frm_Agent
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.PIniBalance = New System.Windows.Forms.FlowLayoutPanel()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -76,6 +76,7 @@ Partial Class frm_Agent
         Me.PPhone.SuspendLayout()
         Me.Paddress.SuspendLayout()
         Me.PNote.SuspendLayout()
+        Me.PIniBalance.SuspendLayout()
         Me.PIniBalanceDebit.SuspendLayout()
         Me.PIniBalanceCredit.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -83,7 +84,6 @@ Partial Class frm_Agent
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
-        Me.PIniBalance.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStripSeparator3
@@ -258,6 +258,16 @@ Partial Class frm_Agent
         Me.txtNote.Size = New System.Drawing.Size(228, 31)
         Me.txtNote.TabIndex = 3
         '
+        'PIniBalance
+        '
+        Me.PIniBalance.Controls.Add(Me.PIniBalanceDebit)
+        Me.PIniBalance.Controls.Add(Me.PIniBalanceCredit)
+        Me.PIniBalance.Location = New System.Drawing.Point(56, 158)
+        Me.PIniBalance.Margin = New System.Windows.Forms.Padding(0)
+        Me.PIniBalance.Name = "PIniBalance"
+        Me.PIniBalance.Size = New System.Drawing.Size(359, 100)
+        Me.PIniBalance.TabIndex = 206
+        '
         'PIniBalanceDebit
         '
         Me.PIniBalanceDebit.Controls.Add(Me.lblIniBalanceDebit)
@@ -341,23 +351,23 @@ Partial Class frm_Agent
         Me.dgv.BackgroundColor = System.Drawing.Color.White
         Me.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Aljazeera", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgv.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Aljazeera", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Aljazeera", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgv.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Aljazeera", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv.DefaultCellStyle = DataGridViewCellStyle5
         Me.dgv.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgv.GridColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.dgv.Location = New System.Drawing.Point(3, 4)
@@ -365,14 +375,14 @@ Partial Class frm_Agent
         Me.dgv.Name = "dgv"
         Me.dgv.ReadOnly = True
         Me.dgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Aljazeera", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Aljazeera", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.dgv.RowHeadersWidth = 35
         Me.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgv.Size = New System.Drawing.Size(256, 376)
@@ -398,6 +408,8 @@ Partial Class frm_Agent
         '
         'btnCopy
         '
+        Me.btnCopy.BackColor = System.Drawing.Color.Transparent
+        Me.btnCopy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.btnCopy.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.btnCopy.Image = Global.GT1.My.Resources.Resources.copy
@@ -514,16 +526,6 @@ Partial Class frm_Agent
         Me.ToolStripButton1.Name = "ToolStripButton1"
         Me.ToolStripButton1.Size = New System.Drawing.Size(6, 42)
         '
-        'PIniBalance
-        '
-        Me.PIniBalance.Controls.Add(Me.PIniBalanceDebit)
-        Me.PIniBalance.Controls.Add(Me.PIniBalanceCredit)
-        Me.PIniBalance.Location = New System.Drawing.Point(56, 158)
-        Me.PIniBalance.Margin = New System.Windows.Forms.Padding(0)
-        Me.PIniBalance.Name = "PIniBalance"
-        Me.PIniBalance.Size = New System.Drawing.Size(359, 100)
-        Me.PIniBalance.TabIndex = 206
-        '
         'frm_Agent
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -552,6 +554,7 @@ Partial Class frm_Agent
         Me.Paddress.PerformLayout()
         Me.PNote.ResumeLayout(False)
         Me.PNote.PerformLayout()
+        Me.PIniBalance.ResumeLayout(False)
         Me.PIniBalanceDebit.ResumeLayout(False)
         Me.PIniBalanceDebit.PerformLayout()
         Me.PIniBalanceCredit.ResumeLayout(False)
@@ -562,7 +565,6 @@ Partial Class frm_Agent
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        Me.PIniBalance.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

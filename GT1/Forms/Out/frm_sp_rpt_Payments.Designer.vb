@@ -172,7 +172,7 @@ Partial Class frm_sp_rpt_Payments
         'btnDelete
         '
         Me.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnDelete.Image = Global.GT1.My.Resources.Resources.delete1
+        Me.btnDelete.Image = Global.GT1.My.Resources.Resources.delete
         Me.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(34, 39)

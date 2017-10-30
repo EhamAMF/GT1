@@ -131,7 +131,7 @@ Partial Class frm_StockBalance
         'btnProductsForm
         '
         Me.btnProductsForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnProductsForm.Image = Global.GT1.My.Resources.Resources.report1
+        Me.btnProductsForm.Image = Global.GT1.My.Resources.Resources.view
         Me.btnProductsForm.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnProductsForm.Name = "btnProductsForm"
         Me.btnProductsForm.Size = New System.Drawing.Size(34, 39)

@@ -23,6 +23,7 @@ Partial Class FrmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMain))
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.InvoicesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SellToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -551,6 +552,7 @@ Partial Class FrmMain
         '
         'TabPage1
         '
+        Me.TabPage1.BackColor = System.Drawing.Color.White
         Me.TabPage1.Controls.Add(Me.Panel3)
         Me.TabPage1.Controls.Add(Me.Panel2)
         Me.TabPage1.Controls.Add(Me.Panel1)
@@ -560,12 +562,12 @@ Partial Class FrmMain
         Me.TabPage1.Size = New System.Drawing.Size(1000, 632)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "الرئيسية"
-        Me.TabPage1.UseVisualStyleBackColor = True
         '
         'Panel3
         '
         Me.Panel3.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Panel3.BackgroundImage = Global.GT1.My.Resources.Resources.panelbkbyte
+        Me.Panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel3.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Panel3.Location = New System.Drawing.Point(181, 113)
         Me.Panel3.Name = "Panel3"
@@ -576,6 +578,7 @@ Partial Class FrmMain
         '
         Me.Panel2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Panel2.BackgroundImage = Global.GT1.My.Resources.Resources.panelbk1
+        Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.Panel2.Controls.Add(Me.lblDate2)
         Me.Panel2.Controls.Add(Me.lblTime)
         Me.Panel2.Location = New System.Drawing.Point(411, 113)
@@ -586,6 +589,7 @@ Partial Class FrmMain
         'lblDate2
         '
         Me.lblDate2.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.lblDate2.BackColor = System.Drawing.Color.Transparent
         Me.lblDate2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.lblDate2.Font = New System.Drawing.Font("Aljazeera", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDate2.ForeColor = System.Drawing.Color.White
@@ -599,6 +603,7 @@ Partial Class FrmMain
         'lblTime
         '
         Me.lblTime.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.lblTime.BackColor = System.Drawing.Color.Transparent
         Me.lblTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.lblTime.Font = New System.Drawing.Font("Aljazeera", 28.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTime.ForeColor = System.Drawing.Color.White
@@ -613,6 +618,7 @@ Partial Class FrmMain
         '
         Me.Panel1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Panel1.BackgroundImage = Global.GT1.My.Resources.Resources.panelbk1
+        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel1.Controls.Add(Me.lblStock)
         Me.Panel1.Controls.Add(Me.lblAgentMoneyIn)
         Me.Panel1.Controls.Add(Me.lblAgents)
@@ -627,6 +633,7 @@ Partial Class FrmMain
         'lblStock
         '
         Me.lblStock.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.lblStock.BackColor = System.Drawing.Color.Transparent
         Me.lblStock.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.lblStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.lblStock.Font = New System.Drawing.Font("Aljazeera", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -641,6 +648,7 @@ Partial Class FrmMain
         'lblAgentMoneyIn
         '
         Me.lblAgentMoneyIn.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.lblAgentMoneyIn.BackColor = System.Drawing.Color.Transparent
         Me.lblAgentMoneyIn.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.lblAgentMoneyIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.lblAgentMoneyIn.Font = New System.Drawing.Font("Aljazeera", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -655,6 +663,7 @@ Partial Class FrmMain
         'lblAgents
         '
         Me.lblAgents.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.lblAgents.BackColor = System.Drawing.Color.Transparent
         Me.lblAgents.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.lblAgents.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.lblAgents.Font = New System.Drawing.Font("Aljazeera", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -669,6 +678,7 @@ Partial Class FrmMain
         'lblProducts
         '
         Me.lblProducts.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.lblProducts.BackColor = System.Drawing.Color.Transparent
         Me.lblProducts.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.lblProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.lblProducts.Font = New System.Drawing.Font("Aljazeera", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -683,6 +693,7 @@ Partial Class FrmMain
         'lblPurchase
         '
         Me.lblPurchase.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.lblPurchase.BackColor = System.Drawing.Color.Transparent
         Me.lblPurchase.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.lblPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.lblPurchase.Font = New System.Drawing.Font("Aljazeera", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -697,6 +708,7 @@ Partial Class FrmMain
         'lblSales
         '
         Me.lblSales.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.lblSales.BackColor = System.Drawing.Color.Transparent
         Me.lblSales.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.lblSales.Font = New System.Drawing.Font("Aljazeera", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSales.ForeColor = System.Drawing.Color.White
@@ -726,6 +738,7 @@ Partial Class FrmMain
         Me.Controls.Add(Me.MenuStrip)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Aljazeera", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
         Me.Name = "FrmMain"

@@ -22,6 +22,8 @@ Public Class frm_sp_rpt_Stock
     Dim BrandName As Object
     Dim TypeName As Object
 
+    Dim Rack As Object
+
 
 
     Private Sub frm_sp_rpt_Stock_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
@@ -36,6 +38,10 @@ Public Class frm_sp_rpt_Stock
        
             GetInitialData()
             lblTitle.Text = Me.Text
+
+            plocation.Visible = Settings.IsRackShown
+
+
         Catch ex As Exception
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
@@ -77,7 +83,7 @@ Public Class frm_sp_rpt_Stock
             out = Val(var)
 
         ElseIf TypeOf var Is String Then
-            If var.ToString.Trim = "" Then out = DBNull.Value
+            If var.ToString.Trim = "" Then out = DBNull.Value Else out = var
         Else : out = var
         End If
 
@@ -213,7 +219,7 @@ Public Class frm_sp_rpt_Stock
 
     End Sub
 
-    Private Function fn_sp_rpt_Stock(ByRef AmountType As Object, ByRef ExDate As Object, ByRef BrandID As Object, ByRef TypeID As Object, ByRef BrandName As Object, ByRef TypeName As Object) As DataTable
+    Private Function fn_sp_rpt_Stock(ByRef AmountType As Object, ByRef ExDate As Object, ByRef BrandID As Object, ByRef TypeID As Object, ByRef BrandName As Object, ByRef TypeName As Object, ByRef Rack As Object) As DataTable
 
         Dim da As New SqlDataAdapter("sp_rpt_Stock", PubCn)
         Dim dt As New DataTable
@@ -225,6 +231,7 @@ Public Class frm_sp_rpt_Stock
             .AddWithValue("@AmountType", AmountType)
             .AddWithValue("@ExDate", ExDate)
             .AddWithValue("@BrandID", BrandID)
+            .AddWithValue("@Rack", Rack)
             .AddWithValue("@TypeID", TypeID)
             .Add("@BrandName", SqlDbType.NVarChar, 200)
             .Add("@TypeName", SqlDbType.NVarChar, 200)
@@ -256,17 +263,14 @@ Public Class frm_sp_rpt_Stock
     'xx__subs and Functions__xx
 
     Private Sub SetInputParameters()
-        'ItemTypeID = MyConvert(cboItemTypeID.SelectedValue)
-        'AgentID = MyConvert(cboAgentID.SelectedValue)
-        'TypeID = MyConvert(cboTypeID.SelectedValue)
-        'BrandID = MyConvert(cboBrandID.SelectedValue)
-        'DateFrm = IIf(chkAllPeriod.Checked, DBNull.Value, dtpDateFrm.Value)
-        'DateTo = IIf(chkAllPeriod.Checked, DBNull.Value, dtpDateTo.Value)
+
 
         AmountType = MyConvert(cboAmountType.MySelectedValue)
         ExDate = MyConvert(dtpExDate.Value)
         BrandID = MyConvert(cboBrandID.MySelectedValue)
         TypeID = MyConvert(cboTypeID.MySelectedValue)
+        Rack = MyConvert(tblocation.Text)
+
 
         MyTable1.Clear()
     End Sub
@@ -383,7 +387,7 @@ Public Class frm_sp_rpt_Stock
         Try
             MyTable1.Clear()
             'MyTable1 = fn_sp_rpt_Product_Money(ItemTypeID, ItemTypeName, AgentID, AgentName, TypeID, TypeName, BrandID, BrandName, DateFrm, DateTo)
-            MyTable1 = fn_sp_rpt_Stock(AmountType, ExDate, BrandID, TypeID, BrandName, TypeName)
+            MyTable1 = fn_sp_rpt_Stock(AmountType, ExDate, BrandID, TypeID, BrandName, TypeName, Rack)
             If bw1.CancellationPending = True Then
                 e.Cancel = True
                 Return

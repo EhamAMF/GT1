@@ -415,16 +415,13 @@ Public Class Frm_Invoice
 
     Protected Overrides Function ProcessKeyEventArgs(ByRef msg As Message) As Boolean
         If msg.WParam = Keys.PrintScreen Then
-            btnSave.PerformClick()
+            btnSave2.PerformClick()
             btnPrint.PerformClick()
 
         End If
 
         Return MyBase.ProcessKeyEventArgs(msg)
     End Function
-
-
-
 
 
     Private Sub Frm_Invoice_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -470,7 +467,7 @@ Public Class Frm_Invoice
     Private Sub Frm_Invoice_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         Try
             If _IsInvoiceChanged = True AndAlso msgShow("توجد بيانات غير محفوظة ,هل تريد الحفظ ؟", Frm_msg.FormType.YesNoWarning) = Windows.Forms.DialogResult.Yes Then
-                btnSave.PerformClick()
+                btnSave2.PerformClick()
             End If
         Catch ex As Exception
             HandleMyError(ex, , , My.Settings.IsDebug)
@@ -1201,25 +1198,30 @@ Public Class Frm_Invoice
     Private Sub IniItemType()
 
         Dim dt As New DataTable
+        Dim bs As New BindingSource
+
         dt.Columns.Add("ID", GetType(Integer))
         dt.Columns.Add("Name", GetType(String))
 
-        dt.Rows.Add(DBNull.Value, "كل الاصناف")
-        dt.Rows.Add(1, "أصنافي")
+        'dt.Rows.Add(DBNull.Value, "كل الاصناف")
+        'dt.Rows.Add(1, "أصنافي")
+        'dt.Rows.Add(2, "الاصناف الموجودة")
+
+        dt.Rows.Add(1, "كل الاصناف")
         dt.Rows.Add(2, "الاصناف الموجودة")
 
 
-
+        bs.DataSource = dt
 
 
         With cboItemType
-            .DataSource = dt
+            .DataSource = bs
             .ValueMember = "ID"
             .DisplayMember = "Name"
         End With
 
 
-
+        bs.Position = 0
 
 
 
@@ -1250,7 +1252,7 @@ Public Class Frm_Invoice
 
         _BsItem.DataSource = dt
 
-   
+
 
 
         With cboItem
@@ -2382,23 +2384,16 @@ Public Class Frm_Invoice
 
     Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
         Try
-
-            If _IsInvoiceChanged = True AndAlso msgShow("توجد بيانات غير محفوظة ,هل تريد الحفظ ؟", Frm_msg.FormType.YesNoWarning) = Windows.Forms.DialogResult.Yes Then
-                btnSave.PerformClick()
-            End If
-
-            dgvInvoice.Sort(dgvInvoice.Columns("Sort"), System.ComponentModel.ListSortDirection.Ascending)
-            InvoiceID = 0
-            GetInvoice()
+            NewInvoice()
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex, , , My.Settings.IsDebug)
         End Try
 
     End Sub
     Private Sub btnNextInvoice_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNextInvoice.Click
         Try
             If _IsInvoiceChanged = True AndAlso msgShow("توجد بيانات غير محفوظة ,هل تريد الحفظ ؟", Frm_msg.FormType.YesNoWarning) = Windows.Forms.DialogResult.Yes Then
-                btnSave.PerformClick()
+                btnSave2.PerformClick()
             End If
 
             dgvInvoice.Sort(dgvInvoice.Columns("Sort"), System.ComponentModel.ListSortDirection.Ascending)
@@ -2411,7 +2406,7 @@ Public Class Frm_Invoice
     Private Sub btnPreviosInvoice_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPreviosInvoice.Click
         Try
             If _IsInvoiceChanged = True AndAlso msgShow("توجد بيانات غير محفوظة ,هل تريد الحفظ ؟", Frm_msg.FormType.YesNoWarning) = Windows.Forms.DialogResult.Yes Then
-                btnSave.PerformClick()
+                btnSave2.PerformClick()
             End If
 
             dgvInvoice.Sort(dgvInvoice.Columns("Sort"), System.ComponentModel.ListSortDirection.Ascending)
@@ -2421,7 +2416,23 @@ Public Class Frm_Invoice
         End Try
 
     End Sub
-    Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+
+
+    Private Sub NewInvoice()
+        Try
+
+            If _IsInvoiceChanged = True AndAlso msgShow("توجد بيانات غير محفوظة ,هل تريد الحفظ ؟", Frm_msg.FormType.YesNoWarning) = Windows.Forms.DialogResult.Yes Then
+                btnSave2.PerformClick()
+            End If
+
+            dgvInvoice.Sort(dgvInvoice.Columns("Sort"), System.ComponentModel.ListSortDirection.Ascending)
+            InvoiceID = 0
+            GetInvoice()
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub Save()
         Me.Validate()
         _BsInvoice.EndEdit()
         dgvInfo.EndEdit()
@@ -2450,13 +2461,61 @@ Public Class Frm_Invoice
             GetInvoice()
         Catch ex As Exception
             MyTrans.Rollback()
-            HandleMyError(ex, , , Settings.IsDebug)
+            Throw ex
         Finally
             If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
         End Try
+    End Sub
+    Private Sub Print()
+        Try
+
+            If IsNumeric(_InvoiceID) AndAlso _InvoiceID > 0 Then
+
+                Dim f As New frm_sp_rpt_Invoice
+                f.MdiParent = Me.MdiParent
+                f.numInvoiceID.Text = _InvoiceID
+                f.btnPrint.PerformClick()
+
+
+
+            End If
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        Try
+            Save()
+        Catch ex As Exception
+            HandleMyError(ex, , , My.Settings.IsDebug)
+        End Try
+    End Sub
+
+
+
+    Private Sub btnSave2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave2.Click
+        Try
+
+            Save()
+
+            If My.Settings.LsAlsoPrint = True Then
+                Print()
+            End If
+
+            If My.Settings.LsAlsoNewInvoice Then
+                NewInvoice()
+            End If
+
+        Catch ex As Exception
+            HandleMyError(ex, , , My.Settings.IsDebug)
+        End Try
+
+
 
     End Sub
-    Private Sub btnDeleteInvoice_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub btnDeleteInvoice_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
         Try
             If InvoiceID > 0 Then
 
@@ -2515,18 +2574,12 @@ Public Class Frm_Invoice
             HandleMyError(ex, , , Settings.IsDebug)
         End Try
     End Sub
-    Private Sub btnCreateSellInvoce_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCreateSellInvoce.Click
-        Try
 
-        Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
-        End Try
-    End Sub
 
 #End Region
 #Region "       Item Invoice"
 
-    Private Sub cboItem_MyItemSelectedByEnter(ByVal ItemID As Object) Handles cboItem.MyItemSelectedByEnter
+    Public Sub cboItem_MyItemSelectedByEnter(ByVal ItemID As Object) Handles cboItem.MyItemSelectedByEnter
         Try
 
 
@@ -2596,6 +2649,9 @@ Public Class Frm_Invoice
                     dt = GetItemFromDB(ID, False, DBNull.Value, DBNull.Value)
                 End If
 
+
+
+
                 AnalyzeEntry(dt)
 
             ElseIf InvoiceType = InvoiceTypes.Sell_R Then
@@ -2607,6 +2663,10 @@ Public Class Frm_Invoice
                 Else
                     dt = GetItemFromDB(ID, False, DBNull.Value, OrgInvoiceID)
                 End If
+
+
+
+
 
                 AnalyzeEntry(dt)
 
@@ -2822,6 +2882,10 @@ Public Class Frm_Invoice
 
 
 
+        If dt.Rows.Count <= 0 Then
+            Throw New Exception("الصنف غير معرف يجب ادخاله أولا في فاتورة مشتريات أو رصيد أول المدة ! ", New Exception("ByteError"))
+            Exit Sub
+        End If
 
 
 
@@ -3043,7 +3107,7 @@ Public Class Frm_Invoice
                 End If
 
             End If
-           
+
         Next
 
         Total += Box + Unit
@@ -3372,7 +3436,7 @@ Public Class Frm_Invoice
                 If dgvInvoice.Rows(e.RowIndex).Cells("PlusOrMinus").Value = 1 Then
                     dgvInvoice.Rows(e.RowIndex).Cells("Amount_Inv").Style.BackColor = Color.PaleGreen
                 Else
-                    dgvInvoice.Rows(e.RowIndex).Cells("Amount_Inv").Style.BackColor = Color.PaleVioletRed
+                    dgvInvoice.Rows(e.RowIndex).Cells("Amount_Inv").Style.BackColor = Color.OrangeRed
                 End If
             End If
 
@@ -3388,7 +3452,7 @@ Public Class Frm_Invoice
 
 
                 If CellAmountLeft.Value < 0 Then
-                    CellGID.Style.BackColor = Color.PaleVioletRed
+                    CellGID.Style.BackColor = Color.OrangeRed
                 ElseIf CellAmountLeft.Value = 0 Then
                     CellGID.Style.BackColor = Color.Gold
                 ElseIf IsNumeric(CellAlertAmount.Value) AndAlso CellAlertAmount.Value > CellAmountLeft.Value Then
@@ -3453,7 +3517,6 @@ Public Class Frm_Invoice
         End Try
     End Sub
 
-
     Private Sub StockBalanceToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StockBalanceToolStripMenuItem.Click
         Try
             Dim f As New frm_sp_rpt_StockCorrect
@@ -3504,6 +3567,23 @@ Public Class Frm_Invoice
             HandleMyError(ex, , , My.Settings.IsDebug)
         End Try
     End Sub
+    Private Sub أصنافأخرىToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles أصنافأخرىToolStripMenuItem.Click
+        btnOtherProducts_Click(Nothing, Nothing)
+    End Sub
+
+    Private Sub btnOtherProducts_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOtherProducts.Click
+        Try
+
+            Dim f As New frm_QuickProducts(Me)
+            f.StartPosition = FormStartPosition.CenterScreen
+            f.ShowDialog()
+
+
+        Catch ex As Exception
+            HandleMyError(ex, , , My.Settings.IsDebug)
+        End Try
+    End Sub
+
 
 #End Region
 #Region "       Apearance and Layout"
@@ -3741,7 +3821,7 @@ Public Class Frm_Invoice
                 CellDgvInfo_DistributorName.OwningRow.Visible = True
 
 
-              
+
 
 
             Case InvoiceTypes.Sell_R
@@ -3790,7 +3870,7 @@ Public Class Frm_Invoice
                 CellDgvInfo_AgentName.OwningRow.Visible = False
                 CellDgvInfo_CustomerName.OwningRow.Visible = False
                 CellDgvInfo_DistributorName.OwningRow.Visible = False
-             
+
                 dgvInvoice.Columns("Revenue").Visible = False
                 dgvInvoice.Columns("Total").Visible = False
                 dgvInvoice.Columns("UnitPrice_inv").Visible = False
@@ -3815,7 +3895,20 @@ Public Class Frm_Invoice
             CellRevPer.OwningRow.Visible = False
         End If
 
+        If My.Settings.LsAlsoPrint = True And My.Settings.LsAlsoNewInvoice = True Then
+            btnSave2.Image = My.Resources.SavePrintAdd
+        ElseIf My.Settings.LsAlsoPrint = True And My.Settings.LsAlsoNewInvoice = False Then
+            btnSave2.Image = My.Resources.SavePrint
+        ElseIf My.Settings.LsAlsoPrint = False And My.Settings.LsAlsoNewInvoice = True Then
+            btnSave2.Image = My.Resources.SaveAdd
+        ElseIf My.Settings.LsAlsoPrint = False And My.Settings.LsAlsoNewInvoice = False Then
+            btnSave2.Image = My.Resources.save
+        End If
 
+
+
+
+        btnOtherProducts.Visible = Settings.IsOtherProductsVisible
 
     End Sub
 
@@ -3856,7 +3949,32 @@ Public Class Frm_Invoice
         SendKeys.Send(".")
     End Sub
     Private Sub Pbc1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Pbc1.Click
-        SendKeys.Send("{BACKSPACE}")
+
+        If Not IsNothing(dgvInvoice.CurrentCell) AndAlso dgvInvoice.CurrentCell.IsInEditMode = True Then
+
+            SendKeys.Send("{BACKSPACE}")
+            SendKeys.Send("{BACKSPACE}")
+            SendKeys.Send("{BACKSPACE}")
+            SendKeys.Send("{BACKSPACE}")
+            SendKeys.Send("{BACKSPACE}")
+            SendKeys.Send("{BACKSPACE}")
+            SendKeys.Send("{BACKSPACE}")
+
+            SendKeys.Send("{DELETE}")
+            SendKeys.Send("{DELETE}")
+            SendKeys.Send("{DELETE}")
+            SendKeys.Send("{DELETE}")
+            SendKeys.Send("{DELETE}")
+            SendKeys.Send("{DELETE}")
+            SendKeys.Send("{DELETE}")
+
+        Else
+
+            SendKeys.Send("{DELETE}")
+
+        End If
+
+
     End Sub
     Private Sub Pbenterbig1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Pbenterbig1.Click
         SendKeys.Send("{ENTER}")
@@ -3886,20 +4004,9 @@ Public Class Frm_Invoice
     End Sub
     Private Sub btnPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrint.Click
         Try
-
-            If IsNumeric(_InvoiceID) AndAlso _InvoiceID > 0 Then
-
-                Dim f As New frm_sp_rpt_Invoice
-                f.MdiParent = Me.MdiParent
-                f.numInvoiceID.Text = _InvoiceID
-                f.btnPrint.PerformClick()
-
-
-
-            End If
-
+            Print()
         Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
+            HandleMyError(ex, , , My.Settings.IsDebug)
         End Try
     End Sub
 
@@ -3923,13 +4030,6 @@ Public Class Frm_Invoice
 
 
 
-    Private Sub btnPay_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPay.Click
-        Try
-
-        Catch ex As Exception
-            HandleMyError(ex, , , Settings.IsDebug)
-        End Try
-    End Sub
 
 
 
@@ -3954,6 +4054,22 @@ Public Class Frm_Invoice
 
 
 
-    
+
+
+
+
+
+
+
+
+
+
+    Private Sub StockBalanceToolStripMenuItem_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StockBalanceToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub أصنافأخرىToolStripMenuItem_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles أصنافأخرىToolStripMenuItem.Click
+
+    End Sub
 End Class
 

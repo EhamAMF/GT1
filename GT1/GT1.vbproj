@@ -137,7 +137,7 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>cvc.ico</ApplicationIcon>
+    <ApplicationIcon>gt1_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdvancedControls">
@@ -197,6 +197,18 @@
     <Compile Include="Classes\MyActivattion.vb" />
     <Compile Include="Classes\MySec.vb" />
     <Compile Include="Classes\Settings.vb" />
+    <Compile Include="Forms\In\frm_QuickProducts.Designer.vb">
+      <DependentUpon>frm_QuickProducts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\In\frm_QuickProducts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\In\frm_SelectStock.Designer.vb">
+      <DependentUpon>frm_SelectStock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\In\frm_SelectStock.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\other\frm_Activation.Designer.vb">
       <DependentUpon>frm_Activation.vb</DependentUpon>
     </Compile>
@@ -474,7 +486,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
-    <Compile Include="My Project\Resources1.Designer.vb">
+    <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -497,6 +509,12 @@
     <Compile Include="Settings.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\In\frm_QuickProducts.resx">
+      <DependentUpon>frm_QuickProducts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\In\frm_SelectStock.resx">
+      <DependentUpon>frm_SelectStock.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\other\frm_Activation.resx">
       <DependentUpon>frm_Activation.vb</DependentUpon>
     </EmbeddedResource>
@@ -633,7 +651,7 @@
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-      <LastGenOutput>Resources1.Designer.vb</LastGenOutput>
+      <LastGenOutput>Resources2.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RDLC\rpt_sp_rpt_Invoice_A4.rdlc" />
     <EmbeddedResource Include="RDLC\rpt_sp_rpt_ExpenseLog.rdlc" />
@@ -668,8 +686,9 @@
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
-      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+      <LastGenOutput>Settings1.Designer.vb</LastGenOutput>
     </None>
+    <None Include="Service References\WebServiceMyUpdate\MyUpdate.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Aljazeera2 BEST - Copy.ttf" />
@@ -728,7 +747,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cvc.ico" />
-    <Content Include="Forms\other\ToDo.txt" />
+    <None Include="Resources\gt1_icon.ico" />
+    <Content Include="gt1_icon.ico" />
+    <None Include="Resources\MyGrid.png" />
+    <None Include="Resources\SavePrint.png" />
+    <None Include="Resources\SavePrintAdd.png" />
+    <None Include="Resources\SaveAdd.png" />
+    <None Include="Resources\a_All_Proc_Func.txt" />
+    <None Include="Resources\a10To11_01_CreateButtonsTable.txt" />
+    <Content Include="To Do\ToDo.txt" />
     <Content Include="ppp.ico" />
     <None Include="Resources\a02_02_CREATE_TABLE_Settings.txt" />
     <None Include="Resources\a02_03_Update_Account.txt" />
@@ -754,13 +781,6 @@
     <None Include="Resources\panelbk1.png" />
     <None Include="Resources\panelbkbyte.png" />
     <None Include="Service References\WebServiceMyActivation\MyActivation1.wsdl" />
-    <None Include="Service References\WebServiceMyUpdate\configuration91.svcinfo" />
-    <None Include="Service References\WebServiceMyUpdate\configuration.svcinfo" />
-    <None Include="Service References\WebServiceMyUpdate\MyUpdate1.wsdl" />
-    <None Include="Service References\WebServiceMyUpdate\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.vb</LastGenOutput>
-    </None>
     <None Include="Service References\WebServiceMyActivation\configuration91.svcinfo" />
     <None Include="Service References\WebServiceMyActivation\configuration.svcinfo" />
     <None Include="Service References\WebServiceMyActivation\Reference.svcmap">
@@ -768,9 +788,14 @@
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
     <None Include="Resources\a_Insert_All_Settings.txt" />
-    <None Include="Resources\a_All_Proc_Func.txt" />
-    <None Include="Service References\WebServiceMyUpdate\MyUpdate1.disco" />
     <None Include="Service References\WebServiceMyActivation\MyActivation1.disco" />
+    <None Include="Service References\WebServiceMyUpdate\MyUpdate.disco" />
+    <None Include="Service References\WebServiceMyUpdate\configuration91.svcinfo" />
+    <None Include="Service References\WebServiceMyUpdate\configuration.svcinfo" />
+    <None Include="Service References\WebServiceMyUpdate\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
     <Content Include="To Do\To Do.txt" />
     <None Include="Resources\byteStartUp.bmp" />
     <None Include="Resources\option.png" />

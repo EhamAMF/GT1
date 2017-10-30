@@ -32,11 +32,9 @@ Public Class frmLogin2
     End Sub
     Private Sub frmLogin2_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
 
-        For Each value As Configuration.SettingsPropertyValue In My.Settings.PropertyValues
-            MessageBox.Show(value.Name & " - " & value.PropertyValue.ToString)
-        Next
 
-        If Settings.IsDebug = True Then
+
+        If My.Settings.IsDebug = True Then
             TbUserName.Text = "admin"
             TbPassword.Text = "admin"
             Dim str As String = ""

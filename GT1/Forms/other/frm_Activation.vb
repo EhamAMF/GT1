@@ -45,7 +45,7 @@ Public Class frm_Activation
 
 
         Dim ws As New GT1.WebServiceMyActivation.MyActivationSoapClient
-        Dim o As Object = ws.Activate(PhoneNumber, AllHardwareInfoMin, True, PubAppID, Pwd)
+        Dim o As Object = ws.Activate(PhoneNumber, AllHardwareInfoMin, IsSqlLocal, PubAppID, Pwd)
 
         OutXML = o
 
@@ -54,6 +54,9 @@ Public Class frm_Activation
     End Sub
 
     Private Sub bk1_RunWorkerCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bk1.RunWorkerCompleted
+
+
+
         Dim xmlElem = XElement.Parse(OutXML)
         Dim msg = xmlElem.<msg>.Value
         Dim key = xmlElem.<ActivationKey>.Value

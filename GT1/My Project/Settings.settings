@@ -14,11 +14,11 @@
     <Setting Name="IsActivated" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="EhabTest" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">true</Value>
+    <Setting Name="LsAlsoPrint" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="HWKEYS" Type="System.Data.DataTable" Scope="Application">
-      <Value Profile="(Default)" />
+    <Setting Name="LsAlsoNewInvoice" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

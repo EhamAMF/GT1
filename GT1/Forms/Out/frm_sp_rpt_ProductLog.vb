@@ -5,6 +5,9 @@ Imports ByteClassLibrary.MyFunctions
 'Form_temp
 Public Class frm_sp_rpt_ProductLog
 
+    Dim WithEvents BL As New ByteClassLibrary.ByteBarcodeListener2(Me, "cboStockID", 10)
+
+
     Dim IsSumExist As Boolean = False
 
     Dim IsBW1Canseled As Boolean = False
@@ -19,7 +22,7 @@ Public Class frm_sp_rpt_ProductLog
     Dim DateFrom As Object
     Dim DateTo As Object
     Dim StockName As Object
-
+    Dim bsItems As New BindingSource
 
 
     Private Sub frm_sp_rpt_ProductLog_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
@@ -183,16 +186,16 @@ Public Class frm_sp_rpt_ProductLog
 
         Dim da As New SqlDataAdapter("sp_hlp_Item", PubCn)
         Dim dt As New DataTable
-        Dim bs As New BindingSource
+
 
         da.SelectCommand.CommandType = CommandType.StoredProcedure
 
         dt.Clear()
         da.Fill(dt)
-        bs.DataSource = dt
+        bsItems.DataSource = dt
 
         With cboStockID
-            .MySource = bs
+            .MySource = bsItems
             .SetColumn(ByteClassLibrary.MyGridTextBox3.ColType.ValueMember, "StockID", False, "")
             .SetColumn(ByteClassLibrary.MyGridTextBox3.ColType.DisplayMember, "ProductName", True, "")
 
@@ -526,6 +529,32 @@ Public Class frm_sp_rpt_ProductLog
             HandleMyError(ex)
         End Try
     End Sub
+
+
+
+
+    Private Sub BL_BarcodeReceived(ByVal str As String) Handles BL.BarcodeReceived
+        Try
+
+            If bsItems.Find("Barcode", str) >= 0 Then
+
+                bsItems.Position = bsItems.Find("Barcode", str)
+                cboStockID.MySelectedValue = bsItems.Current("StockID")
+
+            Else
+
+                msgShow("باركود غير موجود !", ByteClassLibrary.Frm_msg.FormType.msgSorry)
+            End If
+
+        Catch ex As Exception
+            HandleMyError(ex, , , Settings.IsDebug)
+        End Try
+    End Sub
+
+
+
+
+
 #End Region
 
 
@@ -588,5 +617,15 @@ Public Class frm_sp_rpt_ProductLog
         Catch ex As Exception
             HandleMyError(ex, , , My.Settings.IsDebug)
         End Try
+    End Sub
+
+    Private Sub ToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton3.Click
+    
+
+
+        BL_BarcodeReceived("#101")
+
+
+
     End Sub
 End Class

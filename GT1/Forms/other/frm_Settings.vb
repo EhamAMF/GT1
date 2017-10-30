@@ -38,6 +38,14 @@ Public Class frm_Settings
 
             Settings.InvoiceLayout = cboInvoiceLayout.SelectedValue.ToString
 
+            Settings.IsOtherProductsVisible = chkIsOtherProductsVisible.Checked.ToString.ToLower
+
+            My.Settings.LsAlsoPrint = chkAlsoPrint.Checked
+            My.Settings.LsAlsoNewInvoice = chkAlsoNewInvoice.Checked
+
+            My.Settings.Save()
+
+
 
             bw.RunWorkerAsync()
 
@@ -70,6 +78,13 @@ Public Class frm_Settings
 
 
         chkIsDuplicateProductInInvoice.Checked = Settings.IsDuplicateProductInInvoice
+        chkIsOtherProductsVisible.Checked = Settings.IsOtherProductsVisible
+
+
+        chkAlsoPrint.Checked = My.Settings.LsAlsoPrint
+        chkAlsoNewInvoice.Checked = My.Settings.LsAlsoNewInvoice
+
+
 
     End Sub
 
@@ -82,6 +97,7 @@ Public Class frm_Settings
 
         dt.Rows.Add({"rpt_sp_rpt_Invoice_A4.rdlc", "A4"})
         dt.Rows.Add({"rpt_sp_rpt_Invoice_A5.rdlc", "A5"})
+        dt.Rows.Add({"rpt_sp_rpt_Invoice_Receipt.rdlc", "Receipt"})
 
         With cboInvoiceLayout
 
