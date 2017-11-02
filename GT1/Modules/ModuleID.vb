@@ -13,7 +13,7 @@
     Public PubAppCategory As AppCategory = AppCategory.General
 
 
-    Public Const PubAppVersion = 12
+    Public Const PubAppVersion = 13
     Public PubdbVersion As Integer
 
     Public Function GetdbVersion() As Integer

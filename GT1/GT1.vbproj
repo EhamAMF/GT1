@@ -209,6 +209,12 @@
     <Compile Include="Forms\In\frm_SelectStock.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\other\frmDBLocation.Designer.vb">
+      <DependentUpon>frmDBLocation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\other\frmDBLocation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\other\frm_Activation.Designer.vb">
       <DependentUpon>frm_Activation.vb</DependentUpon>
     </Compile>
@@ -514,6 +520,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\In\frm_SelectStock.resx">
       <DependentUpon>frm_SelectStock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\other\frmDBLocation.resx">
+      <DependentUpon>frmDBLocation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\other\frm_Activation.resx">
       <DependentUpon>frm_Activation.vb</DependentUpon>

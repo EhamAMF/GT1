@@ -8,7 +8,7 @@ Module Module_DB_Upgrade
 
     Public Sub CheckUpgradeDB2()
         PubdbVersion = ByteClassLibrary.MyFunctions.GetScalarValue(PubCn, "Version", "VersoinNumber", "1 = 1")
-        Dim LastDBVersion As Integer = 12
+        Dim LastDBVersion As Integer = 13
 
 
 
@@ -27,12 +27,17 @@ Module Module_DB_Upgrade
                     PubdbVersion10()
                 Case 11
                     PubdbVersion11()
+                Case 12
+                    PubdbVersion12()
             End Select
         End While
 
 
 
     End Sub
+
+
+
 
 
     Private Sub PubdbVersion6()
@@ -255,6 +260,52 @@ Module Module_DB_Upgrade
 
 
 
+
+
+
+
+
+
+            MyTrans.Commit()
+
+            PubdbVersion = ByteClassLibrary.MyFunctions.GetScalarValue(PubCn, "Version", "VersoinNumber", "1 = 1")
+
+        Catch ex As Exception
+            MyTrans.Rollback()
+            HandleMyError(ex, , , Settings.IsDebug)
+        Finally
+            If PubCn.State <> ConnectionState.Closed Then PubCn.Close()
+        End Try
+
+
+
+
+
+    End Sub
+    Private Sub PubdbVersion12()
+
+        Dim cmd As New SqlCommand("", PubCn)
+        Dim MyTrans As SqlTransaction
+        Try
+            If PubCn.State <> ConnectionState.Open Then PubCn.Open()
+            MyTrans = PubCn.BeginTransaction(IsolationLevel.Serializable)
+            cmd.Transaction = MyTrans
+
+
+
+
+
+            cmd.CommandText = My.Resources.a_UpdateVersion
+            cmd.Parameters.Clear()
+            cmd.Parameters.AddWithValue("@VersoinNumber", PubdbVersion + 1)
+            cmd.ExecuteNonQuery()
+            cmd.Parameters.Clear()
+
+
+
+
+
+
             cmd.CommandText = My.Resources.a_All_Proc_Func
             cmd.ExecuteNonQuery()
 
@@ -281,5 +332,6 @@ Module Module_DB_Upgrade
 
 
     End Sub
+
 
 End Module

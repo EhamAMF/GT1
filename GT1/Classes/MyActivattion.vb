@@ -21,10 +21,10 @@ Public Class MyActivattion
     Public Sub AddHWKey(ByVal Key As String)
 
         If Not File.Exists(My.Application.Info.DirectoryPath & "\per\HWSTR.config") Then
-            Dim Newdt As New DataTable("dtHWKeys")
-            Newdt.Columns.Add("Key", GetType(String))
-            Newdt.Rows.Add({MySecurity.encryptString("Byte")})
-            Newdt.WriteXml(My.Application.Info.DirectoryPath & "\per\HWSTR.config")
+            Dim NewDT As New DataTable("dtHWKeys")
+            NewDT.Columns.Add("Key", GetType(String))
+            NewDT.Rows.Add({MySecurity.encryptString("Byte")})
+            NewDT.WriteXml(My.Application.Info.DirectoryPath & "\per\HWSTR.config")
         End If
 
         Dim ds As New DataSet

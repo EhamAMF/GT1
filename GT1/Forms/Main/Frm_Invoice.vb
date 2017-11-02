@@ -4071,5 +4071,7 @@ Public Class Frm_Invoice
     Private Sub أصنافأخرىToolStripMenuItem_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles أصنافأخرىToolStripMenuItem.Click
 
     End Sub
+
+
 End Class
 

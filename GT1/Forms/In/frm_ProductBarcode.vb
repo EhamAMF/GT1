@@ -347,4 +347,6 @@ Public Class frm_ProductBarcode
     Private Sub ToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         BL_BarcodeReceived("666666666")
     End Sub
+
+
 End Class

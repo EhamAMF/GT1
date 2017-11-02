@@ -2,18 +2,20 @@
 Imports ByteClassLibrary.MyFunctions
 Public Class frmLogin2
 
+
+
     Private Sub frmLogin2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         Try
 
 
-   
 
 
 
 
 
-            Dim ServerIP As String = GetFileContents(My.Application.Info.DirectoryPath & "\per\ServerIP.dll")
+
+            Dim ServerIP As String = My.Settings.LsServerIP
             PubCn.ConnectionString = "Data Source=" & ServerIP & ";MultipleActiveResultSets=true;Initial Catalog=GT1;User ID=sa;Password=%C@tchM31fY0uC@N%"
             PubMasterCn.ConnectionString = "Data Source=" & ServerIP & ";Initial Catalog=Master;User ID=sa;Password=%C@tchM31fY0uC@N%"
 
@@ -39,14 +41,44 @@ Public Class frmLogin2
             TbPassword.Text = "admin"
             Dim str As String = ""
 
-            BEnter.PerformClick()
+            '  BEnter.PerformClick()
         End If
 
 
     End Sub
+    Private Sub frmLogin2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+        If e.Modifiers = Keys.Alt + Keys.Shift + Keys.Control Then
+            If e.KeyCode = Keys.S Then
+
+                Dim f As New frmDBLocation
+                f.StartPosition = FormStartPosition.CenterScreen
+                f.ShowDialog()
+
+                frmLogin2_Load(Nothing, Nothing)
+
+
+            End If
+        End If
+
+
+
+    End Sub
+
+
+
+
+
 
     Private Sub BEnter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BEnter.Click
         Try
+
+
+            PubMasterCn.Open()
+            PubMasterCn.Close()
+
+
+
+
             Dim IsApproved As Boolean = False
 
             Dim ma As New MyActivattion
@@ -70,7 +102,7 @@ Public Class frmLogin2
 
                 If RD.Read = True Then
                     If RD("Password") = TbPassword.Text Then
-    
+
                         PubUserID = RD("UserID")
                         PubUserName = RD("UserName")
                         PubUserLevel = RD("UserLevel")
@@ -99,7 +131,7 @@ Public Class frmLogin2
 
 
 
-    
+
 
 
 
@@ -128,6 +160,7 @@ Public Class frmLogin2
             f.StartPosition = FormStartPosition.CenterParent
             f.WindowState = FormWindowState.Normal
             f.ShowDialog()
+            BEnter.Enabled = True
 
         Catch ex As Exception
             HandleMyError(ex, , , My.Settings.IsDebug)
